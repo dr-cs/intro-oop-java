@@ -1,0 +1,394 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Binary Search Trees}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+Trees are everywhere.
+
+\begin{center}
+\includegraphics[height=2.5in]{1024px-Winnersh_Meadows_Trees.jpg}\footnote{Source:\url{ http://commons.wikimedia.org/wiki/File:Winnersh_Meadows_Trees.jpg}}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+They're in our web browsers.
+
+\begin{center}
+\includegraphics[height=3in]{xhtml-tree.png}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+They're in our file systems.
+
+\begin{center}
+\includegraphics[height=3in]{directory-tree.png}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+They're even in pop culture.
+
+\begin{center}
+\includegraphics[height=2.5in]{Neon+Trees.png}\footnote{Source: \url{http://userserve-ak.last.fm/serve/500/44019065/Neon+Trees.png}}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+But they're not in Kansas.
+
+\begin{center}
+\includegraphics[height=2.5in]{1024px-Wabaunsee_County_View.JPG}\footnote{Source: \url{http://en.wikipedia.org/wiki/File:Wabaunsee_County_View.JPG}}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Binary Tree Nodes}
+
+
+The nodes of a binary tree have
+\begin{itemize}
+\item a data item,
+\item a link to a left node, and
+\item a link to a right node.
+\end{itemize}
+
+\begin{lstlisting}[language=Java]
+    private class Node<E> {
+        E item;
+        Node<E> left;
+        Node<E> right;
+
+        Node(E item, Node<E> left, Node<E> right) {
+            this.item = item;
+            this.left = left;
+            this.right = right;
+        }
+    }
+\end{lstlisting}
+
+Just as in the other linked data structures we've studied, binary trees are recursive.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Binary Tree Structure}
+
+
+
+\begin{itemize}
+\item Every tree has a distinguished {\it root node} with no parent.
+\begin{itemize}
+\item All other nodes have exactly one parent.
+\end{itemize}
+\item Nodes which have no children are called {\it leaf nodes}.
+\item Nodes which have children are called {\it interior nodes}.
+\item Every node has 0, 1, or 2 children.
+\item Every node can be reached by a unique path from the root node.
+\end{itemize}
+
+\begin{center}
+\includegraphics[height=1.25in]{binary-tree.png}
+\end{center}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Binary Search Trees}
+
+
+A binary search tree (BST) is a binary tree in which for any node,
+\begin{itemize}
+\item all the elements in the node's left subtree are less than the node's data item, and
+\item all the elements in the node's right subtree are equal to or greater than the node's data item.
+\end{itemize}
+
+A BST is distinguished by this property, but it's ADT is simple: add elements, find element's in the tree, and iterate over the elements in a tree.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Maintaining The BST Property}
+
+
+To add a new value to binary tree and maintain the BST property, we
+\begin{itemize}
+\item insert new nodes for data items into the left subtree of a node if the new item is less than the node's item, or
+\item the right subtree otherwise.
+\end{itemize}
+Every new item creates a leaf node, which can later become an interior node after additional items have been added. Here's the structure of a BST after adding the sequence of numbers 3, 4, 1, 5, 2:
+\vspace{-.05in}
+\begin{center}
+\includegraphics[height=1.5in]{binary-tree-nums.png}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Path to an Item}
+
+To find a path to an item in a BST: , then
+\begin{itemize}
+\item set the path to the empy list
+\item set the root node as the currentNode
+\item until we find the node containing the item or exhaust the BST:
+\begin{itemize}
+\item if currentNode contains the item, add it to the path and return it
+\item else if query item is less than the item in currentNode, add currentNode to path and set the left child as the new currentNode
+\item else add add currentNode to path and set the right child as the new currentNode
+\end{itemize}
+\item if the item wasn't found, set the path to the empty list
+\end{itemize}
+
+
+See {\tt public List<E> path(E queryItem)} in \link{\code/data-structures/BinarySearchTree.java}{BinarySearchTree.java} for the code.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Traversing a Binary Tree}
+
+
+There are three primary ways to traverse a binary tree:
+
+Pre-order:
+\begin{itemize}
+\item Process node's item.
+\item Process left subtree.
+\item Process right subtree.
+\end{itemize}
+
+In-order:
+\begin{itemize}
+\item Process left subtree.
+\item Process node's item.
+\item Process right subtree.
+\end{itemize}
+
+Post-order:
+\begin{itemize}
+\item Process left subtree.
+\item Process right subtree.
+\item Process node's item.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Simple In-Order Traversal}
+
+The code for in-order traversal follows the recursive structure of the tree:
+\begin{lstlisting}[language=Java]
+    public void printInOrder() {
+        printInOrder(root);
+    }
+
+    private void printInOrder(Node<E> node) {
+        if (node != null) {
+            printInOrder(node.left);
+            System.out.print(node.item + " ");
+            printInOrder(node.right);
+        }
+    }
+\end{lstlisting}
+The code above prints the elements in ascending order.
+Let's add a {\tt printDescending()} method to \link{\code/data-structures/BinarySearchTree.java}{BinarySearchTree.java}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Recursively Building a Result: {\tt inOrderList()}}
+
+We can use the recursive accumulator idiom to collect the elements of the tree in an in-order traversal:
+\begin{lstlisting}[language=Java]
+    public List<E> toList() {
+        return inOrderList(root, new ArrayList<E>());
+    }
+
+    private List<E> inOrderList(Node<E> node, List<E> accum) {
+        if (null == node) {
+            return accum;
+        } else {
+            inOrderList(node.left, accum);
+            accum.add(node.item);
+            inOrderList(node.right, accum);
+        }
+        return accum;
+    }
+\end{lstlisting}
+
+Again, the code follows the recursive structure of the tree.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Imperative traveral: {\tt inOrderImperative()}}
+\vspace{-.05in}
+Contrast the previous code for getting an in-order list of BST elements with an imperative version:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+    public List<E> inOrderImperative() {
+        Node<E> curNode = root;
+        Stack<Node<E>> fringe = new LinkedStack<>();
+        List<E> accum = new ArrayList<E>();
+        while ((curNode != null) || !fringe.isEmpty()) {
+            while (curNode != null) {
+                fringe.push(curNode);
+                curNode = curNode.left;
+            }
+            curNode = fringe.pop();
+            accum.add(curNode.item);
+            curNode = curNode.right;
+        }
+        return accum;
+    }
+\end{lstlisting}
+\vspace{-.05in}
+We need extra bookkeeping variables to keep track of where we are in the tree so we can back-track.  See \link{\code/data-structures/BinarySearchTree.java}{BinarySearchTree.java} for comments explaining the algorithm.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Iterators}
+
+
+Iterators can free clients from having to implement traversal algorithms.  We can even plug our data structures into Java's for-each loop by implementing {\tt java.lang.Iterable}:
+\begin{lstlisting}[language=Java]
+public interface Iterable<T> {
+    java.util.Iterator<T> iterator();
+}
+\end{lstlisting}
+As a reminder, {\tt java.util.Iterator}:
+\begin{lstlisting}[language=Java]
+public interface Iterator<E> {
+    boolean hasNext();
+
+    E next();
+
+    void remove();
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Stateful In-Order Tree Traversal}
+
+
+In the traversal examples we saw earlier the traversal order was effected by the method call stack.  A stateful iterator is much more challenging because:
+
+\begin{itemize}
+\item The iterator must remember where it is in the tree
+\item The iterator must be able to back-track to parent nodes after processing child branches
+\end{itemize}
+
+The essential implementation idea is to use a stack to store nodes for back-tracking.  Traditionally (at least in AI), this ``to-do list'' stack is called the {\it fringe}\footnote{This search strategy is called {\it depth-first search}.  Using a queue for the fringe instead of a stack would effect a {\it breadth-first search}}.
+
+Let's look at \link{\code/data-structures/BinarySearchTree.java}{BinarySearchTree.java} again to see how we implement a stateful in-order iterator.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Programming Exercise 1}
+
+Add a {\tt toString} method to {\tt BinarySearchTree}.
+\begin{itemize}
+\item The string should have a left square bracket, followed by the elements in the BST in-oder separated by spaces, followed by a right square bracket.  For example, {\tt [1 2 3 4 ]}
+\item If the BST is empty, the string should contain empty square barckets, e.g., {\tt []}.
+\end{itemize}
+Your {\tt toString} method should use a recursive helper method, similar to {\tt inOrderList}.  Your helper method should use a {\tt StringBuilder} for its accumulator.  \footnote{{\tt StringBuilder} works just like {\tt StringBuffer}.  What's the difference?}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Programming Exercise 2}
+
+Recall the method that adds nodes to the {\tt BinarySearchTree}:
+\begin{lstlisting}[language=Java]
+    private Node<E> insert(E newItem, Node<E> node) {
+        if (node == null) {
+            return new Node<E>(newItem, null, null);
+        } else if (newItem.compareTo(node.item) < 0) {
+            node.left = insert(newItem, node.left);
+            return node;
+        } else {
+            node.right = insert(newItem, node.right);
+            return node;
+        }
+    }
+\end{lstlisting}
+Notice that this implementation allows duplicate items.  Modify this method so that {\tt BinarySearchTree} is a set, that is, does not insert duplicate items.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

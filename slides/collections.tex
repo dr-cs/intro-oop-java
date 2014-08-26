@@ -1,0 +1,476 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{{\tt Java Collections}}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins] 
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Collections Framework}
+
+\begin{center}
+\includegraphics[width=4in]{colls-coreInterfaces.png}
+\end{center}
+
+\begin{itemize}
+\item A {\it collection} is an object that represents a group of objects.
+\item The collections framework allows different kinds of collections to be dealt with in an implementation-independent manner.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Collection Framework Components}
+
+The Java collections framework consists of:
+\begin{itemize}
+\item Collection interfaces representing different types of collections (sets, lists, etc)
+\item General purpose implementations (like {\tt ArrayList} or {\tt HashSet})
+\item Absract implementations to support custom implementations
+\item Algorithms defined in static utility methods that operate on collections (like {\tt Collections.sort(List<T> list)})
+\item Infrastructure interfaces that support collections (like {\tt Iterator})
+\end{itemize}
+There's more, but these are the basics.  We'll become familiar with each of these components, but won't go into great depth.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt Collection} Interface}
+
+
+{\tt Collection} is the root interface of the collections framework, declaring basic operations such as:
+\begin{itemize}
+\item {\tt add(E e)} to add elements to the collection
+\item {\tt contains(Object key)} to determine whether the collection contains {\tt key}
+\item {\tt isEmpty()} to test the collection for emptiness
+\item {\tt iterator()} to get an interator over the elements of the collection
+\item {\tt remove(Object o)} to remove a single instance of {\tt o} from the collection, if present
+\item {\tt size()} to find out the number of elements in the collection
+\end{itemize}
+None of the collection implementations in the Java library implement {\tt Collection} directly.  Instead they implement {\tt List} or {\tt Set}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Lists and {\tt ArrayList}}
+\vspace{-.05in}
+The {\tt List} interface represents ordered collections, or {\it sequences}.  {\tt List} adds
+\vspace{-.05in}  
+\begin{itemize}
+\item methods for positional (indexed) access to elements ({\tt get(int index)}, {\tt indexOf(Object o)}, {\tt remove(int index)}, {\tt set(int index, E element)}), 
+\item a special iterator, {\tt ListIterator}, that allows element insertion and replacement, and bidirectional access in addition to the normal operations that the Iterator interface provides; and methods to obtain a {\tt ListIterator}
+\item a {\tt subList(int fromIndex, int toIndex)} that returns a view of a portion of the list.
+\end{itemize}
+{\tt ArralyList} and {\tt LinkedList} are the two basic {\tt List} implementations provided in the Java standard library.\footnote{{\tt Vector} also implements {\tt List} and can be thought of as a synchronized version of {\tt ArrayList}.  You don't need {\tt Vector} if you're not writing multithreaded code.  Using {\tt Vector} in single-threaded code will decrease performance.}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt ArrayList} Basics}
+
+
+Create an {\tt ArrayList} with operator {\tt new}:
+\begin{lstlisting}[language=Java]
+  ArrayList tasks = new ArrayList();
+\end{lstlisting}
+Add items with {\tt add()}:
+\begin{lstlisting}[language=Java]
+  tasks.add("Eat");
+  tasks.add("Sleep");
+  tasks.add("Code");
+\end{lstlisting}
+Traverse with for-each loop:
+\begin{lstlisting}[language=Java]
+  for (Object task: tasks) {
+      System.out.println(task);
+  }
+\end{lstlisting}
+
+Note that the for-each loop implicitly uses an iterator.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Iterators}
+
+
+Iterators are objects that provide access to the objects in a collection.  In Java iterators are represented by the {\tt Iterator} interface, which contains three methods:
+\begin{itemize}
+\item {\tt hasNext()} returns true if the iteration has more elements.
+\item {\tt next()} returns the next element in the iteration.
+\item {\tt remove()} removes from the underlying collection the last element returned by the iterator (optional operation).
+\end{itemize}
+
+The most basic and common use of an iterator is to traverse a collection (visit all the elements in a collection):
+\begin{lstlisting}[language=Java]
+ArrayList tasks = new ArrayList();
+// ...
+Iterator tasksIter = tasks.iterator();
+while (tasksIter.hasNext()) {
+    Object task = tasksIter.next();
+    System.out.println(task);
+}
+\end{lstlisting}
+See \link{\code/ArrayListBasics.java}{ArrayListBasics.java} for more.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Primitives in Collections}
+
+{\tt ArrayList}s can only hold reference types.  So you must use wrapper classes for primitives:
+\begin{lstlisting}[language=Java]
+  ArrayList ints = new ArrayList();
+  ints.add(new Integer(42));
+\end{lstlisting}
+Java auto-boxes primitives when adding to a collection:
+\begin{lstlisting}[language=Java]
+  ints.add(99);
+\end{lstlisting}
+But auto-unboxing can't be done when retrieving from an untyped collection:
+\begin{lstlisting}[language=Java]
+  int num = ints.get(0); // won't compile
+\end{lstlisting}
+The old way to handle this with untyped collections is to cast it:
+\begin{lstlisting}[language=Java]
+int num = (Integer) ints.get(0); // auto-unboxing on assignment to int
+\end{lstlisting}
+We'll see a better way to handle this with generics.
+
+See \link{\code/ArrayListPrimitivesDemo.java}{ArrayListPrimitivesDemo.java} for more.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Generics}
+
+
+Did you notice the warning when we compile {\tt ArrayListBasics.java}?
+\begin{lstlisting}[language=bash]
+$ javac ArrayListBasics.java
+Note: ArrayListBasics.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+\end{lstlisting}
+% $
+Java issues this warning because {\tt ArrayList} (and the other collecttion classes in the Java library) is a {\it parameterized type} and we used {\tt ArrayList} without a type parameter.  The full class name is {\tt ArrayList<E>}.
+\begin{itemize}
+\item {\tt E} is a {\it type parameter}, which can be any class name (not a primitive type).
+\item {\tt ArrayList<E>} is a {\it parameterized type} 
+\item {\tt E} tells the compiler which types are stored in the collection.
+\end{itemize}
+So the compiler is warning us that we're not using the type parameter and thus missing out on static type-checking.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Using Generics}
+
+
+Supply a type argument in the angle brackets.  Read {\tt ArrayList<String>} as ``ArrayList of String''
+\begin{lstlisting}[language=Java]
+  ArrayList<String> strings = new ArrayList<String>();
+  strings.add("Helluva"); strings.add("Engineer!");
+\end{lstlisting}
+If we try to add an object that isn't a {\tt String}, we get a compile error:
+\begin{lstlisting}[language=Java]
+  Integer BULL_DOG = Integer.MIN_VALUE;
+  strings.add(BULL_DOG); // Won't compile
+\end{lstlisting}
+
+With a typed collection, we get autoboxing on insertion {\it and} retrieval:
+
+\begin{lstlisting}[language=Java]
+  ArrayList<Integer> ints = new ArrayList<>();
+  ints.add(42);
+  int num = ints.get(0);
+\end{lstlisting}
+Notice that we didn't need to supply the type parameter in the creation expression above.  Java inferred the type parameter from the declaration. (Note: this only works in Java 7 and above.)
+
+See \link{\code/ArrayListGenericsDemo.java}{ArrayListGenericsDemo.java} for more.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt equals} Method and Collections}
+
+
+
+\begin{itemize}
+\item A class whose instances will be stored in a collection must have a properly implemented {\tt equals} method.
+\item The {\tt contains} method in collections uses the {\tt equals} method in the stored objects.
+\item The default implementation of {\tt equals} (object identity - true only for same object in memory) only rarely gives correct results.
+\item Note that {\tt hashcode()} also has a defualt implementation that uses the object's memory address.  As a rule, whenever you override {\tt equals}, you should also override {\tt hashcode}\footnote{{\tt hashcode()} is used in objects that are keys in {\tt Map}s.  You'll learn about {\tt Map}s later in the course.}.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt equals} Method Examples}
+
+\vspace{-.05in}
+In this simple class hierarchy, {\tt FoundPerson} has a properly implemented {\tt equals} method and {\tt LostPerson} does not.
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class ArrayListEqualsDemo {
+    static abstract class Person {
+        public String name;
+        public Person(String name) { this.name = name; }
+    }
+    static class LostPerson extends Person {
+        public LostPerson(String name) { super(name); }
+    }
+    static class FoundPerson extends Person {
+        public FoundPerson(String name) { super(name); }
+
+        public boolean equals(Object other) {
+            if (this == other) return true;
+            if (!(other instanceof Person)) return false;
+            return ((Person) other).name.equals(this.name);
+        }
+    }
+\end{lstlisting}
+\vspace{-.05in}
+Examine the code in \link{\code/ArrayListEqualsDemo.java}{ArrayListEqualsDemo.java} to see the consequences.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Using {\tt Collections.sort(List<T> list)}}
+
+
+The collections framework includes algorithms that operate on collections implemented as static methods of the {\tt Collections} class.  A good example is the {\tt sort} method:
+\begin{lstlisting}[language=Java]
+public static <T extends Comparable<? super T>> void sort(List<T> list)
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt sort} uses the ``natural ordering'' of the list, that is, the ordering defined by {\tt Comparable}.
+\item {\tt <? super T>} is a {\it type bound}.  It means ``some superclass of {\tt T}.''
+\item The {\tt <T extends Comparable<? super T>>} means that the element type {\tt T} or some superclass of {\tt T} must implement {\tt Comparable}.
+\end{itemize}
+
+See \link{\code/SuperTroopers.java}{SuperTroopers.java} for an example.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Using {\tt Collections.sort(List<T> list, Comparator<? super T> c)}}
+
+
+If you want an ordering different from the natural ordering, you can supply your own comparator by using:
+\begin{lstlisting}[language=Java]
+public static <T> void sort(List<T> list, Comparator<? super T> c)
+\end{lstlisting}
+
+{\tt Comparator<T>} is an interface with two methods:
+\begin{itemize}
+\item {\tt int compare(T o1, T o2)} -  same contract as {\tt o1.compareTo(o2)}
+\item {\tt boolean equals(Object obj)}
+\end{itemize}
+It's always safe to use the inherited {\tt equals} method, so the one you need to implement is {\tt compare}.\\
+
+Let's add a custom comparator to \link{\code/SuperTroopers.java}{SuperTroopers.java}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt Set}s}
+
+A {\tt Set} is a collection with no duplicate elements (no two elements {\tt e1} and {\tt e2} for which {\tt e1.equals(e2)}) and in no particular order.  Given:
+\begin{lstlisting}[language=Java]
+List<String> nameList = Arrays.asList("Alan", "Ada", "Alan");
+Set<String> nameSet = new HashSet<>(nameList);
+System.out.println("nameSet: " + nameSet);
+\end{lstlisting}
+will print:
+\begin{lstlisting}[language=Java]
+nameSet: [Alan, Ada]
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt Map}s}
+
+A {\tt Map<K, V>} is an object that maps keys of type {\tt K} to values of type {\tt V}.  The code:
+\begin{lstlisting}[language=Java]
+  Map<String, String> capitals = new HashMap<>();
+  capitals.put("Georgia", "Atlanta");
+  capitals.put("Alabama", "Montgomery");
+  capitals.put("Florida", "Tallahassee");
+  for (String state: capitals.keySet()) {
+      System.out.println("Capital of " + state + " is "
+                         + capitals.get(state));
+  }
+\end{lstlisting}
+prints:
+\begin{lstlisting}[language=Java]
+Capital of Georgia is Atlanta
+Capital of Florida is Tallahassee
+Capital of Alabama is Montgomery
+\end{lstlisting}
+
+Note that the order of the keys differs from the order in which we added them.  The keys of a map are a {\tt Set}, so there can be no duplicates and order is not guaranteed.  If you {\tt put} a new value with the same key as an entry already in the map, that entry is overwritten with the new one.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt hashCode}}
+
+Notice that we used hash-based implementations: {\tt HashSet} and {\tt HashMap}.  These implementations find elements or keys using the {\tt hashCode} method from {\tt java.lang.Object}:  
+
+\begin{lstlisting}[language=Java]
+public int hashCode()
+\end{lstlisting}
+\begin{itemize}
+\item The {\tt hashCode} method maps an object to an {\tt int} which can be used to find the object in a data structure called a {\tt hashtable}.
+\item The point of a hash code is that it can be computed in constant time, so hashtables allow very fast lookups.
+\item Every object's {\tt hashCode} method should return a consistent hash code that  is not necessarily unique among all objects.
+\end{itemize}
+
+More specifically ...
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt hashCode}'s Contract}
+\vspace{-.12in}
+\begin{itemize}
+\item Whenever it is invoked on the same object more than once during an execution of a Java application, the hashCode method must consistently return the same integer, provided no information used in equals comparisons on the object is modified. This integer need not remain consistent from one execution of an application to another execution of the same application.
+\item If two objects are equal according to the {\tt equals(Object)} method, then calling the {\tt hashCode} method on each of the two objects must produce the same integer result.
+\item It is not required that if two objects are unequal according to the {\tt equals(java.lang.Object)} method, then calling the hashCode method on each of the two objects must produce distinct integer results. However, the programmer should be aware that producing distinct integer results for unequal objects may improve the performance of hash tables. 
+\end{itemize}
+\vspace{-.05in}
+Bottom line: if you override {\tt equals} you must override {\tt hashCode}.\\
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Consequences of Failing to Override {\tt hashCode}}
+
+\begin{lstlisting}[language=Java]
+  Set<Trooper> trooperSet = HashSet<>();
+  // ...
+  trooperSet.add(new Trooper("Mac", true));
+    
+  // Mac is in the set, but we don't find him because we didn't
+  // override hashCode().
+  System.out.println("\nOops!  Didn't override hashCode():");
+  System.out.println("trooperSet.contains(new Trooper(\"Mac\", true))="
+                     + trooperSet.contains(new Trooper("Mac", true)));
+
+\end{lstlisting}
+prints:
+\begin{lstlisting}[language=Java]
+Oops!  Didn't override hashCode():
+trooperSet.contains(new Trooper("Mac", true))=false
+\end{lstlisting}
+
+Open up \link{\code/SuperTroopers.java}{SuperTroopers.java} and let's fix this!
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Programming Exercise}
+
+Write a class to represent Georgia Tech students called, say, {\tt GtStudent}.
+\begin{itemize}
+\item Give {\tt GtStudent} name, major, GPA, and year fields/properties.
+\item Have {\tt GtStudent} implement {\tt Comparable<T>} with some ordering that makes sense to you -- perhaps some majors are harder than others, so GPAs are adjusted in comparisons.
+\item Add instances of {\tt GtStudents} to an {\tt ArrayList<E>}.
+\item Sort the {\tt ArrayList} of {\tt GtStudent}s using {\tt Collections.sort(List<E>)}.
+\item Write a {\tt Comparator<GtStudent>} and sort your list with {\tt Collections.sort(List<E>, Comparator<E>)}.
+\end{itemize}
+Extra: add thousands of randomly-gnerated {\tt GtStudent}s to an {\tt ArrayList} and a {\tt LinkedList} and time {\tt Collections.sort(List<E>)} method invocations for each of them.  Is one faster?  Why (or why not)?
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Programming Exercise 2}
+
+Write a class called {\tt WordCount}.
+\begin{itemize}
+\item The constructor should take a {\tt String} file name.
+\item {\tt WordCount} should have an instance variable {\tt wordCounts} which is a {\tt Map} from {\tt String} to {\tt int}, where each {\tt String} key is a word that occurs in the file supplied to the constructor, and the corresponding {\tt int} is the number of times the word appears in the file.
+\end{itemize}
+Extra: normalize the word counts to $[0, 1]$ so that the word counts represent the probability that a randomly chosen word from the file is a given word.  For normalized word counts, what will be the type of the value in the map?
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts on Collections}
+
+
+\begin{itemize}
+\item Collection classes are very useful - study the Java API docs to become familiar with them.
+\item In a few weeks we'll implement several basic data structures.
+\begin{itemize}
+\item Computer scientists need a deep understanding of data structures.
+\item Application programmers should almost always use predefined data structures from the standard library.
+\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

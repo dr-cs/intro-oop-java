@@ -1,14 +1,6 @@
 \documentclass{beamer}
 
-\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
 \newcommand{\lesson}{Conditional Execution}
-\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
-
-\author[Chris Simpkins]
-{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
-\institute[Georgia Tech] % (optional, but mostly needed)
-
-\date{}
 
 \include{beamer-common}
 
@@ -25,11 +17,11 @@
 \begin{frame}[fragile]{Structured Programming}
 
 
-Control flow issues:
+In reasoning about the flow of control to and from a statement, consider control flow issues:
 \begin{itemize}
-\item Multiple vs. single entry
-\item Multiple vs. single exit
-\item {\tt goto} considered harmful
+\item Multiple vs. single entry ("How did we get here?")
+\item Multiple vs. single exit ("Where do we go from here?")
+\item {\tt goto} considered harmful ({\tt goto} makes it hard to answer questions above)
 \end{itemize}
 
 Structured programming: block structure, single entry, single exit, no {\tt goto}.  All algorithms expressed by:
@@ -39,9 +31,7 @@ Structured programming: block structure, single entry, single exit, no {\tt goto
 \item Iteration - loops
 \end{itemize}
 
-Today we'll learn Java's support for conditional execution\footnote{I
-  don't like the book's term ``branching.''  Branching is not
-  structured programming.  Branching is how you write ``spaghetti code.''}.
+Today we'll learn Java's support for conditional execution
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -81,7 +71,7 @@ In Java, boolean values have the {\tt boolean} type.  Four kinds of boolean expr
 
 
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Boolean Expressions}
+\begin{frame}[fragile]{Boolean Expressions Formed From Comparisons}
 
 
 Simple boolean expressions formed with comparison operators:
@@ -107,7 +97,7 @@ Examples:
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Combining Boolean Expressions}
+\begin{frame}[fragile]{Boolean Expressions Formed From Logical Combinators}
 
 
 Simple boolean expressions can be combined to form larger expressions using:
@@ -119,6 +109,13 @@ Examples:
 \begin{lstlisting}[language=Java]
 (1 == 1) &&  (1 != 1) // false
 (1 == 1) ||  (1 != 1) // true
+\end{lstlisting}
+
+Also, unary negation operator {\tt !}:
+
+\begin{lstlisting}[language=Java]
+!true     // false
+!(1 == 2) // true
 \end{lstlisting}
 
 
@@ -252,7 +249,7 @@ evaluates to {\tt false}, then the second sub-expression is not evaluated, thus 
 \vspace{.1in}
 Note: You can force a complete evaluation by using {\tt \&} or {\tt |}, for example if you have side effects you want to ensure happen in the second expression.  We mention this fact for completeness but implore you not to write such code.\\
 
-See \link{\code/Conditionals.java}{Conditionals.java} for examples.
+See \link{\code/basics/Conditionals.java}{Conditionals.java} for examples.
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -261,9 +258,8 @@ See \link{\code/Conditionals.java}{Conditionals.java} for examples.
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{The {\tt switch} Statement}
 
-\vspace{-.1in}
 Java provides {\tt switch} statement for multi-way branching.
-\vspace{-.05in}
+
 \begin{lstlisting}[language=Java]
 switch (expr) {
 case 1:
@@ -272,25 +268,43 @@ case 1:
 case 2:
     // executed only when case 2 holds
 case 3:
-    // executed whenever case 2 and 3 hold
+    // executed whenever case 2 or 3 hold
     break;
 default:
     // executed only when other cases don't hold
 }
 \end{lstlisting}
-\vspace{-.1in}
+
 \begin{itemize}
+\item Execution jumps to the first matching case and continues until a {\tt break}, {\tt default}, or {\tt switch} statement's closing curly brace is reached
 \item Type of {\tt expr} can be {\tt char}, {\tt int}, {\tt short}, {\tt byte}, or {\tt String}
 \item In example above, what is type of {\tt expr}?
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Avoid the {\tt switch} Statement}
+
+The {\tt switch} statement is error-prone.
+\begin{itemize}
 \item {\tt switch} considered harmful.  97\% of fall-throughs
   unwanted\footnote{Peter van der Linden, {\it Deep C Secrets}}
 \item Anachronism from ``structured assembly language'', a.k.a. C (a {\tt switch} is just a jump table)
 \end{itemize}
 
-See \link{\code/Switch.java}{Switch.java} for examples.
+You can do without the switch statement.  See
+
+\begin{itemize}
+\item \link{\code/basics/CharCountSwitch.java}{CharCountSwitch.java} for a {\tt switch} example,
+\item \link{\code/basics/CharCountIf.java}{CharCountIf.java} for the same program using an {\tt if} statement in place of the {\tt switch} statement, and
+\item  \link{\code/basics/CharCount.java}{CharCount.java} for the same program using standard library utility methods.
+\end{itemize}
 
 \end{frame}
 %------------------------------------------------------------------------
+
 
 
 %------------------------------------------------------------------------
@@ -300,7 +314,7 @@ See \link{\code/Switch.java}{Switch.java} for examples.
 \begin{itemize}
 \item Conditional execution straightforward, but watch out for side-effects in boolean assignments.
 \item Parenthesize your expressions to make them clear to the reader and to Java.
-\item Next we'll learn loops, and we'll have all the tools we need to implement any algorithm.
+\item Next we'll learn loops, and we'll have all the tools we need to implement any algorithm.\footnote{Actually we already have all the tools we need to implement any algorithm in a functional style, but we need loops for imperative algorithms.}
 \end{itemize}
 
 

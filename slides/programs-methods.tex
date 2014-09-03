@@ -56,19 +56,19 @@ public static void main(String[] args) { ... }
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Methods}
 
-These {\tt main} method is a special method that is used as the entry point for a Java program.  We can define other methods as well.  Consider this method from \link{\code/basics/NameParser.java}{NameParser.java}:
+The {\tt main} method is a special method that is used as the entry point for a Java program.  We can define other methods as well.  Consider this method from \link{\code/basics/NameParser.java}{NameParser.java}:
 
 \begin{lstlisting}[language=Java]
 public static String extractLastName(String name) {
-  int commaPos = name.indexOf(",");
-  int len = name.length();
-  String lastName = name.substring(0, commaPos).trim();
-  return lastName;
+    int commaPos = name.indexOf(",");
+    int len = name.length();
+    String lastName = name.substring(0, commaPos).trim();
+    return lastName;
 }
 \end{lstlisting}
 Similar to our {\tt main} method but:
 \begin{itemize}
-\item {\tt return}s a {\tt String}
+\item {\tt return}s a {\tt String} value
 \item takes a single parameter of type {\tt String}
 \end{itemize}
 
@@ -81,32 +81,55 @@ Similar to our {\tt main} method but:
 In this method:
 \begin{lstlisting}[language=Java]
 public static String extractLastName(String name) {
-  int commaPos = name.indexOf(",");
-  int len = name.length();
-  String lastName = name.substring(0, commaPos).trim();
-  return lastName;
+    int commaPos = name.indexOf(",");
+    int len = name.length();
+    String lastName = name.substring(0, commaPos).trim();
+    return lastName;
 }
 \end{lstlisting}
-{\tt name} is a parameter, a local scope variable within the {\tt extractLastName} method.  It is bound to a value when the method is called.  In:
+{\tt name} is a {\it parameter} (or {\it formal parameter}), a local scope variable within the {\tt extractLastName} method.  It is bound to a value when the method is called.  In the statement:
 
 \begin{lstlisting}[language=Java]
 String lastName = extractLastName(fullName);
 \end{lstlisting}
-we say that {\tt fullName} is the {\it argument} to this invocation of the {\tt extractLastName} method.
+the right-hand side, {\tt extractLastName(fullName)}, is a {\it method invocation} (or {\it method call}).  We say that {\tt fullName} is the {\it argument} (or {\it actual parameter}) to this invocation of the {\tt extractLastName} method.
 
 \end{frame}
 %------------------------------------------------------------------------
 
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Local Variables}
+
+Method parameters and variables declared inside the method are local to the method, invisible outside the method.  Local variables "shadow" variables of the same name in an enclosing scope.
+
+\begin{lstlisting}[language=Java]
+public class Methods {
+
+    // Note that static variables cannot appear inside methods
+    static String message = "Global message.";
+    static int a = 5;
+
+    public static int add(int a, int b) {
+        String message = "Adding " + a + " and " + b;
+        System.out.println(message);
+        return a + b;
+    }
+...
+\end{lstlisting}
+In the {\tt add} method, the parameter {\tt a} shadows the {\tt static} variable {\tt a}, and the local variable {\tt message} shadows the {\tt static} variable {\tt message}.
+
+\end{frame}
+%------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Methods as Expressions}
 
-Methods that return values are expressions which can be used anywhere a type-equivalent expression can be used.  Given:
+Methods that return values are expressions which can be used anywhere a value of the method's return type can be used.  Given:
 
 \begin{lstlisting}[language=Java]
-public static int add(int a, int b)
+public static int add(int a, int b) { ... }
 \end{lstlisting}
-This:
+which returns an {\tt int}, this:
 \begin{lstlisting}[language=Java]
 x + (x + y)
 \end{lstlisting}
@@ -114,11 +137,26 @@ is equivalent to this:
 \begin{lstlisting}[language=Java]
 x + add(x, y)
 \end{lstlisting}
-See \link{\code/basics/Expressions.java}{Expressions.java}.
+See \link{\code/basics/Methods.java}{Methods.java}.
 
 \end{frame}
 %------------------------------------------------------------------------
 
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+Methods are subprograms with
+\begin{itemize}
+\item input (parameters),
+\item processing (a sequence of statements), and
+\item output (return value).
+\end{itemize}
+
+Methods are a powerful form of procedural abstraction, another step in the building of complex programs from simple parts.
+
+\end{frame}
+%------------------------------------------------------------------------
 
 % %------------------------------------------------------------------------
 % \begin{frame}[fragile]{}

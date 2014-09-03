@@ -14,6 +14,23 @@
 
 
 %------------------------------------------------------------------------
+\begin{frame}[fragile]{Modeling Aggregates}
+
+
+As you've seen, you can get pretty far with "scalar" data.  But many phenomena we wish to model computationally are aggregates, or collections, for example:
+\begin{itemize}
+\item scores on assignments in a class,
+\item word counts in a document, or
+\item pixel colors in a bitmap image.
+\end{itemize}
+
+Today we'll learn Java's most basic facility for modeling such phenomena: arrays.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
 \begin{frame}[fragile]{Arrays}
 
 
@@ -23,8 +40,6 @@ Java Arrays (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-10.html}
 \item are dynamically allocated (e.g., with operator {\tt new}), and
 \item have a fixed number of elements of the same type.
 \end{itemize}
-
-
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -40,7 +55,7 @@ double[] scores = new double[5];
 This declaration:
 \begin{itemize}
 \item allocates a 5-element array,
-\item the {\tt 5} in the example above can be any expression that is unary promotable to an {\tt int} (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-5.html#jls-5.6.1}{JLS \S 5.6.1})
+\item the {\tt 5} in the example above can be any expression that is unary promotable to an {\tt int} (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.1}{JLS \S 5.6.1})
 \item stores the address of this new array in {\tt scores}, and
 \item initializes each value to it's default value ({\tt 0} for numeric types, {\tt false} for {\tt boolean} types, and {\tt null} for references, \href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.5}{JLS \S 4.12.5}).
 \end{itemize}

@@ -1,19 +1,12 @@
 \documentclass{beamer}
 
-\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
 \newcommand{\lesson}{Loops}
-\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
-
-\author[Chris Simpkins] 
-{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
-\institute[Georgia Tech] % (optional, but mostly needed)
-
-\date{}
 
 \include{beamer-common}
 
-% \beamerdefaultoverlayspecification{<+->}
+\usepackage{media9}
 
+% \beamerdefaultoverlayspecification{<+->}
 
 \begin{document}
 
@@ -22,6 +15,24 @@
 \end{frame}
 
 
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+\begin{center}
+\includemedia[
+  width=0.9\linewidth,height=0.6\linewidth,
+  activate=pageopen,
+  flashvars={
+    modestbranding=1 % no YT logo in control bar
+   &autohide=1       % controlbar autohide
+   &showinfo=0       % no title and other info before start
+  }
+]{}{http://www.youtube.com/v/mXPeLctgvQI?rel=0}   % Flash file
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
 
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Loops and Iteration}
@@ -29,7 +40,7 @@
 
 Algorithms often call for repeated action or iteration, e.g. :
 \begin{itemize}
-\item ``repeat ... while (or until) some condition is true'' (looping) or 
+\item ``repeat ... while (or until) some condition is true'' (looping) or
 \item ``for each element of this array/list/etc. ...'' (iteration)
 \end{itemize}
 
@@ -76,7 +87,7 @@ for(`{\it initializer}`; `{\it condition}`; `{\it update}`) {
 }
 \end{lstlisting}
 \begin{itemize}
-\item {\it intializer} is a statement 
+\item {\it intializer} is a statement
 \begin{itemize}
 \item Use this statement to initialize value of the loop variable(s)
 \end{itemize}
@@ -122,7 +133,7 @@ while (`\colorbox{gray}{i < 10}`) {
 \begin{frame}[fragile]{{\tt for} Statement Examples}
 
 
-Here's an example adapted from  \link{\code/Switch.java}{Switch.java}.  We use the {\tt for} loops index variable to visit each character in a {\tt String} and count the digits and letters:
+Here's an example adapted from  \link{\code/Switch.java}{Switch.java}.  We use the {\tt for} loop's index variable to visit each character in a {\tt String} and count the digits and letters:
 \begin{lstlisting}[language=Java]
 int digitCount = 0, letterCount = 0;
 for (int i = 0; i < input.length(); ++i) {
@@ -219,11 +230,10 @@ Java provides two non-structured-programming ways to alter loop control flow:
 
 Consider the following while loop:
 \begin{lstlisting}[language=Java]
-Scanner kbd = new Scanner(in);
 boolean shouldContinue = true;
 while (shouldContinue) {
     System.out.println("Enter some input (exit to quit):");
-    String input = kbd.nextLine();
+    String input = System.console().readLine();
     doSomethingWithInput(input); // We do something with "exit" too.
     shouldContinue = (input.equalsIgnoreCase("exit")) ? false : true;
 }
@@ -237,14 +247,13 @@ We don't test for the termination sentinal, ``exit,'' until after we do somethin
 \begin{frame}[fragile]{{\tt break}ing out of a {\tt while} Loop}
 
 \vspace{-.05in}
-We could test the sentinal before processing and {\tt break}:
+We could test for the sentinal and {\tt break} before processing:
 \vspace{-.05in}
 \begin{lstlisting}[language=Java]
-Scanner kbd = new Scanner(in);
 boolean shouldContinue = true;
 while (shouldContinue) {
     System.out.println("Enter some input (exit to quit):");
-    String input = kbd.nextLine();
+    String input = System.console().readLine();
     if (input.equalsIgnoreCase("exit")) break;
     doSomethingWithInput(input);
 }
@@ -253,11 +262,10 @@ while (shouldContinue) {
 But it's better to use structured programming:
 \vspace{-.05in}
 \begin{lstlisting}[language=Java]
-Scanner kbd = new Scanner(in);
 boolean shouldContinue = true;
 while (shouldContinue) {
     System.out.println("Enter some input (exit to quit):");
-    String input = kbd.nextLine();
+    String input = System.console().readLine();
     if (input.equalsIgnoreCase("exit")) {
         shouldContinue = false;
     } else {
@@ -269,7 +277,6 @@ while (shouldContinue) {
 
 \end{frame}
 %------------------------------------------------------------------------
-
 
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Programming Exercise: Palindromes}

@@ -1,0 +1,4 @@
+name: CS 1331
+markdown: redcarpet
+pygments: true
+exclude: ["slides"]

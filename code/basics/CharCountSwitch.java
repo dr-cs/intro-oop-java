@@ -1,15 +1,17 @@
-import java.util.Scanner;
-
-public class Switch {
+/**
+ * This program performs the same task as CharCountSwitch.java but without
+ * a switch statement.
+ */
+public class CharCountSwitch {
 
     public static void main(String[] args) {
-        Scanner kbd = new Scanner(System.in);
         System.out.print("Enter a string of characters: ");
-        String s = kbd.next();
+        String s = System.console().readLine();
         int digitCount = 0, punctuationCount = 0, letterCount = 0;
         for (int i = 0; i < s.length(); ++i) {
             switch (s.charAt(i)) {
-                case '0': case '1':
+                case '0':
+                case '1':
                 case '2':
                 case '3':
                 case '4':
@@ -35,7 +37,7 @@ public class Switch {
             // Will the code above provide an accurate count of letters?
         }
         System.out.printf("Your input contained %d digits, %d "
-                          + "punctuaion marks, and %d letters.%n", 
+                          + "punctuaion marks, and %d letters.%n",
                           digitCount, punctuationCount, letterCount);
     }
 }

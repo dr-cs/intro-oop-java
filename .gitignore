@@ -1,1 +1,14 @@
 _site/
+*~
+*.class
+slides/*.aux
+slides/*.log
+slides/*.nav
+slides/*.out
+slides/*.snm
+slides/*.toc
+slides/*.vrb
+slides/*.pdf
+slides/*.fdb_latexmk
+slides/*.synctex.gz
+slides/*.fls

@@ -7,7 +7,6 @@ public class NameParser {
 
     public static String extractLastName(String name) {
         int commaPos = name.indexOf(",");
-        int len = name.length();
         String lastName = name.substring(0, commaPos).trim();
         return lastName;
     }

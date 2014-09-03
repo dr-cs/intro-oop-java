@@ -225,7 +225,7 @@ while (shouldContinue) {
     System.out.println("Enter some input (exit to quit):");
     String input = kbd.nextLine();
     doSomethingWithInput(input); // We do something with "exit" too.
-    keepGoing = (input.equalsIgnoreCase("exit")) ? false : true;
+    shouldContinue = (input.equalsIgnoreCase("exit")) ? false : true;
 }
 \end{lstlisting}
 We don't test for the termination sentinal, ``exit,'' until after we do something with it.  Situations like these often tempt us to use {\tt break} ...

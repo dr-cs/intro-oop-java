@@ -34,7 +34,7 @@
 \begin{itemize}
 \item The {\it arity} of a method is its number of formal parameters.
 \item So far, all the methods we've written have fixed arity.
-\item The last parameter to a method may be a {\it variable arity parameter}, a.k.a. {\it var args} parameter (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.4.1}{JLS \S 8.4.1}), whose syntax is simply to add an ellipse ({\tt ...}) after the type name.
+\item The last parameter to a method may be a {\it variable arity parameter}, a.k.a. {\it var args} parameter (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.1}{JLS \S 8.4.1}), whose syntax is simply to add an ellipse ({\tt ...}) after the type name.
 \item The var args parameter is accessed as an array inside the method.
 \end{itemize}
 For example:
@@ -165,7 +165,7 @@ for (int col = 0; col < grid[0].length; ++col) {
 }
 \end{lstlisting}
 \vspace{-.05in}
-See \link{\code/Smiley.java}{Smiley.java}
+See \link{\code/arrays/Smiley.java}{Smiley.java}
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -352,7 +352,6 @@ Our {\tt PartialIntArray} example was inspired by Java's standard ArrayList clas
 \item Make {\tt PartialIntArray} automatically resize, that is, expand its capacity if you add a {\tt size}th element.  How would you do this?
 \item Look at the source for {\tt java.util.ArrayList}.
 \begin{itemize}
-\item Oracle has made it a bit less straightforward to get the std lib source, so I put up a copy here: \url{http://simpkins.org/java-lib-src/}
 \end{itemize}
 \end{itemize}
 
@@ -457,17 +456,17 @@ As in any craft, study the work of masters to improve your own skillz.
 
 %% \end{frame}
 %% %------------------------------------------------------------------------
-
-%------------------------------------------------------------------------
-\begin{frame}[fragile]{Programming Exercise}
-
-\begin{itemize}
-\item Download \link{\code/array-data.csv}{array-data.csv}.
-\item Write a program to read the data from \link{\code/array-data.csv}{array-data.csv} into an array.
-\end{itemize}
-You can see a possible solution in \link{\code/SimpleArrayCsv.java}{SimpleArrayCsv.java}.
-\end{frame}
-%------------------------------------------------------------------------
+%
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Programming Exercise}
+%
+% \begin{itemize}
+% \item Download \link{\code/array-data.csv}{array-data.csv}.
+% \item Write a program to read the data from \link{\code/array-data.csv}{array-data.csv} into an array.
+% \end{itemize}
+% You can see a possible solution in \link{\code/SimpleArrayCsv.java}{SimpleArrayCsv.java}.
+% \end{frame}
+% %------------------------------------------------------------------------
 
 
 % %------------------------------------------------------------------------

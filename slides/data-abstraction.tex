@@ -4,7 +4,7 @@
 \newcommand{\lesson}{Data Abstraction}
 \newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
 
-\author[Chris Simpkins] 
+\author[Chris Simpkins]
 {Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
 \institute[Georgia Tech] % (optional, but mostly needed)
 
@@ -33,11 +33,11 @@ An abstraction of a concept attempts to capture the essence of the concept -- it
 \item A particular data abstraction is called an {\em abstract data type}.  Note that ADT's include process abstractions as well
 \end{itemize}
 
-In each case, an abstraction hides details --- details of a process or details of a data structure.  
+In each case, an abstraction hides details --- details of a process or details of a data structure.
 
 \begin{quote}
 ``Abstraction is selective ignorance.''\\
--- Andrew Koenig (C++ Guru) 
+-- Andrew Koenig (C++ Guru)
 \end{quote}
 \end{frame}
 %------------------------------------------------------------------------
@@ -142,7 +142,7 @@ Complex a = new Complex(1.0, 2.0);
 invokes the {\tt Complex} constructor, passing arguments {\tt 1.0} and {\tt 2.0}:
 
 \begin{lstlisting}[language=Java,escapechar=`]
-public Complex(`\colorbox{yellow}{1.0}`, `\colorbox{yellow}{2.0}`) {
+public Complex(aReal=`\colorbox{yellow}{1.0}`, anImaginary=`\colorbox{yellow}{2.0}`) {
     real = `\colorbox{yellow}{1.0}`;
     imaginary = `\colorbox{yellow}{2.0}`;
 }
@@ -198,9 +198,9 @@ The line:
 \begin{lstlisting}[language=Java]
 Complex c = a.plus(b);
 \end{lstlisting}
-invokes the {\tt plus} method on the {\tt a} object, passing the {\tt b} object as an argument:
+invokes the {\tt plus} method on the {\tt a} object, passing the {\tt b} object as an argument, which binds the object referenced by {\tt b} to the parameter {\tt other}:
 \begin{lstlisting}[language=Java,escapechar=`]
-a.plus(`\colorbox{yellow}{b}`) {
+a.plus(other=`\colorbox{yellow}{b}`) {
   double resultReal = this.real + `\colorbox{yellow}{b}`.real; // 1.0 + 3.0
   double resultImaginary = this.imaginary + `\colorbox{yellow}{b}`.imaginary; // 2.0 + 4.0
   return new Complex(resultReal, resultImaginary);

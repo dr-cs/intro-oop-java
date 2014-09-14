@@ -706,6 +706,259 @@ produces this output:
 %------------------------------------------------------------------------
 
 
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 1}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten fiona = new Kitten("Fiona");
+        Kitten fiona2 = new Kitten("Fiona");
+\end{lstlisting}
+\vspace{-.05in}
+What is the value of {\tt maggie}?
+\begin{itemize}
+\itemsep0em
+\item ?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 1 Answer}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten fiona = new Kitten("Fiona");
+        Kitten fiona2 = new Kitten("Fiona");
+\end{lstlisting}
+\vspace{-.05in}
+What is the value of {\tt maggie}?
+\begin{itemize}
+\itemsep0em
+\item the address of a {\tt Kitten} object
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 2}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten fiona = new Kitten("Fiona");
+        Kitten fiona2 = new Kitten("Fiona");
+\end{lstlisting}
+\vspace{-.05in}
+What does {\tt maggie.toString()} return?
+\begin{itemize}
+\itemsep0em
+\item ?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 2 Answer}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten fiona = new Kitten("Fiona");
+        Kitten fiona2 = new Kitten("Fiona");
+\end{lstlisting}
+\vspace{-.05in}
+What does {\tt maggie.toString()} return?
+\begin{itemize}
+\itemsep0em
+\item {\tt "Kitten: null"}
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 3}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten fiona = new Kitten("Fiona");
+        Kitten fiona2 = new Kitten("Fiona");
+\end{lstlisting}
+\vspace{-.05in}
+What is the value of the expression {\tt fiona == fiona2}?
+\begin{itemize}
+\itemsep0em
+\item ?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 3 Answer}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten fiona = new Kitten("Fiona");
+        Kitten fiona2 = new Kitten("Fiona");
+\end{lstlisting}
+\vspace{-.05in}
+What is the value of the expression {\tt fiona == fiona2}?
+\begin{itemize}
+\itemsep0em
+\item {\tt false}
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 4}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten[] kittens = new Kitten[5];
+\end{lstlisting}
+\vspace{-.05in}
+What is the value of {\tt kittens[0]} ?
+\begin{itemize}
+\itemsep0em
+\item ?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Question 4 Answer}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Kitten {
+    private String name;
+
+    public Kitten(String name) {
+        name = name;
+    }
+    public String toString() {
+        return "Kitten: " + name;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Assume the following statements have been executed:
+\vspace{-.05in}
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten[] kittens = new Kitten[5];
+\end{lstlisting}
+\vspace{-.05in}
+What is the value of {\tt kittens[0]} ?
+\begin{itemize}
+\itemsep0em
+\item {\tt null}
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
 
 
 % %------------------------------------------------------------------------

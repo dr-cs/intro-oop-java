@@ -42,7 +42,7 @@ public class ArrayListEqualsDemo {
         peeps.add(wilma);
         peeps.add(new FoundPerson("Fred"));
         peeps.add(new LostPerson("Barney"));
-        peeps.add(new OverloadedPerson("Bam-Bam"));
+        peeps.add(new OverloadedPerson("Bam - Bam"));
 
         System.out.println("In each case below, the right answer is true.");
         // 1:
@@ -50,12 +50,12 @@ public class ArrayListEqualsDemo {
         // uses == for object identity, and we're using the same reference
         // that's stored in peeps
         System.out.println("1: Querying with alias: "+peeps.contains(wilma));
-        System.out.println("1.1: Querying with equal-valued distinct object: "
+        System.out.println("1.1: Querying with equal - valued distinct object: "
                            +peeps.contains(new LostPerson("Wilma")));
 
         // The rest of the examples each use new objects, so can't rely
         // on object identity
-        System.out.println("\nRemaining examples query with equal-valued "
+        System.out.println("\nRemaining examples query with equal - valued "
                            + "distinct objects.");
 
         // 2:
@@ -90,7 +90,7 @@ public class ArrayListEqualsDemo {
 
         System.out.println("\nSearching for OverloadedPerson in list.");
         System.out.println("5: Querying with OverloadedPerson: "
-                           + peeps.contains(new OverloadedPerson("Bam-Bam")));
+                           + peeps.contains(new OverloadedPerson("Bam - Bam")));
     }
 
 }

@@ -84,7 +84,7 @@ public class MyGenericLinkedList<E> {
         System.out.println(lst);
         System.out.println("How many? " + lst.length());
 
-        // Insert after non-existing item - goes to tail of list
+        // Insert after non - existing item - goes to tail of list
         lst.insertAfter("Spread it on!", "Chimpo");
         System.out.println(lst);
         System.out.println("How many? " + lst.length());

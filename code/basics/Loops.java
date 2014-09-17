@@ -28,8 +28,8 @@ public class Loops {
         }
         System.out.println(solved);
 
-        // If you uncomment either of these for-ever loops,
-        // you'll have to use Ctrl-C to stop the program.
+        // If you uncomment either of these for - ever loops,
+        // you'll have to use Ctrl - C to stop the program.
 
         //for (;;) {
             // ever

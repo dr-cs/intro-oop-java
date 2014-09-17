@@ -31,7 +31,7 @@ public class ArrayListBasics {
 
         // System.out.println("Life of a CS major:");
 
-        // // Best way to iterate: using for-each loop
+        // // Best way to iterate: using for - each loop
         // for (Object task: tasks) {
         //     System.out.println(task);
         // }
@@ -50,7 +50,7 @@ public class ArrayListBasics {
         // tasks.add("Red Bull");
 
         // // Using iterator and for (notice we're incrementing the
-        // // iterator in the body, not the for-loop header).
+        // // iterator in the body, not the for - loop header).
         // for (Iterator iter = tasks.iterator(); iter.hasNext(); ) {
         //     Object task = iter.next();
         //     System.out.println(task);

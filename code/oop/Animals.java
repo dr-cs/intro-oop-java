@@ -31,7 +31,7 @@ public class Animals {
 
         Mammal mittens = (Mammal) new Cat(); // Safe
         Mammal sparky = new Mammal();
-        // Compiles, but will cause a ClassCastException at run-time,
+        // Compiles, but will cause a ClassCastException at run - time,
         Dog huh = (Dog) sparky;
         // so we won't even get here.
         huh.wagTail();

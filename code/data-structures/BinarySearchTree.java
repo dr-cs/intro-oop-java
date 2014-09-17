@@ -22,7 +22,7 @@ public class BinarySearchTree<E extends Comparable<? super E>>
     protected class InOrderIterator<E> implements Iterator<E> {
 
         Node<E> curNode;
-        // fringe is the to-do list of unprocessed nodes.
+        // fringe is the to - do list of unprocessed nodes.
         Stack<Node<E>> fringe;
 
         public InOrderIterator(Node<E> root) {
@@ -40,7 +40,7 @@ public class BinarySearchTree<E extends Comparable<? super E>>
         // - how much more complicated this is than the simple traversals
         public E next() {
             // Find the leftmost subtree Node of the current node, pushing
-            // nodes along the way down the left sub-branch to deal with later
+            // nodes along the way down the left sub - branch to deal with later
             while (curNode != null) {
                 fringe.push(curNode);
                 curNode = curNode.left;
@@ -163,12 +163,12 @@ public class BinarySearchTree<E extends Comparable<? super E>>
 
     public List<E> inOrderImperative() {
         Node<E> curNode = root;
-        // fringe is the to-do list of unprocessed nodes.
+        // fringe is the to - do list of unprocessed nodes.
         Stack<Node<E>> fringe = new LinkedStack<>();
         List<E> accum = new ArrayList<E>();
         while ((curNode != null) || !fringe.isEmpty()) {
             // Find the leftmost subtree Node of the current node, pushing
-            // nodes along the way down the left sub-branch to deal with later
+            // nodes along the way down the left sub - branch to deal with later
             while (curNode != null) {
                 fringe.push(curNode);
                 curNode = curNode.left;
@@ -234,13 +234,13 @@ public class BinarySearchTree<E extends Comparable<? super E>>
         System.out.println("Path to 5: " + nums.path(5));
         System.out.println("Path to 6: " + nums.path(6));
         // Print using simple traversals
-        System.out.print("Pre-order: ");
+        System.out.print("Pre - order: ");
         nums.printPreOrder();
         System.out.println();
-        System.out.print("In-order: ");
+        System.out.print("In - order: ");
         nums.printInOrder();
         System.out.println();
-        System.out.print("Post-order: ");
+        System.out.print("Post - order: ");
         nums.printPostOrder();
         System.out.println();
         System.out.print("Descending: ");

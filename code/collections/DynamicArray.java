@@ -78,7 +78,7 @@ public class DynamicArray<E> implements Iterable<E> {
         // Automatically growing capacity
         da.add("Cartman");
         System.out.println("da contents:");
-        // Using indexed-based access:
+        // Using indexed - based access:
         for (int i = 0; i < da.size(); ++i) {
             System.out.println(da.get(i));
         }

@@ -20,13 +20,13 @@ public class CharCountSwitch {
                 case '7':
                 case '8':
                 case '9':
-                    // Fall-through matches all digits
+                    // Fall - through matches all digits
                     digitCount++;
                     break;
                 case '!':
                 case '?':
                 case '.':
-                    // Fall-through matches all punctuation
+                    // Fall - through matches all punctuation
                     punctuationCount++;
                     break;
                 default:

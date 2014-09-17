@@ -86,7 +86,7 @@ public class LinkedList {
         System.out.println(lst);
         System.out.println("How many? " + lst.length());
 
-        // Insert after non-existing item - goes to tail of list
+        // Insert after non - existing item - goes to tail of list
         lst.insertAfter("Wonder Woman", "Chimpo");
         System.out.println(lst);
         System.out.println("How many? " + lst.length());

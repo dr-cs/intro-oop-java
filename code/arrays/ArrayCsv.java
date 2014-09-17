@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ArrayCsv {
 
     public static void main(String[] args) throws FileNotFoundException {
-        File dataFile = new File("array-data.csv");
+        File dataFile = new File("array - data.csv");
         Scanner fileReader = new Scanner(dataFile);
         fileReader.useDelimiter("[,\n]");
         int[][] data = new int[3][5];

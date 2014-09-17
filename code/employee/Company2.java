@@ -49,10 +49,10 @@ public class Company2 {
                     String[] fields = line.split(";");
                     if (fields[0].trim().equalsIgnoreCase("Salaried")) {
                         employees.add(makeSalariedEmployee(fields));
-                        emps[lineNumber-1] = makeSalariedEmployee(fields);
+                        emps[lineNumber - 1] = makeSalariedEmployee(fields);
                     } else {
                         employees.add(makeHourlyEmployee(fields));
-                        emps[lineNumber-1] = makeHourlyEmployee(fields);
+                        emps[lineNumber - 1] = makeHourlyEmployee(fields);
                     }
                 } catch (ParseException e) {
                     String msg = "Malformed data at line " + lineNumber

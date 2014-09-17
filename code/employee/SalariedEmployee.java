@@ -14,7 +14,7 @@ public class SalariedEmployee extends Employee {
         disallowZeroesAndNegatives(anAnnualSalary);
         annualSalary = anAnnualSalary;
     }
-    
+
     public String getName() {
         return "Salaried: " + super.getName();
     }

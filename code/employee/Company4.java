@@ -16,7 +16,7 @@ public class Company4 {
     public Company4() throws Exception {
         DateFormat df = DateFormat.getDateInstance();
         Employee[] theEmployees = {
-            new SalariedEmployee("Ada Lovelace", 
+            new SalariedEmployee("Ada Lovelace",
                                  df.parse("December 10, 1815"), 120000),
             new SalariedEmployee("Alan M. Turing",
                                  df.parse("June 23, 1912"), 120000),
@@ -53,7 +53,7 @@ public class Company4 {
         }
         return ret;
     }
-    
+
     public static Date vestDate(Employee4 employee) {
         Date hireDate = employee.getHireDate();
         int vestYear = hireDate.getYear() + 2;
@@ -64,7 +64,7 @@ public class Company4 {
         Company4 c = new Company4();
         System.out.println(c);
         System.out.println("Monthly payroll: " + c.monthlyPayroll());
-        
+
         DateFormat df = DateFormat.getDateInstance();
         HourlyEmployee4 eva = new HourlyEmployee4("Eva L. Uator",
                            df.parse("February 13, 2013"), 20.00, 200);

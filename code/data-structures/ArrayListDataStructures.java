@@ -11,7 +11,7 @@ public class ArrayListDataStructures {
         public void push(E item) {
             elems.add(item);
         }
-        
+
         public E pop() {
             return elems.remove(elems.size() - 1);
         }
@@ -30,7 +30,7 @@ public class ArrayListDataStructures {
         public void enqueue(E item) {
             elems.add(item);
         }
-        
+
         public E dequeue() {
             return elems.remove(0);
         }

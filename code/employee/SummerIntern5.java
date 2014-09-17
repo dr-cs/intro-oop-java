@@ -6,12 +6,12 @@ public class SummerIntern5 extends HourlyEmployee5 {
     public SummerIntern5(String name, Date hireDate) {
         this(name, hireDate, 20.00, 160.0);
     }
-    
+
     public SummerIntern5(String name, Date hireDate, double hourlyWage) {
         this(name, hireDate, hourlyWage, 160.0);
     }
 
-    public SummerIntern5(String name, Date hireDate, 
+    public SummerIntern5(String name, Date hireDate,
                         double hourlyWage, double monthlyHours) {
         super(name, hireDate, hourlyWage, monthlyHours);
     }
@@ -23,11 +23,11 @@ public class SummerIntern5 extends HourlyEmployee5 {
         }
         return 0.0;
     }
-    
+
     private boolean isSummer(Month month) {
         System.out.println("In SummerIntern.isSummer(), month=" + month);
-        return month == Month.JUN 
-            || month == Month.JUL 
+        return month == Month.JUN
+            || month == Month.JUL
             || month == Month.AUG;
     }
 

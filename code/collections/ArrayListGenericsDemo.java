@@ -21,7 +21,7 @@ public class ArrayListGenericsDemo {
         strings.add(BULL_DOG); // Won't compile
         System.out.println(strings);
 
-        // Notice that we don't need to repeat the type parameter in the 
+        // Notice that we don't need to repeat the type parameter in the
         // creation expression, becuase Java infers the type from
         // the declaration
         ArrayList<Integer> ints = new ArrayList<>();
@@ -30,7 +30,7 @@ public class ArrayListGenericsDemo {
         // As before, Java will auto-box a primitive int in an Integer
         ints.add(99);
         System.out.println(ints);
-        
+
         // And since we have a typed collection, Java will also autobox
         // when we retrieve elements form the collection
         int num = ints.get(0);

@@ -6,7 +6,7 @@ public class HourlyEmployee5 extends Employee5 {
     private double monthlyHours;
 
     /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
+     * Constructs an HourlyEmployee with hourly wage of 20 and
      * monthly hours of 160.
      */
     public HourlyEmployee5(String aName, Date aHireDate) {

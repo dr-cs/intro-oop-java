@@ -61,7 +61,7 @@ public class Company {
         }
         return ret;
     }
-    
+
     private void initFromFile(File empData) throws FileNotFoundException,
                                                    IOException,
                                                    ParseException {
@@ -83,7 +83,7 @@ public class Company {
         }
     }
 
-    private SalariedEmployee makeSalariedEmployee(String[] fields) 
+    private SalariedEmployee makeSalariedEmployee(String[] fields)
             throws ParseException {
         String name = fields[1].trim();
         Date hireDate = DateFormat.getDateInstance().parse(fields[2].trim());

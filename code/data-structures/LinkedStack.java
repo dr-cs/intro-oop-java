@@ -1,5 +1,5 @@
 public class LinkedStack<E> extends AbstractStack<E> {
-    
+
     private class Node<E> {
         E data;
         Node<E> next;
@@ -11,17 +11,17 @@ public class LinkedStack<E> extends AbstractStack<E> {
     }
 
     private Node<E> head;
-    
+
     public void push(E item) {
         head = new Node<E>(item, head);
     }
-    
+
     public E removeNext() {
         E answer = head.data;
         head = head.next;
         return answer;
     }
-    
+
     public boolean isEmpty() {
         return (head == null);
     }

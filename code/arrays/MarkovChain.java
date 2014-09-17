@@ -15,7 +15,7 @@ public class MarkovChain {
 
     private void train(Collection<String> trainingFiles) {
         for (String source: trainingFiles) {
-            FileInputStream fis = 
+            FileInputStream fis =
                 new FileInputStream(new File(source + ".corpus");
             System.out.println("Training " + source + " model.");
             Scanner reader = new Scanner(fis);
@@ -34,7 +34,7 @@ public class MarkovChain {
         for (int i = 0; i < chars.length - 1; ++i) {
             int row = charIndexes[i];
             int col = charIndexes[i+1];
-            // Increment the count of char[i+1] following char[i] 
+            // Increment the count of char[i+1] following char[i]
             freqs[row][col] = freqs[row][col] + 1;
         }
     }
@@ -43,13 +43,13 @@ public class MarkovChain {
         char[] chars = s.toUpperCase().toCharArray();
         int[] indexes = new int[chars.length];
         for (int i = 0; i < chars.length; ++i) {
-            indexes[i] = Character.getNumericValue(chars[i]) 
+            indexes[i] = Character.getNumericValue(chars[i])
                 - Character.getNumericValue(chars[A]);
         }
         return indexes;
-    } 
+    }
 
-/*  Scala original. As I port these to Java, I delete them from here so 
+/*  Scala original. As I port these to Java, I delete them from here so
     this is sort of a t-do list
 
   def predict(line: String) = {

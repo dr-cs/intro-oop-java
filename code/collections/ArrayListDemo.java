@@ -53,7 +53,7 @@ public class ArrayListDemo {
         // 4:
         // Will print true because we're querying with a FoundPerson,
         // which has a properly implemented equals().
-        // Notice it doesn't matter that the object in the list is of 
+        // Notice it doesn't matter that the object in the list is of
         // type LostPerson.  The query object's equals() method is used.
         System.out.println("4: "+peeps.contains(new FoundPerson("Barney")));
 

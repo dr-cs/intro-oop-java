@@ -16,7 +16,7 @@ public class Company6 {
     public Company6() throws Exception {
         DateFormat df = DateFormat.getDateInstance();
         Employee6[] theEmployees = {
-            new SalariedEmployee6("Ada Lovelace", 
+            new SalariedEmployee6("Ada Lovelace",
                                  df.parse("December 10, 1815"), 120000),
             new SalariedEmployee6("Alan M. Turing",
                                  df.parse("June 23, 1912"), 120000),
@@ -61,7 +61,7 @@ public class Company6 {
         }
         return ret;
     }
-    
+
     public static Date vestDate(Employee4 employee) {
         Date hireDate = employee.getHireDate();
         int vestYear = hireDate.getYear() + 2;

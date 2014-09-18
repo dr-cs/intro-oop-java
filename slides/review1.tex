@@ -412,8 +412,8 @@ public class Foo {
         Foo foo2 = new Foo("bar");
         Foo foo3 = f1;
         System.out.println("foo1.equals(f002): " + foo1.equals(foo2));
-        System.out.println("foo1 == foo2: " + foo1 == foo2);
-        System.out.println("foo1 == foo3: " + foo1 == foo3);
+        System.out.println("foo1 == foo2: " + (foo1 == foo2));
+        System.out.println("foo1 == foo3: " + (foo1 == foo3));
     }
 }
 \end{lstlisting}

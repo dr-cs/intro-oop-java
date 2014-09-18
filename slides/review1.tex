@@ -401,11 +401,11 @@ What will this code print?
 \begin{lstlisting}[language=Java]
 public class Foo {
     private String bar;
-    public Foo(Sting bar) {
+    public Foo(String bar) {
         this.bar = bar;
     }
     public boolean equals(Object other) {
-        return this.bar.equals(other.bar);
+        return this.bar.equals(((Foo) other).bar);
     }
     public static void main(String[] args) {
         Foo foo1 = new Foo("bar");

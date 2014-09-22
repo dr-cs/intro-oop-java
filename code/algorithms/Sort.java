@@ -67,8 +67,8 @@ public class Sort {
     //         }
     //     }
     //     temp[up] = a[begin];
-        
-        
+
+
     // }
 
     private static boolean isSorted(Comparable[] array, int start, int end) {

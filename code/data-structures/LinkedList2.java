@@ -11,7 +11,7 @@ public class LinkedList {
     }
 
     private Node front;
-    
+
     /**
      * Add a new item to the front of this list.
      */
@@ -61,7 +61,7 @@ public class LinkedList {
 
     public void insertAfter(Object existingItem, Object newItem) {
         Node curNode = front;
-        while (!curNode.data.equals(existingItem) && 
+        while (!curNode.data.equals(existingItem) &&
                (curNode.next != null)) {
             curNode = curNode.next;
         }

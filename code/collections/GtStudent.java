@@ -12,7 +12,7 @@ public class GtStudent extends Person {
         year = aYear;
         major = aMajor;
     }
-    
+
     public String toString() {
         return name + ", " + year + "-year " + major;
     }

@@ -11,7 +11,7 @@ public class Wee {
 
     public static void main(String[] args) {//throws Throwable {
         foo();
-        // try {        
+        // try {
         //     foo();
         //     System.out.println("After the foo() call.");
         // } catch (Throwable t) {

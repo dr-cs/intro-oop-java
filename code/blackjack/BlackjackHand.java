@@ -1,5 +1,5 @@
 public class BlackjackHand implements Comparable {
-    
+
     private PlayingCard faceDownCard;
     private PlayingCard[] faceUpCards;
     private int lastFaceUpCard;
@@ -74,7 +74,7 @@ public class BlackjackHand implements Comparable {
         } else if (faceUpCards.length < 1) {
             return "One face down card.";
         } else {
-            String ret = "One face down card and: " + 
+            String ret = "One face down card and: " +
                 System.getProperty("line.separator");
             for (int i = 0; i < lastFaceUpCard; ++i) {
                 ret += faceUpCards[i] + System.getProperty("line.separator");

@@ -7,12 +7,12 @@ public class SummerIntern extends HourlyEmployee {
     public SummerIntern(String name, Date hireDate) {
         this(name, hireDate, 20.00, 160.0);
     }
-    
+
     public SummerIntern(String name, Date hireDate, double hourlyWage) {
         this(name, hireDate, hourlyWage, 160.0);
     }
 
-    public SummerIntern(String name, Date hireDate, 
+    public SummerIntern(String name, Date hireDate,
                         double hourlyWage, double monthlyHours) {
         super(name, hireDate, hourlyWage, monthlyHours);
     }
@@ -21,7 +21,7 @@ public class SummerIntern extends HourlyEmployee {
         // Is this clear?  Could you rewrite this to be clearer?
         return isSummer(month) ? super.monthlyPay(month) : 0.0;
     }
-    
+
     public String toString() {
         return super.toString() + " (Summer Intern)";
     }
@@ -29,8 +29,8 @@ public class SummerIntern extends HourlyEmployee {
     private boolean isSummer(Calendar calendar) {
         int month = calendar.get(Calendar.MONTH);
         System.out.println("In SummerIntern.isSummer(), month=" + month);
-        return month == Calendar.JUNE 
-            || month == Calendar.JULY 
+        return month == Calendar.JUNE
+            || month == Calendar.JULY
             || month == Calendar.AUGUST;
     }
 

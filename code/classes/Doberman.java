@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Doberman {
-    
+
     public static String STD_DOBIE_SIZE = "large";
 
     private static int dobieCount = 0;
-    
+
     private String name;
 
     public Doberman(String name) {

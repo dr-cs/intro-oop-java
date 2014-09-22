@@ -6,7 +6,7 @@ public class HourlyEmployee6 extends Employee6 {
     private double monthlyHours;
 
     /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
+     * Constructs an HourlyEmployee with hourly wage of 20 and
      * monthly hours of 160.
      */
     public HourlyEmployee6(String aName, Date aHireDate) {
@@ -41,7 +41,7 @@ public class HourlyEmployee6 extends Employee6 {
     public double monthlyPay() {
         return hourlyWage * monthlyHours;
     }
-    
+
     @Override
     public double monthlyPay(Month month) {
         return monthlyPay();

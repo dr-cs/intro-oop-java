@@ -19,10 +19,10 @@ public class PartialIntArray {
         if (size >= elements.length) {
             int[] resizedArray = new int[elements.length * 2];
             for (int i = 0; i < elements.length; i++) {
-                
+
             }
         }
-        
+
         elements[size++] = e;
     }
 

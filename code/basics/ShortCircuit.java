@@ -1,7 +1,7 @@
 public class ShortCircuit {
 
     private static int counter = 0;
-    
+
     private static boolean incrementCounter() {
         counter++;
         return true;

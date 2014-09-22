@@ -7,7 +7,7 @@ public class EmployeeDemo5 {
     /**
      * Demonstrates the use of Employee and sublclasses thereof.
      *
-     * @throws java.text.ParseException if the date String supplied 
+     * @throws java.text.ParseException if the date String supplied
      *         to DateFormat.parse is not properly formatted.
      */
     public static void main(String[] args) throws ParseException {

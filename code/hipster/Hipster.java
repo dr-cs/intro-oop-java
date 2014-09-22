@@ -4,7 +4,7 @@ public class Hipster extends Person {
 
     private int beardLength;
     private Color beanieColor;
-    
+
     public Hipster(String name, int jeanBagginess,
                    int beardLength, Color beanieColor) {
         super(name);
@@ -22,7 +22,7 @@ public class Hipster extends Person {
     public Color getBeanieColor() {
         return beanieColor;
     }
-    
+
     public boolean equals(Object other) {
         if (null == other) return false;
         if (this == other) return true;

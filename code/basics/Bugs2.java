@@ -8,16 +8,16 @@ public class Bugs {
             System.out.println("Need command line args.");
             System.exit(0);
         }
-        
+
         // If no command line arguments, what is args.length?
         //email = args[0];
-        
-        
+
+
         // What if email not assigned a value after initialization?
         int len = email.length();
-        
+
         // What if email, an aribitrary String, is not a valid email address?
-        boolean isEmailValid = 
+        boolean isEmailValid =
             (email.endsWith(".com")
              || email.endsWith(".org")
              || email.endsWith(".edu"))

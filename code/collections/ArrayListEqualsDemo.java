@@ -50,7 +50,7 @@ public class ArrayListEqualsDemo {
         // uses == for object identity, and we're using the same reference
         // that's stored in peeps
         System.out.println("1: Querying with alias: "+peeps.contains(wilma));
-        System.out.println("1.1: Querying with equal-valued distinct object: " 
+        System.out.println("1.1: Querying with equal-valued distinct object: "
                            +peeps.contains(new LostPerson("Wilma")));
 
         // The rest of the examples each use new objects, so can't rely
@@ -74,7 +74,7 @@ public class ArrayListEqualsDemo {
         // 4:
         // Will print true because we're querying with a FoundPerson,
         // which has a properly implemented equals().
-        // Notice it doesn't matter that the object in the list is of 
+        // Notice it doesn't matter that the object in the list is of
         // type LostPerson.  The query object's equals() method is used.
         System.out.println("\nSearching for LostPerson in list.");
         System.out.println("\nNotice that contains method uses query object's"

@@ -48,8 +48,8 @@ public class ArrayListBasics {
 
         // System.out.println("\nOK, maybe:");
         // tasks.add("Red Bull");
-        
-        // // Using iterator and for (notice we're incrementing the 
+
+        // // Using iterator and for (notice we're incrementing the
         // // iterator in the body, not the for-loop header).
         // for (Iterator iter = tasks.iterator(); iter.hasNext(); ) {
         //     Object task = iter.next();

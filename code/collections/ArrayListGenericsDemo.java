@@ -27,7 +27,7 @@ public class ArrayListGenericsDemo {
         ArrayList<Integer> ints = new ArrayList<>();
         ints.add(new Integer(42));
         ints.add(new Integer(66));
-        // As before, Java will auto - box a primitive int in an Integer
+        // As before, Java will auto-box a primitive int in an Integer
         ints.add(99);
         System.out.println(ints);
 

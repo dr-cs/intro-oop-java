@@ -1,5 +1,5 @@
 /**
- * NameParser takes a single String - valued command line argument of
+ * NameParser takes a single String-valued command line argument of
  * the form "last_name, first_name" and prints the first and last names
  * separately.
  */

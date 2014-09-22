@@ -21,7 +21,7 @@ public class BinaryTree<E extends Comparable<E>> implements Iterable<E> {
     private class InOrderIterator<E> implements Iterator<E> {
 
         Node<E> curNode;
-        // fringe is the to - do list of unvisited nodes.
+        // fringe is the to-do list of unvisited nodes.
         Stack<Node<E>> fringe;
 
         public InOrderIterator(Node<E> root) {
@@ -39,7 +39,7 @@ public class BinaryTree<E extends Comparable<E>> implements Iterable<E> {
         // - how much more complicated this is than the simple traversals
         public E next() {
             // Find the leftmost subtree Node of the current node, pushing
-            // nodes along the way down the left sub - branch to deal with later
+            // nodes along the way down the left sub-branch to deal with later
             while (curNode != null) {
                 fringe.push(curNode);
                 curNode = curNode.left;
@@ -163,13 +163,13 @@ public class BinaryTree<E extends Comparable<E>> implements Iterable<E> {
         nums.add(2);
 
         // Print using simple traversals
-        System.out.print("Pre - order: ");
+        System.out.print("Pre-order: ");
         nums.printPreOrder();
         System.out.println();
-        System.out.print("In - order: ");
+        System.out.print("In-order: ");
         nums.printInOrder();
         System.out.println();
-        System.out.print("Post - order: ");
+        System.out.print("Post-order: ");
         nums.printPostOrder();
         System.out.println();
         System.out.print("Descending: ");

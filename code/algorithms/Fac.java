@@ -8,7 +8,7 @@ public class Fac {
     }
 
     /**
-     * The factorial of n is n * facotrial of n - 1 for n > 1, otherwise 1.
+     * The factorial of n is n * facotrial of n-1 for n > 1, otherwise 1.
      */
     public static int fac(int n) {
         if (n <= 1) {

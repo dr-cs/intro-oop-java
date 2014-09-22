@@ -6,7 +6,7 @@ public class SimpleArrayCsv {
 
     public static void main(String[] args) throws FileNotFoundException {
         int[][] data = new int[3][5];
-        File dataFile = new File("array - data.csv");
+        File dataFile = new File("array-data.csv");
         Scanner fileReader = new Scanner(dataFile);
         fileReader.useDelimiter("[,\n]");
         for (int row = 0; row < 3; ++row) {

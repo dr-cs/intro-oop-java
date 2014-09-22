@@ -14,10 +14,10 @@ public class ConsoleOutput {
         // You can use \n to add a newline so printf acts like println
         System.out.printf("%d %s.\n", 7 "Samurai");
 
-        // Better to use %n tahn \n because %n is platform - independent
+        // Better to use %n tahn \n because %n is platform-independent
         System.out.printf("I like %5.3f.%n%n", Math.PI);
 
-        // Notice that you can use any String - valued expression
+        // Notice that you can use any String-valued expression
         // for the format string
         System.out.printf("%e is how Java prints the scientific"
                           + " notation equivalent of %f.\n", .001, .001);
@@ -34,13 +34,13 @@ public class ConsoleOutput {
         // Use a field width specifier if you need more
         System.out.printf("There it is: %.7f.%n%n", x);
 
-        // Formatted fields are right - justified by default
+        // Formatted fields are right-justified by default
         String scoreLine = "%12s %2d%n";
         System.out.printf(scoreLine, "Georgia Tech", 21);
         System.out.printf(scoreLine, "USC", 7);
         System.out.println();
 
-        // Add a - after the % to left - justify a field
+        // Add a - after the % to left-justify a field
         String betterScoreLine = "%-12s %2d%n";
         System.out.printf(betterScoreLine, "Georgia Tech", 21);
         System.out.printf(betterScoreLine, "USC", 7);

@@ -51,7 +51,7 @@ public class ArrayBasics {
         scores[3] = 84.5;
         scores[4] = 91;
         scores[scores.length - 1] = 99.2;
-        System.out.println("After element - by - element initialization:");
+        System.out.println("After element-by-element initialization:");
         // Note: much better way to bound loop: using scores.length
         for (int i = 0; i < scores.length; ++i) {
             System.out.printf("scores[%d] = %.2f%n", i, scores[i]);
@@ -68,11 +68,11 @@ public class ArrayBasics {
         }
 
 
-        // For - each loop parameter is a temporary variable/read - only iterator
+        // For-each loop parameter is a temporary variable/read-only iterator
         for (double score: scores) {
             score = score - 10;
         }
-        System.out.println("For - each doesn't allow updates to array:");
+        System.out.println("For-each doesn't allow updates to array:");
         for (int i = 0; i < scores.length; ++i) {
             System.out.printf("scores[%d] = %.2f%n", i, scores[i]);
         }

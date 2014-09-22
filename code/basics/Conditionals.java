@@ -23,7 +23,7 @@ public class Conditionals {
             System.out.println("I'm ambivalent about odd numbers.");
         }
 
-        // The if - else statements above can be combined using blocks
+        // The if-else statements above can be combined using blocks
         if (numIsEven) {
             System.out.printf("%d is even.%n", num);
             System.out.println("I like even numbers.");

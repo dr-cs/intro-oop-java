@@ -76,7 +76,7 @@ public class SuperTroopers {
         System.out.println("\nAfter sorting:\n" + troopers);
 
         Collections.sort(troopers, new MustacheComparator());
-        System.out.println("\nAfter mustache - based sorting:\n" + troopers);
+        System.out.println("\nAfter mustache-based sorting:\n" + troopers);
 
         Collections.sort(troopers, new Comparator<Trooper>() {
             public int compare(Trooper a, Trooper b) {
@@ -89,11 +89,11 @@ public class SuperTroopers {
             }
             }
         });
-        System.out.println("\nAfter reverse mustache - based sorting:\n" + troopers);
+        System.out.println("\nAfter reverse mustache-based sorting:\n" + troopers);
 
 
         // Collections.sort(troopers, new ReverseMustacheComparator());
-        // System.out.println("\nAfter reverse mustache - based sorting:\n"
+        // System.out.println("\nAfter reverse mustache-based sorting:\n"
         //                    + troopers);
 
 

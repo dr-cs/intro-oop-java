@@ -50,7 +50,7 @@ public class MarkovChain {
     }
 
 /*  Scala original. As I port these to Java, I delete them from here so
-    this is sort of a t - do list
+    this is sort of a t-do list
 
   def predict(line: String) = {
     val chars = stringToCharIndexes(line)

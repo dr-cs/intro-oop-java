@@ -51,7 +51,7 @@ public class Jack extends JFrame {
 
         ActionListener jackListener = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    ImageIcon jackIcon = new ImageIcon("JACK - HEARTS.png");
+                    ImageIcon jackIcon = new ImageIcon("JACK-HEARTS.png");
                     imageLabel.setIcon(jackIcon);
                     pack();
                 }

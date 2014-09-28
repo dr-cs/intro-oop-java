@@ -7,27 +7,27 @@ import java.awt.event.ActionEvent;
 
 public class GreetingGui extends JFrame implements ActionListener {
 
-    private JLabel greetingLabel;
+private JLabel greetingLabel;
 
-    public GreetingGui() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        greetingLabel = new JLabel("Greeting will go here.");
-        JButton button = new JButton("Greet!");
-        button.addActionListener(this);
+public GreetingGui() {
+setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+greetingLabel = new JLabel("Greeting will go here.");
+JButton button = new JButton("Greet!");
+button.addActionListener(this);
 
-        add(greetingLabel, BorderLayout.CENTER);
-        add(button, BorderLayout.SOUTH);
-        pack();
-    }
+add(greetingLabel, BorderLayout.CENTER);
+add(button, BorderLayout.SOUTH);
+pack();
+}
 
-    public void actionPerformed(ActionEvent e) {
-        Greeter greeter = new Greeter("bob");
-        String greeting = greeter.greet();
-        greetingLabel.setText(greeting);
-    }
+public void actionPerformed(ActionEvent e) {
+Greeter greeter = new Greeter("bob");
+String greeting = greeter.greet();
+greetingLabel.setText(greeting);
+}
 
-    public static void main(String[] args) {
-        GreetingGui gg = new GreetingGui();
-        gg.setVisible(true);
-    }
+public static void main(String[] args) {
+GreetingGui gg = new GreetingGui();
+gg.setVisible(true);
+}
 }

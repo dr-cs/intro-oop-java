@@ -1,30 +1,30 @@
 public abstract class Player {
 
-    public enum Move {HIT, STAND};
+public enum Move {HIT, STAND};
 
-    private String name;
-    protected BlackjackHand hand;
+private String name;
+protected BlackjackHand hand;
 
-    public Player(String aName) {
-        name = aName;
-        hand = new BlackjackHand();
-    }
+public Player(String aName) {
+name = aName;
+hand = new BlackjackHand();
+}
 
-    public String getName() {
-        return name;
-    }
+public String getName() {
+return name;
+}
 
-    public BlackjackHand getHand() {
-        return hand;
-    }
+public BlackjackHand getHand() {
+return hand;
+}
 
-    public void dealFaceUp(PlayingCard card) {
-        hand.addFaceUp(card);
-    }
+public void dealFaceUp(PlayingCard card) {
+hand.addFaceUp(card);
+}
 
-    public void dealFaceDown(PlayingCard card) {
-        hand.addFaceDown(card);
-    }
+public void dealFaceDown(PlayingCard card) {
+hand.addFaceDown(card);
+}
 
-    public abstract Move getMove(BlackjackHand ... otherHands);
+public abstract Move getMove(BlackjackHand ... otherHands);
 }

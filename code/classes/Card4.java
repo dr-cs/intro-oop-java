@@ -1,17 +1,17 @@
-public class Card4 {
+publicclassCard4{
 
-    private String rank;
-    private String suit;
+privateStringrank;
+privateStringsuit;
 
-    public String toString() {
-        return rank + " of " + suit;
-    }
+publicStringtoString(){
+returnrank+"of"+suit;
+}
 
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
+publicvoidsetRank(Stringrank){
+this.rank=rank;
+}
 
-    public void setSuit(String suit) {
-        this.suit = suit;
-    }
+publicvoidsetSuit(Stringsuit){
+this.suit=suit;
+}
 }

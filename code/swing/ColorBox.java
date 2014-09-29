@@ -1,91 +1,91 @@
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+importjava.awt.Color;
+importjava.awt.GridLayout;
+importjava.awt.event.ActionEvent;
+importjava.awt.event.ActionListener;
+importjavax.swing.BoxLayout;
+importjavax.swing.JButton;
+importjavax.swing.JFrame;
+importjavax.swing.JMenuBar;
+importjavax.swing.JMenu;
+importjavax.swing.JMenuItem;
+importjavax.swing.JPanel;
 
-public class ColorBox extends JFrame implements ActionListener {
+publicclassColorBoxextendsJFrameimplementsActionListener{
 
-    JPanel colorPanel;
+JPanelcolorPanel;
 
-    public ColorBox() {
-        super("Color, Box, and Nesting Demo");
+publicColorBox(){
+super("Color,Box,andNestingDemo");
 
-        // Set up button panel
-        JButton redButton = new JButton("Red");
-        redButton.addActionListener(this);
+//Setupbuttonpanel
+JButtonredButton=newJButton("Red");
+redButton.addActionListener(this);
 
-        redButton.setEnabled(false);
+redButton.setEnabled(false);
 
-        JButton whiteButton = new JButton("White");
-        whiteButton.addActionListener(this);
-        JButton blueButton = new JButton("Blue");
-        blueButton.addActionListener(this);
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.add(redButton);
-        buttonPanel.add(whiteButton);
-        buttonPanel.add(blueButton);
+JButtonwhiteButton=newJButton("White");
+whiteButton.addActionListener(this);
+JButtonblueButton=newJButton("Blue");
+blueButton.addActionListener(this);
+JPanelbuttonPanel=newJPanel();
+buttonPanel.setLayout(newBoxLayout(buttonPanel,BoxLayout.Y_AXIS));
+buttonPanel.add(redButton);
+buttonPanel.add(whiteButton);
+buttonPanel.add(blueButton);
 
-        // Set up color panel
-        colorPanel = new JPanel();
-        colorPanel.setSize(200, 200);
+//Setupcolorpanel
+colorPanel=newJPanel();
+colorPanel.setSize(200,200);
 
-        // Set up main application frame
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(1, 2));
-        add(buttonPanel);
-        add(colorPanel);
+//Setupmainapplicationframe
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+setLayout(newGridLayout(1,2));
+add(buttonPanel);
+add(colorPanel);
 
-        JMenuBar menuBar = createJMenuBar();
-        setJMenuBar(menuBar);
-    }
+JMenuBarmenuBar=createJMenuBar();
+setJMenuBar(menuBar);
+}
 
-    private JMenuBar createJMenuBar() {
-        JMenuItem redMenuItem = new JMenuItem("Rot");
-        redMenuItem.addActionListener(this);
-        redMenuItem.setActionCommand("Red");
-        JMenuItem whiteMenuItem = new JMenuItem("Weiss");
-        whiteMenuItem.addActionListener(this);
-        JMenuItem blueMenuItem = new JMenuItem("Blau");
-        blueMenuItem.addActionListener(this);
+privateJMenuBarcreateJMenuBar(){
+JMenuItemredMenuItem=newJMenuItem("Rot");
+redMenuItem.addActionListener(this);
+redMenuItem.setActionCommand("Red");
+JMenuItemwhiteMenuItem=newJMenuItem("Weiss");
+whiteMenuItem.addActionListener(this);
+JMenuItemblueMenuItem=newJMenuItem("Blau");
+blueMenuItem.addActionListener(this);
 
-        JMenu colorMenu = new JMenu("Color");
-        colorMenu.add(redMenuItem);
-        colorMenu.add(whiteMenuItem);
-        colorMenu.add(blueMenuItem);
+JMenucolorMenu=newJMenu("Color");
+colorMenu.add(redMenuItem);
+colorMenu.add(whiteMenuItem);
+colorMenu.add(blueMenuItem);
 
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.add(colorMenu);
-        return menuBar;
-    }
+JMenuBarmenuBar=newJMenuBar();
+menuBar.add(colorMenu);
+returnmenuBar;
+}
 
-    private JButton createButton(String label, ActionListener listener) {
-        JButton button = new JButton(label);
-        button.addActionListener(listener);
-        return button;
-    }
+privateJButtoncreateButton(Stringlabel,ActionListenerlistener){
+JButtonbutton=newJButton(label);
+button.addActionListener(listener);
+returnbutton;
+}
 
-    public void actionPerformed(ActionEvent e) {
-        String button = e.getActionCommand();
-        if (button == "Red") {
-            colorPanel.setBackground(Color.RED);
-        } else if (button == "White") {
-            colorPanel.setBackground(Color.WHITE);
-        } else if (button == "Blue") {
-            colorPanel.setBackground(Color.BLUE);
-        }
-    }
+publicvoidactionPerformed(ActionEvente){
+Stringbutton=e.getActionCommand();
+if(button=="Red"){
+colorPanel.setBackground(Color.RED);
+}elseif(button=="White"){
+colorPanel.setBackground(Color.WHITE);
+}elseif(button=="Blue"){
+colorPanel.setBackground(Color.BLUE);
+}
+}
 
-    public static void main(String[] args) {
-        ColorBox cb = new ColorBox();
-        cb.pack();
-        cb.setVisible(true);
-    }
+publicstaticvoidmain(String[]args){
+ColorBoxcb=newColorBox();
+cb.pack();
+cb.setVisible(true);
+}
 }

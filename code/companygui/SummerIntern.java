@@ -1,52 +1,52 @@
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
+importjava.text.DateFormat;
+importjava.util.Calendar;
+importjava.util.Date;
 
-public class SummerIntern extends HourlyEmployee {
+publicclassSummerInternextendsHourlyEmployee{
 
-    public SummerIntern(String name, Date hireDate) {
-        this(name, hireDate, 20.00, 160.0);
-    }
-    
-    public SummerIntern(String name, Date hireDate, double hourlyWage) {
-        this(name, hireDate, hourlyWage, 160.0);
-    }
+publicSummerIntern(Stringname,DatehireDate){
+this(name,hireDate,20.00,160.0);
+}
 
-    public SummerIntern(String name, Date hireDate, 
-                        double hourlyWage, double monthlyHours) {
-        super(name, hireDate, hourlyWage, monthlyHours);
-    }
+publicSummerIntern(Stringname,DatehireDate,doublehourlyWage){
+this(name,hireDate,hourlyWage,160.0);
+}
 
-    public double monthlyPay(Calendar month) {
-        // Is this clear?  Could you rewrite this to be clearer?
-        return isSummer(month) ? super.monthlyPay(month) : 0.0;
-    }
-    
-    public String toString() {
-        return super.toString() + " (Summer Intern)";
-    }
+publicSummerIntern(Stringname,DatehireDate,
+doublehourlyWage,doublemonthlyHours){
+super(name,hireDate,hourlyWage,monthlyHours);
+}
 
-    private boolean isSummer(Calendar calendar) {
-        int month = calendar.get(Calendar.MONTH);
-        System.out.println("In SummerIntern.isSummer(), month=" + month);
-        return month == Calendar.JUNE 
-            || month == Calendar.JULY 
-            || month == Calendar.AUGUST;
-    }
+publicdoublemonthlyPay(Calendarmonth){
+//Isthisclear?Couldyourewritethistobeclearer?
+returnisSummer(month)?super.monthlyPay(month):0.0;
+}
 
-    public static void main(String[] args) throws Exception {
-        DateFormat df = DateFormat.getDateInstance();
-        SummerIntern fred = new SummerIntern("Fred",
-                                             df.parse("February 27, 2013"),
-                                             20.00, 100);
-        Calendar may =  Calendar.getInstance();
-        may.set(Calendar.MONTH, Calendar.MAY);
-        Calendar june = Calendar.getInstance();
-        june.set(Calendar.MONTH, Calendar.JUNE);
-        System.out.println("May pay: " + fred.monthlyPay(may));
-        System.out.println("June pay: " + fred.monthlyPay(june));
+publicStringtoString(){
+returnsuper.toString()+"(SummerIntern)";
+}
 
-        HourlyEmployee barney = (HourlyEmployee) fred;
-        System.out.println(barney);
-    }
+privatebooleanisSummer(Calendarcalendar){
+intmonth=calendar.get(Calendar.MONTH);
+System.out.println("InSummerIntern.isSummer(),month="+month);
+returnmonth==Calendar.JUNE
+||month==Calendar.JULY
+||month==Calendar.AUGUST;
+}
+
+publicstaticvoidmain(String[]args)throwsException{
+DateFormatdf=DateFormat.getDateInstance();
+SummerInternfred=newSummerIntern("Fred",
+df.parse("February27,2013"),
+20.00,100);
+Calendarmay=Calendar.getInstance();
+may.set(Calendar.MONTH,Calendar.MAY);
+Calendarjune=Calendar.getInstance();
+june.set(Calendar.MONTH,Calendar.JUNE);
+System.out.println("Maypay:"+fred.monthlyPay(may));
+System.out.println("Junepay:"+fred.monthlyPay(june));
+
+HourlyEmployeebarney=(HourlyEmployee)fred;
+System.out.println(barney);
+}
 }

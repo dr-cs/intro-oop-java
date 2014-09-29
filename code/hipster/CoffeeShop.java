@@ -1,15 +1,15 @@
-import java.awt.Color;
+importjava.awt.Color;
 
-public class CoffeeShop {
+publicclassCoffeeShop{
 
-    public static void main(String[] args) {
-        Person fred = new Person("Fred");
-        Hipster soyLatte = new Hipster(fred, 0, 5, Color.ORANGE);
-        System.out.println("blackCoffee.equals(soyLatte) == "
-                           + blackCoffee.equals(soyLatte));
-        // Symmetry broken.  Not an equivalence relation, improper
-        // equals() impolementation.
-        System.out.println("soyLatte.equals(blackCoffee) == "
-                           + soyLatte.equals(blackCoffee));
-    }
+publicstaticvoidmain(String[]args){
+Personfred=newPerson("Fred");
+HipstersoyLatte=newHipster(fred,0,5,Color.ORANGE);
+System.out.println("blackCoffee.equals(soyLatte)=="
++blackCoffee.equals(soyLatte));
+//Symmetrybroken.Notanequivalencerelation,improper
+//equals()impolementation.
+System.out.println("soyLatte.equals(blackCoffee)=="
++soyLatte.equals(blackCoffee));
+}
 }

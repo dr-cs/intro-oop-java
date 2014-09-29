@@ -1,64 +1,64 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
+importjava.text.DateFormat;
+importjava.text.ParseException;
+importjava.util.Date;
 
-public class HourlyEmployee extends Employee {
+publicclassHourlyEmployeeextendsEmployee{
 
-    public static String YAY = "yay!";
+publicstaticStringYAY="yay!";
 
-    private double hourlyWage;
-    private double monthlyHours;
+privatedoublehourlyWage;
+privatedoublemonthlyHours;
 
-    /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
-     * monthly hours of 160.
-     */
-    public HourlyEmployee(String aName, Date aHireDate) {
-        this(aName, aHireDate, 20.00, 160.0);
-    }
+/**
+*ConstructsanHourlyEmployeewithhourlywageof20and
+*monthlyhoursof160.
+*/
+publicHourlyEmployee(StringaName,DateaHireDate){
+this(aName,aHireDate,20.00,160.0);
+}
 
-    public HourlyEmployee(String aName, Date aHireDate,
-                          double anHourlyWage, double aMonthlyHours) {
-        super(aName, aHireDate);
-        ValidationUtils..disallowZeroesAndNegatives(anHourlyWage,
-                                                    aMonthlyHours);
-        hourlyWage = anHourlyWage;
-        monthlyHours = aMonthlyHours;
-    }
+publicHourlyEmployee(StringaName,DateaHireDate,
+doubleanHourlyWage,doubleaMonthlyHours){
+super(aName,aHireDate);
+ValidationUtils..disallowZeroesAndNegatives(anHourlyWage,
+aMonthlyHours);
+hourlyWage=anHourlyWage;
+monthlyHours=aMonthlyHours;
+}
 
-    public String getName() {
-        return "Hourly: " + super.getName();
-    }
+publicStringgetName(){
+return"Hourly:"+super.getName();
+}
 
-    public double getHourlyWage() {
-        return hourlyWage;
-    }
+publicdoublegetHourlyWage(){
+returnhourlyWage;
+}
 
-    public void setHourlyWage(double newWage) {
-        hourlyWage = newWage;
-    }
+publicvoidsetHourlyWage(doublenewWage){
+hourlyWage=newWage;
+}
 
-    public double getMonthlyHours() {
-        return monthlyHours;
-    }
+publicdoublegetMonthlyHours(){
+returnmonthlyHours;
+}
 
-    public double monthlyPay() {
-        return hourlyWage * monthlyHours;
-    }
+publicdoublemonthlyPay(){
+returnhourlyWage*monthlyHours;
+}
 
-    public String toString() {
-        return getName() + "; Hire Date: " + getHireDate() + "; Hourly Wage: "
-            + hourlyWage + "; Monthly Hours: " + monthlyHours;
-    }
+publicStringtoString(){
+returngetName()+";HireDate:"+getHireDate()+";HourlyWage:"
++hourlyWage+";MonthlyHours:"+monthlyHours;
+}
 
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(YAY);
-        DateFormat df = DateFormat.getDateInstance();
-        HourlyEmployee eva = new HourlyEmployee("Eva Luator",
-                                                df.parse("June 10, 2013"));
+publicstaticvoidmain(String[]args)throwsException{
+System.out.println(YAY);
+DateFormatdf=DateFormat.getDateInstance();
+HourlyEmployeeeva=newHourlyEmployee("EvaLuator",
+df.parse("June10,2013"));
 
-        System.out.println("eva's name: " + eva.getName());
+System.out.println("eva'sname:"+eva.getName());
 
-    }
+}
 }

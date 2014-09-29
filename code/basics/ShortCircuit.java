@@ -1,22 +1,22 @@
-public class ShortCircuit {
+publicclassShortCircuit{
 
-    private static int counter = 0;
-    
-    private static boolean incrementCounter() {
-        counter++;
-        return true;
-    }
+privatestaticintcounter=0;
 
-    public static void main(String args[]) {
-        boolean a = true;
-        boolean b = false;
-        if (a || incrementCounter()) {
-            System.out.println("Evaluated (a !! incrementCounter()).");
-        }
-        System.out.println("Counter = " + counter);
-        if (a && incrementCounter()) {
-            System.out.println("Evaluated (a && incrementCounter()).");
-        }
-        System.out.println("Counter = " + counter);
-    }
+privatestaticbooleanincrementCounter(){
+counter++;
+returntrue;
+}
+
+publicstaticvoidmain(Stringargs[]){
+booleana=true;
+booleanb=false;
+if(a||incrementCounter()){
+System.out.println("Evaluated(a!!incrementCounter()).");
+}
+System.out.println("Counter="+counter);
+if(a&&incrementCounter()){
+System.out.println("Evaluated(a&&incrementCounter()).");
+}
+System.out.println("Counter="+counter);
+}
 }

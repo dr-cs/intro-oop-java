@@ -1,9 +1,9 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+importjava.awt.event.ActionListener;
+importjava.awt.event.ActionEvent;
 
-public class ExitListener implements ActionListener {
+publicclassExitListenerimplementsActionListener{
 
-    public void actionPerformed(ActionEvent e) {
-        System.exit(0);
-    }
+publicvoidactionPerformed(ActionEvente){
+System.exit(0);
+}
 }

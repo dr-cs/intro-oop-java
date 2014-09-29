@@ -1,39 +1,39 @@
-public class SimpleExceptions {
+publicclassSimpleExceptions{
 
-    static void iThrowException() throws Exception {
-        boolean isThereAProblem = true;
-        // ..
-        if (isThereAProblem) {
-            Exception ex = new Exception("Thrown from iThrowExcepion()");
-            throw ex;
-        }
-        System.out.println("Will this line execute?");
-    }
+staticvoidiThrowException()throwsException{
+booleanisThereAProblem=true;
+//..
+if(isThereAProblem){
+Exceptionex=newException("ThrownfromiThrowExcepion()");
+throwex;
+}
+System.out.println("Willthislineexecute?");
+}
 
-    static void foo() throws Exception {
-        iThrowException();
-    }
+staticvoidfoo()throwsException{
+iThrowException();
+}
 
-    public static void main(String[] args) throws Exception {
-        int i = 0;
-        try {
-            
-            iThrowException();
-            System.out.println("Will this line execute?");
-        } catch (Exception e) {
-            System.out.println("i == " + i);
-            System.out.println("Caught Exception in main: " + e.getMessage());
-            e.printStackTrace(System.out);
-        }
+publicstaticvoidmain(String[]args)throwsException{
+inti=0;
+try{
 
-        
-        try {
-            foo();
-        } catch (Exception e) {
-            System.out.println("Caught Exception in foo()'s catch block: "
-                               + e.getMessage());
-        }
-        
-        foo();
-    }
+iThrowException();
+System.out.println("Willthislineexecute?");
+}catch(Exceptione){
+System.out.println("i=="+i);
+System.out.println("CaughtExceptioninmain:"+e.getMessage());
+e.printStackTrace(System.out);
+}
+
+
+try{
+foo();
+}catch(Exceptione){
+System.out.println("CaughtExceptioninfoo()'scatchblock:"
++e.getMessage());
+}
+
+foo();
+}
 }

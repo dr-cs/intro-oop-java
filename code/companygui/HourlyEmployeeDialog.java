@@ -1,172 +1,172 @@
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.text.DateFormat;
-import java.util.Date;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+importjava.awt.BorderLayout;
+importjava.awt.Component;
+importjava.awt.Frame;
+importjava.awt.GridLayout;
+importjava.awt.event.ActionEvent;
+importjava.text.DateFormat;
+importjava.util.Date;
+importjavax.swing.AbstractAction;
+importjavax.swing.Action;
+importjavax.swing.BorderFactory;
+importjavax.swing.Box;
+importjavax.swing.BoxLayout;
+importjavax.swing.JButton;
+importjavax.swing.JDialog;
+importjavax.swing.JLabel;
+importjavax.swing.JOptionPane;
+importjavax.swing.JPanel;
+importjavax.swing.JTextField;
 
-public class HourlyEmployeeDialog extends JDialog {
+publicclassHourlyEmployeeDialogextendsJDialog{
 
-    private boolean dismissedWithOk;
-    private HourlyEmployee employee;
-    private JTextField nameTextField;
-    private JTextField hireDateTextField;
-    private JTextField hourlyWageTextField;
-    private JTextField monthlyHoursTextField;
-    private String validationErrors;
-    /**
-     * Use this constructor if you're creating a new employee.
-     */
-    public HourlyEmployeeDialog(Frame parent) {
-        this(parent, "New Employee", new HourlyEmployee(""));
-    }
+privatebooleandismissedWithOk;
+privateHourlyEmployeeemployee;
+privateJTextFieldnameTextField;
+privateJTextFieldhireDateTextField;
+privateJTextFieldhourlyWageTextField;
+privateJTextFieldmonthlyHoursTextField;
+privateStringvalidationErrors;
+/**
+*Usethisconstructorifyou'recreatinganewemployee.
+*/
+publicHourlyEmployeeDialog(Frameparent){
+this(parent,"NewEmployee",newHourlyEmployee(""));
+}
 
-    /**
-     * Use this constructor if you're editing an existing employee.
-     */
-    public HourlyEmployeeDialog(Frame parent,
-                                  String dialogTitle,
-                                  HourlyEmployee employee) {
-        super(parent, dialogTitle);
-        super.setModal(true);
-        super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.employee = employee;
+/**
+*Usethisconstructorifyou'reeditinganexistingemployee.
+*/
+publicHourlyEmployeeDialog(Frameparent,
+StringdialogTitle,
+HourlyEmployeeemployee){
+super(parent,dialogTitle);
+super.setModal(true);
+super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+this.employee=employee;
 
-        super.getContentPane().setLayout( new BorderLayout() );
-	JPanel mainPanel = new JPanel();
-        // We're only putting one thing in here, but we need it to
-        // grow and shrink as the dialog is resized.  Using a
-        // GridLayout is a cheap way to accomplish this.
-        mainPanel.setLayout( new GridLayout() );
-	mainPanel.setBorder( BorderFactory.createRaisedBevelBorder() );
-	mainPanel.add(createDataEntryPanel());
-	super.getContentPane().add(mainPanel, BorderLayout.CENTER);
-	super.getContentPane().add(createButtonPanel(), BorderLayout.SOUTH);
-    }
+super.getContentPane().setLayout(newBorderLayout());
+JPanelmainPanel=newJPanel();
+//We'reonlyputtingonethinginhere,butweneeditto
+//growandshrinkasthedialogisresized.Usinga
+//GridLayoutisacheapwaytoaccomplishthis.
+mainPanel.setLayout(newGridLayout());
+mainPanel.setBorder(BorderFactory.createRaisedBevelBorder());
+mainPanel.add(createDataEntryPanel());
+super.getContentPane().add(mainPanel,BorderLayout.CENTER);
+super.getContentPane().add(createButtonPanel(),BorderLayout.SOUTH);
+}
 
-    private JPanel createDataEntryPanel() {
-        JLabel nameLabel = new JLabel("Name:");
-        nameTextField = new JTextField(employee.getName(), 20);
-        JLabel hireDateLabel = new JLabel("Hire Date:");
-        hireDateTextField =
-            new JTextField(employee.getHireDate().toString(), 20);
+privateJPanelcreateDataEntryPanel(){
+JLabelnameLabel=newJLabel("Name:");
+nameTextField=newJTextField(employee.getName(),20);
+JLabelhireDateLabel=newJLabel("HireDate:");
+hireDateTextField=
+newJTextField(employee.getHireDate().toString(),20);
 
-        JPanel p = new JPanel();
-        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-	p.add(Box.createHorizontalGlue());
-        p.add(createDataEntryComponent(nameLabel, nameTextField));
-        p.add(createDataEntryComponent(hireDateLabel, hireDateTextField));
+JPanelp=newJPanel();
+p.setLayout(newBoxLayout(p,BoxLayout.Y_AXIS));
+p.add(Box.createHorizontalGlue());
+p.add(createDataEntryComponent(nameLabel,nameTextField));
+p.add(createDataEntryComponent(hireDateLabel,hireDateTextField));
 
-        // Up to this point each different employee dialog would look the same.
-        // How could we refactor the dialogs to eliminate code duplication?
+//Uptothispointeachdifferentemployeedialogwouldlookthesame.
+//Howcouldwerefactorthedialogstoeliminatecodeduplication?
 
-        JLabel hourlyWageLabel = new JLabel("Hourly Wage:");
-        hourlyWageTextField =
-            new JTextField(new Double(employee.getHourlyWage()).toString(), 20);
-        p.add(createDataEntryComponent(hourlyWageLabel, hourlyWageTextField));
-        JLabel monthlyHoursLabel = new JLabel("Monthly Hours:");
-        monthlyHoursTextField =
-            new JTextField(new Double(employee.getMonthlyHours()).toString(), 20);
-        p.add(createDataEntryComponent(monthlyHoursLabel, monthlyHoursTextField));
+JLabelhourlyWageLabel=newJLabel("HourlyWage:");
+hourlyWageTextField=
+newJTextField(newDouble(employee.getHourlyWage()).toString(),20);
+p.add(createDataEntryComponent(hourlyWageLabel,hourlyWageTextField));
+JLabelmonthlyHoursLabel=newJLabel("MonthlyHours:");
+monthlyHoursTextField=
+newJTextField(newDouble(employee.getMonthlyHours()).toString(),20);
+p.add(createDataEntryComponent(monthlyHoursLabel,monthlyHoursTextField));
 
-        return p;
-    }
+returnp;
+}
 
-    private Component createDataEntryComponent(JLabel label, Component entry) {
-        // Box is a convenient way to use a BoxLayout
-        Box b = new Box(BoxLayout.X_AXIS);
-        b.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        b.add(label);
-        b.add(Box.createHorizontalGlue());
-        b.add(entry);
-        return b;
-    }
+privateComponentcreateDataEntryComponent(JLabellabel,Componententry){
+//BoxisaconvenientwaytouseaBoxLayout
+Boxb=newBox(BoxLayout.X_AXIS);
+b.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+b.add(label);
+b.add(Box.createHorizontalGlue());
+b.add(entry);
+returnb;
+}
 
-    private JPanel createButtonPanel() {
-        Action okAction = new AbstractAction("OK") {
-                public void actionPerformed(ActionEvent evt) {
-                    dismissedWithOk = true;
-                    if (isInputValid()) {
-                        setVisible(false);
-                        dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(HourlyEmployeeDialog.this,
-                                                      validationErrors,
-                                                      "Invalid Input",
-                                                      JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            };
-        JButton okButton = new JButton(okAction);
-        Action cancelAction = new AbstractAction("Cancel") {
-                public void actionPerformed(ActionEvent evt) {
-                    dismissedWithOk = false;
-                    setVisible(false);
-                    dispose();
-		}
-	    };
-        JButton cancelButton = new JButton(cancelAction);
-	JPanel p = new JPanel();
-	p.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-	p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
-	p.add(Box.createHorizontalGlue());
-	p.add(okButton);
-	p.add(Box.createHorizontalStrut(5));
-	p.add(cancelButton);
-	p.add(Box.createHorizontalGlue());
+privateJPanelcreateButtonPanel(){
+ActionokAction=newAbstractAction("OK"){
+publicvoidactionPerformed(ActionEventevt){
+dismissedWithOk=true;
+if(isInputValid()){
+setVisible(false);
+dispose();
+}else{
+JOptionPane.showMessageDialog(HourlyEmployeeDialog.this,
+validationErrors,
+"InvalidInput",
+JOptionPane.ERROR_MESSAGE);
+}
+}
+};
+JButtonokButton=newJButton(okAction);
+ActioncancelAction=newAbstractAction("Cancel"){
+publicvoidactionPerformed(ActionEventevt){
+dismissedWithOk=false;
+setVisible(false);
+dispose();
+}
+};
+JButtoncancelButton=newJButton(cancelAction);
+JPanelp=newJPanel();
+p.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+p.setLayout(newBoxLayout(p,BoxLayout.X_AXIS));
+p.add(Box.createHorizontalGlue());
+p.add(okButton);
+p.add(Box.createHorizontalStrut(5));
+p.add(cancelButton);
+p.add(Box.createHorizontalGlue());
 
-        super.getRootPane().setDefaultButton(okButton);
-	return p;
-    }
+super.getRootPane().setDefaultButton(okButton);
+returnp;
+}
 
-    public boolean showDialog() {
-        super.setLocationRelativeTo(super.getParent());
-        super.pack();
-        super.setVisible(true);
-        return dismissedWithOk;
-    }
+publicbooleanshowDialog(){
+super.setLocationRelativeTo(super.getParent());
+super.pack();
+super.setVisible(true);
+returndismissedWithOk;
+}
 
-    private boolean isInputValid() {
-        boolean isValid = false;
-        try {
-            DateFormat df = DateFormat.getDateInstance();
-            employee = 
-                new HourlyEmployee(nameTextField.getText(),
-                                   df.parse(hireDateTextField.getText()),
-                                   Double.parseDouble(hourlyWageTextField.getText()),
-                                   Double.parseDouble(monthlyHoursTextField.getText()));
-            isValid = true;
-        } catch (Exception e) {
-            validationErrors = e.getMessage();
-        }
-        return isValid;
-    }
+privatebooleanisInputValid(){
+booleanisValid=false;
+try{
+DateFormatdf=DateFormat.getDateInstance();
+employee=
+newHourlyEmployee(nameTextField.getText(),
+df.parse(hireDateTextField.getText()),
+Double.parseDouble(hourlyWageTextField.getText()),
+Double.parseDouble(monthlyHoursTextField.getText()));
+isValid=true;
+}catch(Exceptione){
+validationErrors=e.getMessage();
+}
+returnisValid;
+}
 
-    public HourlyEmployee getEmployee() {
-        return employee;
-    }
+publicHourlyEmployeegetEmployee(){
+returnemployee;
+}
 
-    public static void main(String[] args) {
-        HourlyEmployeeDialog sed = new HourlyEmployeeDialog(null);
-        boolean ret = sed.showDialog();
-        System.out.print("showDialog() returned and was dismissed with ");
-        if (ret) {
-            System.out.println("OK");
-        } else {
-            System.out.println("Cancel");
-        }
-        System.out.println(sed.getEmployee());
-    }
+publicstaticvoidmain(String[]args){
+HourlyEmployeeDialogsed=newHourlyEmployeeDialog(null);
+booleanret=sed.showDialog();
+System.out.print("showDialog()returnedandwasdismissedwith");
+if(ret){
+System.out.println("OK");
+}else{
+System.out.println("Cancel");
+}
+System.out.println(sed.getEmployee());
+}
 }

@@ -1,51 +1,51 @@
-public class PartialIntArray {
+publicclassPartialIntArray{
 
-    private int[] elements;
-    private int size;
+privateint[]elements;
+privateintsize;
 
 
-    public PartialIntArray() {
-        this(10);
-    }
+publicPartialIntArray(){
+this(10);
+}
 
-    public PartialIntArray(int initialCapacity) {
-        if (initialCapacity < 0)
-            throw new IllegalArgumentException("Illegal Capacity: "+
-                                               initialCapacity);
-        this.elements = new int[initialCapacity];
-    }
+publicPartialIntArray(intinitialCapacity){
+if(initialCapacity<0)
+thrownewIllegalArgumentException("IllegalCapacity:"+
+initialCapacity);
+this.elements=newint[initialCapacity];
+}
 
-    public void add(int e) {
-        if (size >= elements.length) {
-            int[] resizedArray = new int[elements.length * 2];
-            for (int i = 0; i < elements.length; i++) {
-                
-            }
-        }
-        
-        elements[size++] = e;
-    }
+publicvoidadd(inte){
+if(size>=elements.length){
+int[]resizedArray=newint[elements.length*2];
+for(inti=0;i<elements.length;i++){
 
-    public int get(int index) {
-        if (index < 0 || index >= size) {
-            // ...
-        }
-        return elements[index];
-    }
+}
+}
 
-    public int size() {
-        return this.size;
-    }
+elements[size++]=e;
+}
 
-    public static void main(String[] args) {
-        PartialIntArray pia = new PartialIntArray();
-        pia.add(2);
-        pia.add(4);
-        pia.add(6);
-        for (int i = 0; i < pia.size(); i++) {
-            System.out.println(pia.get(i));
-        }
-        pia.get(10);
-    }
+publicintget(intindex){
+if(index<0||index>=size){
+//...
+}
+returnelements[index];
+}
+
+publicintsize(){
+returnthis.size;
+}
+
+publicstaticvoidmain(String[]args){
+PartialIntArraypia=newPartialIntArray();
+pia.add(2);
+pia.add(4);
+pia.add(6);
+for(inti=0;i<pia.size();i++){
+System.out.println(pia.get(i));
+}
+pia.get(10);
+}
 
 }

@@ -1,9 +1,9 @@
-public class CourseAverage2 {
-    public static void main(String[] args) {
-        double hwAvg = 74.2;
-        double examAvg = (81 + 91 + 93) / 3;
-        double finalExam = 89;
-        double courseAvg = (.2 * hwAvg) + .6 * examAvg + .2 * finalExam;
-        System.out.println("Course average: " + courseAvg);
-    }
+publicclassCourseAverage2{
+publicstaticvoidmain(String[]args){
+doublehwAvg=74.2;
+doubleexamAvg=(81+91+93)/3;
+doublefinalExam=89;
+doublecourseAvg=(.2*hwAvg)+.6*examAvg+.2*finalExam;
+System.out.println("Courseaverage:"+courseAvg);
+}
 }

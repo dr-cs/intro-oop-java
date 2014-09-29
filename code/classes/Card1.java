@@ -1,20 +1,20 @@
-public class Card1 {
+publicclassCard1{
 
-    String rank;
-    String suit;
+Stringrank;
+Stringsuit;
 
-    public String toString() {
-        return rank + " of " + suit;
-    }
+publicStringtoString(){
+returnrank+"of"+suit;
+}
 
-    public static void main(String[] args) {
-        Card1 swedishPop = new Card1();
-        swedishPop.rank = "ace";
-        swedishPop.suit = "base";
-        Card1 handy = new Card1();
-        handy.rank = "jack";
-        handy.suit = "all trades";
-        System.out.println(swedishPop);
-        System.out.println(handy);
-    }
+publicstaticvoidmain(String[]args){
+Card1swedishPop=newCard1();
+swedishPop.rank="ace";
+swedishPop.suit="base";
+Card1handy=newCard1();
+handy.rank="jack";
+handy.suit="alltrades";
+System.out.println(swedishPop);
+System.out.println(handy);
+}
 }

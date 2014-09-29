@@ -1,55 +1,55 @@
-import java.util.ArrayList;
+importjava.util.ArrayList;
 
-public class ArrayListDataStructures {
+publicclassArrayListDataStructures{
 
-    /**
-     * LIFO data structure.
-     */
-    static class Stack<E> {
-        private ArrayList<E> elems = new ArrayList<>();
+/**
+*LIFOdatastructure.
+*/
+staticclassStack<E>{
+privateArrayList<E>elems=newArrayList<>();
 
-        public void push(E item) {
-            elems.add(item);
-        }
-        
-        public E pop() {
-            return elems.remove(elems.size() - 1);
-        }
+publicvoidpush(Eitem){
+elems.add(item);
+}
 
-        public boolean isEmpty() {
-            return elems.isEmpty();
-        }
-    }
+publicEpop(){
+returnelems.remove(elems.size()-1);
+}
 
-    /**
-     * FIFO data structure.
-     */
-    static class Queue<E> {
-        private ArrayList<E> elems = new ArrayList<>();
+publicbooleanisEmpty(){
+returnelems.isEmpty();
+}
+}
 
-        public void enqueue(E item) {
-            elems.add(item);
-        }
-        
-        public E dequeue() {
-            return elems.remove(0);
-        }
+/**
+*FIFOdatastructure.
+*/
+staticclassQueue<E>{
+privateArrayList<E>elems=newArrayList<>();
 
-        public boolean isEmpty() {
-            return elems.isEmpty();
-        }
-    }
+publicvoidenqueue(Eitem){
+elems.add(item);
+}
 
-    public static void main(String[] args) {
-        Stack<Integer> ints = new Stack<>();
+publicEdequeue(){
+returnelems.remove(0);
+}
 
-        ints.push(1);
-        ints.push(2);
-        ints.push(3);
+publicbooleanisEmpty(){
+returnelems.isEmpty();
+}
+}
 
-        System.out.println(ints.pop());
-        System.out.println(ints.pop());
-        System.out.println(ints.pop());
-        System.out.println(ints.pop());
-    }
+publicstaticvoidmain(String[]args){
+Stack<Integer>ints=newStack<>();
+
+ints.push(1);
+ints.push(2);
+ints.push(3);
+
+System.out.println(ints.pop());
+System.out.println(ints.pop());
+System.out.println(ints.pop());
+System.out.println(ints.pop());
+}
 }

@@ -1,82 +1,82 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+importjava.util.ArrayList;
+importjava.util.Collections;
+importjava.util.Iterator;
 
-public class ArrayListBasics {
+publicclassArrayListBasics{
 
-    private static class Person {
-        private String name;
-        public Person(String name) {
-            this.name = name;
-        }
-        public String getName() {
-            return name;
-        }
-    }
+privatestaticclassPerson{
+privateStringname;
+publicPerson(Stringname){
+this.name=name;
+}
+publicStringgetName(){
+returnname;
+}
+}
 
-    public static void main(String[] args) {
-        ArrayList<Person> peeps = new ArrayList<>(10);
-        peeps.add(new Person("Aaron"));
-        peeps.add(new Person("Evan"));
+publicstaticvoidmain(String[]args){
+ArrayList<Person>peeps=newArrayList<>(10);
+peeps.add(newPerson("Aaron"));
+peeps.add(newPerson("Evan"));
 
-        for (Person p: peeps) {
-            System.out.println(p.getName());
-        }
+for(Personp:peeps){
+System.out.println(p.getName());
+}
 
 
-        // ArrayList tasks = new ArrayList();
-        // tasks.add("Eat");
-        // tasks.add("Sleep");
-        // tasks.add("Code");
+//ArrayListtasks=newArrayList();
+//tasks.add("Eat");
+//tasks.add("Sleep");
+//tasks.add("Code");
 
-        // System.out.println("Life of a CS major:");
+//System.out.println("LifeofaCSmajor:");
 
-        // // Best way to iterate: using for-each loop
-        // for (Object task: tasks) {
-        //     System.out.println(task);
-        // }
+////Bestwaytoiterate:usingfor-eachloop
+//for(Objecttask:tasks){
+//System.out.println(task);
+//}
 
-        // System.out.println("\nLet's be real:");
-        // tasks.remove("Sleep");
+//System.out.println("\nLet'sbereal:");
+//tasks.remove("Sleep");
 
-        // // Another way to iterate, using iterator and while
-        // Iterator tasksIter = tasks.iterator();
-        // while (tasksIter.hasNext()) {
-        //     Object task = tasksIter.next();
-        //     System.out.println(task);
-        // }
+////Anotherwaytoiterate,usingiteratorandwhile
+//IteratortasksIter=tasks.iterator();
+//while(tasksIter.hasNext()){
+//Objecttask=tasksIter.next();
+//System.out.println(task);
+//}
 
-        // System.out.println("\nOK, maybe:");
-        // tasks.add("Red Bull");
-        
-        // // Using iterator and for (notice we're incrementing the 
-        // // iterator in the body, not the for-loop header).
-        // for (Iterator iter = tasks.iterator(); iter.hasNext(); ) {
-        //     Object task = iter.next();
-        //     System.out.println(task);
-        // }
+//System.out.println("\nOK,maybe:");
+//tasks.add("RedBull");
 
-        // System.out.println("\nPerhaps in a different order:");
-        // tasks.remove("Code");
-        // tasks.add("Code");
+////Usingiteratorandfor(noticewe'reincrementingthe
+////iteratorinthebody,notthefor-loopheader).
+//for(Iteratoriter=tasks.iterator();iter.hasNext();){
+//Objecttask=iter.next();
+//System.out.println(task);
+//}
 
-        // // Using indexes and for:
-        // for (int i = 0; i < tasks.size(); i++) {
-        //     Object task = tasks.get(i);
-        //     System.out.println(task);
-        // }
-        // System.out.println("\nNah, we need sleep!");
-        // tasks.add(1, "Sleep");
-        // for (int i = 0; i < tasks.size(); i++) {
-        //     Object task = tasks.get(i);
-        //     System.out.println(task);
-        // }
+//System.out.println("\nPerhapsinadifferentorder:");
+//tasks.remove("Code");
+//tasks.add("Code");
 
-        // System.out.println("\nOr let the computer sort it out:");
-        // Collections.sort(tasks);
-        // for (Object task: tasks) {
-        //     System.out.println(task);
-        // }
-    }
+////Usingindexesandfor:
+//for(inti=0;i<tasks.size();i++){
+//Objecttask=tasks.get(i);
+//System.out.println(task);
+//}
+//System.out.println("\nNah,weneedsleep!");
+//tasks.add(1,"Sleep");
+//for(inti=0;i<tasks.size();i++){
+//Objecttask=tasks.get(i);
+//System.out.println(task);
+//}
+
+//System.out.println("\nOrletthecomputersortitout:");
+//Collections.sort(tasks);
+//for(Objecttask:tasks){
+//System.out.println(task);
+//}
+}
 
 }

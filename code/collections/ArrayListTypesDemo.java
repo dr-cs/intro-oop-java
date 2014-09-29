@@ -1,33 +1,33 @@
-import java.util.ArrayList;
+importjava.util.ArrayList;
 
-public class ArrayListTypesDemo {
+publicclassArrayListTypesDemo{
 
-    static abstract class Gnome {
-        public String name;
-        public Gnome(String name) {
-            this.name = name;
-        }
-    }
+staticabstractclassGnome{
+publicStringname;
+publicGnome(Stringname){
+this.name=name;
+}
+}
 
-    static class GardenGnome extends Gnome {
-        public GardenGnome(String name) { super(name); }
-    }
+staticclassGardenGnomeextendsGnome{
+publicGardenGnome(Stringname){super(name);}
+}
 
-    static class UnderwearGnome extends Gnome {
-        public UnderwearGnome(String name) { super(name); }
-    }
+staticclassUnderwearGnomeextendsGnome{
+publicUnderwearGnome(Stringname){super(name);}
+}
 
-    public static void main(String[] args) {
-        ArrayList<Gnome> gnomes = new ArrayList<>();
-        ArrayList<GardenGnome> gardenGnomes = new ArrayList<>();
-        ArrayList<UnderwearGnome> underwearGnomes = new ArrayList<>();
+publicstaticvoidmain(String[]args){
+ArrayList<Gnome>gnomes=newArrayList<>();
+ArrayList<GardenGnome>gardenGnomes=newArrayList<>();
+ArrayList<UnderwearGnome>underwearGnomes=newArrayList<>();
 
-        // Fine:  Gnome is a superclass
-        gnomes.add(new GardenGnome("Corny"));
-        gnomes.add(new UnderwearGnome("Jaques"));
+//Fine:Gnomeisasuperclass
+gnomes.add(newGardenGnome("Corny"));
+gnomes.add(newUnderwearGnome("Jaques"));
 
-        // Nuh, uh! Type incompatibility.
-        underwearGnomes.add(new GardenGnome("Carrot Top"));
-    }
+//Nuh,uh!Typeincompatibility.
+underwearGnomes.add(newGardenGnome("CarrotTop"));
+}
 
 }

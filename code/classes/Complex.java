@@ -1,30 +1,30 @@
-public class Complex {
-    // These are the data of the ADT
+publicclassComplex{
+//ThesearethedataoftheADT
 
-    private double real;
-    private double imaginary;
+privatedoublereal;
+privatedoubleimaginary;
 
-    // These are the operations of the ADT
+//ThesearetheoperationsoftheADT
 
-    public Complex(double real, double anImaginary) {
-        this.real = real;
-        imaginary = anImaginary;
-    }
+publicComplex(doublereal,doubleanImaginary){
+this.real=real;
+imaginary=anImaginary;
+}
 
-    public Complex plus(Complex other) {
-        double resultReal = this.real + other.real;
-        double resultImaginary = this.imaginary + other.imaginary;
-        return new Complex(resultReal, resultImaginary);
-    }
+publicComplexplus(Complexother){
+doubleresultReal=this.real+other.real;
+doubleresultImaginary=this.imaginary+other.imaginary;
+returnnewComplex(resultReal,resultImaginary);
+}
 
-    public String toString() {
-        return "Complex(" + real + ", " + imaginary + ")";
-    }
+publicStringtoString(){
+return"Complex("+real+","+imaginary+")";
+}
 
-    public static void main(String[] args) {
-        Complex a = new Complex(1.0, 2.0);
-        Complex b = new Complex(3.0, 4.0);
-        Complex c = a.plus(b);
-        System.out.println(a + " plus " + b + " = " + c);
-    }
+publicstaticvoidmain(String[]args){
+Complexa=newComplex(1.0,2.0);
+Complexb=newComplex(3.0,4.0);
+Complexc=a.plus(b);
+System.out.println(a+"plus"+b+"="+c);
+}
 }

@@ -1,54 +1,54 @@
-import java.util.Date;
+importjava.util.Date;
 
-public class HourlyEmployee6 extends Employee6 {
+publicclassHourlyEmployee6extendsEmployee6{
 
-    private double hourlyWage;
-    private double monthlyHours;
+privatedoublehourlyWage;
+privatedoublemonthlyHours;
 
-    /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
-     * monthly hours of 160.
-     */
-    public HourlyEmployee6(String aName, Date aHireDate) {
-        this(aName, aHireDate, 20.00, 160.0);
-    }
+/**
+*ConstructsanHourlyEmployeewithhourlywageof20and
+*monthlyhoursof160.
+*/
+publicHourlyEmployee6(StringaName,DateaHireDate){
+this(aName,aHireDate,20.00,160.0);
+}
 
-    public HourlyEmployee6(String aName, Date aHireDate,
-                          double anHourlyWage, double aMonthlyHours) {
-        super(aName, aHireDate);
-        disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);
-        hourlyWage = anHourlyWage;
-        monthlyHours = aMonthlyHours;
-    }
+publicHourlyEmployee6(StringaName,DateaHireDate,
+doubleanHourlyWage,doubleaMonthlyHours){
+super(aName,aHireDate);
+disallowZeroesAndNegatives(anHourlyWage,aMonthlyHours);
+hourlyWage=anHourlyWage;
+monthlyHours=aMonthlyHours;
+}
 
-    public String getName() {
-        return "Hourly: " + super.getName();
-    }
+publicStringgetName(){
+return"Hourly:"+super.getName();
+}
 
-    public double getHourlyWage() {
-        return hourlyWage;
-    }
+publicdoublegetHourlyWage(){
+returnhourlyWage;
+}
 
-    public void setHourlyWage(double newWage) {
-        hourlyWage = newWage;
-    }
+publicvoidsetHourlyWage(doublenewWage){
+hourlyWage=newWage;
+}
 
-    public double getMonthlyHours() {
-        return monthlyHours;
-    }
+publicdoublegetMonthlyHours(){
+returnmonthlyHours;
+}
 
-    @Override
-    public double monthlyPay() {
-        return hourlyWage * monthlyHours;
-    }
-    
-    @Override
-    public double monthlyPay(Month month) {
-        return monthlyPay();
-    }
+@Override
+publicdoublemonthlyPay(){
+returnhourlyWage*monthlyHours;
+}
 
-    public String toString() {
-        return getName() + "; Hire Date: " + getHireDate() + "; Hourly Wage: "
-            + hourlyWage + "; Monthly Hours: " + monthlyHours;
-    }
+@Override
+publicdoublemonthlyPay(Monthmonth){
+returnmonthlyPay();
+}
+
+publicStringtoString(){
+returngetName()+";HireDate:"+getHireDate()+";HourlyWage:"
++hourlyWage+";MonthlyHours:"+monthlyHours;
+}
 }

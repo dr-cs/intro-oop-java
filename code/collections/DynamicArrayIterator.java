@@ -1,28 +1,28 @@
-import java.util.Iterator;
+importjava.util.Iterator;
 
-public class DynamicArrayIterator<E> implements Iterator<E> {
+publicclassDynamicArrayIterator<E>implementsIterator<E>{
 
-    private int cursor = 0;
-    private DynamicArray<E> da;
+privateintcursor=0;
+privateDynamicArray<E>da;
 
-    public DynamicArrayIterator(DynamicArray<E> da) {
-        this.da = da;
-    }
+publicDynamicArrayIterator(DynamicArray<E>da){
+this.da=da;
+}
 
-    public boolean hasNext() {
-        if (cursor >= da.size() - 1) {
-            return false;
-        }
-        return true;
-    }
+publicbooleanhasNext(){
+if(cursor>=da.size()-1){
+returnfalse;
+}
+returntrue;
+}
 
-    public E next() {
-        E answer = da.get(cursor);
-        cursor++;
-        return answer;
-    }
+publicEnext(){
+Eanswer=da.get(cursor);
+cursor++;
+returnanswer;
+}
 
-    public void remove() {
-        da.remove(cursor - 1);
-    }
+publicvoidremove(){
+da.remove(cursor-1);
+}
 }

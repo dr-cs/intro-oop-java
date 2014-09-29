@@ -1,11 +1,11 @@
-import javax.swing.JFrame;
+importjavax.swing.JFrame;
 
-public class HelloSwing {
+publicclassHelloSwing{
 
-    public static void main(String[] args) {
-        JFrame mainFrame = new JFrame("Hello, Swing!");
-        mainFrame.setSize(640, 480);
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setVisible(true);
-    }
+publicstaticvoidmain(String[]args){
+JFramemainFrame=newJFrame("Hello,Swing!");
+mainFrame.setSize(640,480);
+mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+mainFrame.setVisible(true);
+}
 }

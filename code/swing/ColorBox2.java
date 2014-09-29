@@ -1,99 +1,99 @@
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+importjava.awt.Color;
+importjava.awt.GridLayout;
+importjava.awt.event.ActionEvent;
+importjava.awt.event.ActionListener;
+importjavax.swing.AbstractAction;
+importjavax.swing.Action;
+importjavax.swing.BoxLayout;
+importjavax.swing.JButton;
+importjavax.swing.JFrame;
+importjavax.swing.JMenuBar;
+importjavax.swing.JMenu;
+importjavax.swing.JMenuItem;
+importjavax.swing.JPanel;
 
-public class ColorBox2 extends JFrame {
+publicclassColorBox2extendsJFrame{
 
-    private JPanel colorPanel;
-    private Action redAction;
-    private Action whiteAction;
-    private Action blueAction;
+privateJPanelcolorPanel;
+privateActionredAction;
+privateActionwhiteAction;
+privateActionblueAction;
 
-    private class RedAction extends AbstractAction {
-        public RedAction() {
-            super("Red");
-        }
+privateclassRedActionextendsAbstractAction{
+publicRedAction(){
+super("Red");
+}
 
-        public void actionPerformed(ActionEvent e) {
-            colorPanel.setBackground(Color.RED);
-        }
-    }
+publicvoidactionPerformed(ActionEvente){
+colorPanel.setBackground(Color.RED);
+}
+}
 
-    public ColorBox2() {
-        super("Color, Box, and Nesting Demo");
+publicColorBox2(){
+super("Color,Box,andNestingDemo");
 
-        initActions();
+initActions();
 
-        // Set up color panel
-        colorPanel = new JPanel();
-        colorPanel.setSize(200, 200);
+//Setupcolorpanel
+colorPanel=newJPanel();
+colorPanel.setSize(200,200);
 
-        // Set up main application frame
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Grid layout with 1 row, 2 columns
-        setLayout(new GridLayout(1, 2));
-        add(createButtonPanel());
-        add(colorPanel);
-        setJMenuBar(createJMenuBar());
-        redAction.setEnabled(false);
-    }
+//Setupmainapplicationframe
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//Gridlayoutwith1row,2columns
+setLayout(newGridLayout(1,2));
+add(createButtonPanel());
+add(colorPanel);
+setJMenuBar(createJMenuBar());
+redAction.setEnabled(false);
+}
 
-    private void initActions() {
-        redAction = new RedAction();
-        whiteAction = new AbstractAction("Weiss") {
-                public void actionPerformed(ActionEvent e) {
-                    colorPanel.setBackground(Color.WHITE);
-                }
-            };
-        blueAction = new AbstractAction("Blue") {
-                public void actionPerformed(ActionEvent e) {
-                    colorPanel.setBackground(Color.BLUE);
-                }
-            };
-    }
+privatevoidinitActions(){
+redAction=newRedAction();
+whiteAction=newAbstractAction("Weiss"){
+publicvoidactionPerformed(ActionEvente){
+colorPanel.setBackground(Color.WHITE);
+}
+};
+blueAction=newAbstractAction("Blue"){
+publicvoidactionPerformed(ActionEvente){
+colorPanel.setBackground(Color.BLUE);
+}
+};
+}
 
-    private JPanel createButtonPanel() {
-        JButton redButton = new JButton(redAction);
-        JButton whiteButton = new JButton(whiteAction);
-        JButton blueButton = new JButton(blueAction);
+privateJPanelcreateButtonPanel(){
+JButtonredButton=newJButton(redAction);
+JButtonwhiteButton=newJButton(whiteAction);
+JButtonblueButton=newJButton(blueAction);
 
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.add(redButton);
-        buttonPanel.add(whiteButton);
-        buttonPanel.add(blueButton);
+JPanelbuttonPanel=newJPanel();
+buttonPanel.setLayout(newBoxLayout(buttonPanel,BoxLayout.Y_AXIS));
+buttonPanel.add(redButton);
+buttonPanel.add(whiteButton);
+buttonPanel.add(blueButton);
 
-        return buttonPanel;
-    }
+returnbuttonPanel;
+}
 
-    private JMenuBar createJMenuBar() {
-        JMenuItem redMenuItem = new JMenuItem(redAction);
-        JMenuItem whiteMenuItem = new JMenuItem(whiteAction);
-        JMenuItem blueMenuItem = new JMenuItem(blueAction);
+privateJMenuBarcreateJMenuBar(){
+JMenuItemredMenuItem=newJMenuItem(redAction);
+JMenuItemwhiteMenuItem=newJMenuItem(whiteAction);
+JMenuItemblueMenuItem=newJMenuItem(blueAction);
 
-        JMenu colorMenu = new JMenu("Color");
-        colorMenu.add(redMenuItem);
-        colorMenu.add(whiteMenuItem);
-        colorMenu.add(blueMenuItem);
+JMenucolorMenu=newJMenu("Color");
+colorMenu.add(redMenuItem);
+colorMenu.add(whiteMenuItem);
+colorMenu.add(blueMenuItem);
 
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.add(colorMenu);
-        return menuBar;
-    }
+JMenuBarmenuBar=newJMenuBar();
+menuBar.add(colorMenu);
+returnmenuBar;
+}
 
-    public static void main(String[] args) {
-        ColorBox2 cb = new ColorBox2();
-        cb.pack();
-        cb.setVisible(true);
-    }
+publicstaticvoidmain(String[]args){
+ColorBox2cb=newColorBox2();
+cb.pack();
+cb.setVisible(true);
+}
 }

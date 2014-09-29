@@ -1,99 +1,99 @@
-public class GenericLinkedList2<E> {
+publicclassGenericLinkedList2<E>{
 
-    private class Node {
-        private E data;
-        private Node next;
+privateclassNode{
+privateEdata;
+privateNodenext;
 
-        public Node(E data) {
-            this(data, null);
-        }
+publicNode(Edata){
+this(data,null);
+}
 
-        public Node(E data, Node next) {
-            this.data = data;
-            setNext(next);
-        }
+publicNode(Edata,Nodenext){
+this.data=data;
+setNext(next);
+}
 
-        public E getData() {
-            return data;
-        }
+publicEgetData(){
+returndata;
+}
 
-        public Node getNext() {
-            return next;
-        }
+publicNodegetNext(){
+returnnext;
+}
 
-        public void setNext(Node next) {
-            this.next = next;
-        }
-    }
+publicvoidsetNext(Nodenext){
+this.next=next;
+}
+}
 
-    private Node front;
+privateNodefront;
 
-    public GenericLinkedList2() {
-        front = null;
-    }
-    
-    public void addToFront(E item) {
-        front = new Node(item, front);
-    }
+publicGenericLinkedList2(){
+front=null;
+}
 
-    public E removeFront() {
-        if (null == front) {
-            throw new RuntimeException("Can't removeFront() on empty list.");
-        }
-        E answer = front.getData();
-        front = front.getNext();
-        return answer;
-    }
+publicvoidaddToFront(Eitem){
+front=newNode(item,front);
+}
 
-    public String toString() {
-        StringBuffer sb = new StringBuffer("[");
-        for (Node node = front; node != null; node = node.getNext()) {
-            sb.append(node.getData() + " ");
-        }
-        return sb.toString() + "]";
-    }
+publicEremoveFront(){
+if(null==front){
+thrownewRuntimeException("Can'tremoveFront()onemptylist.");
+}
+Eanswer=front.getData();
+front=front.getNext();
+returnanswer;
+}
 
-    public int length() {
-        int len = 0;
-        Node node = front;
-        while (node != null) {
-            len++;
-            node = node.getNext();
-        }
-        return len;
-    }
+publicStringtoString(){
+StringBuffersb=newStringBuffer("[");
+for(Nodenode=front;node!=null;node=node.getNext()){
+sb.append(node.getData()+"");
+}
+returnsb.toString()+"]";
+}
 
-    public int length2() {
-        int len = 0;
-        for (Node node = front; node != null; node = node.getNext(), len++);
-        return len;
-    }
+publicintlength(){
+intlen=0;
+Nodenode=front;
+while(node!=null){
+len++;
+node=node.getNext();
+}
+returnlen;
+}
 
-    public void insertAfter(E existingItem, E newItem) {
-        Node curNode = front;
-        while (!curNode.getData().equals(existingItem) && 
-               (curNode.getNext() != null)) {
-            curNode = curNode.getNext();
-        }
-        Node newNode = new Node(newItem, curNode.getNext());
-        curNode.setNext(newNode);
-    }
+publicintlength2(){
+intlen=0;
+for(Nodenode=front;node!=null;node=node.getNext(),len++);
+returnlen;
+}
 
-    public static void main(String[] args) {
-        GenericLinkedList2<String> lst = new GenericLinkedList2<>();
-        lst.addToFront("Thorny");
-        lst.addToFront("Farva");
-        lst.addToFront("Mac");
-        lst.addToFront("Rabbit");
-        lst.addToFront("Foster");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+publicvoidinsertAfter(EexistingItem,EnewItem){
+NodecurNode=front;
+while(!curNode.getData().equals(existingItem)&&
+(curNode.getNext()!=null)){
+curNode=curNode.getNext();
+}
+NodenewNode=newNode(newItem,curNode.getNext());
+curNode.setNext(newNode);
+}
 
-        lst.insertAfter("Rabbit", "Ursula");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
-        lst.insertAfter("Spread it on!", "Chimpo");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
-    }
+publicstaticvoidmain(String[]args){
+GenericLinkedList2<String>lst=newGenericLinkedList2<>();
+lst.addToFront("Thorny");
+lst.addToFront("Farva");
+lst.addToFront("Mac");
+lst.addToFront("Rabbit");
+lst.addToFront("Foster");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
+
+lst.insertAfter("Rabbit","Ursula");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
+lst.insertAfter("Spreaditon!","Chimpo");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
+}
 }

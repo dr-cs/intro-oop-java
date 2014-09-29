@@ -1,34 +1,34 @@
-import java.util.Scanner;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+importjava.util.Scanner;
+importjava.io.FileInputStream;
+importjava.io.FileNotFoundException;
 
-public class CourseAverage {
+publicclassCourseAverage{
 
-    public static void main(String[] args) {
-        int[] exams = new int[3];
-        double examAvg, hwAvg, finalExam, courseAvg;
-        Scanner gradeFile = null;
-        try {
-            gradeFile = new Scanner(new FileInputStream("grades.txt"));
-        } catch(FileNotFoundException e) {
-            System.out.println(e.getMessage());
-            System.exit(0);
-        }
-        for (int i = 0; i < 3; ++i) {
-            exams[i] = gradeFile.nextInt();
-        }
-        examAvg = calcAverage(exams);
-        hwAvg = gradeFile.nextDouble();
-        finalExam = gradeFile.nextDouble();
-        courseAvg = .2 * hwAvg + .6 * examAvg + .2 * finalExam;
-        System.out.printf("Your course average is %.1f%n", courseAvg);    
-    }
+publicstaticvoidmain(String[]args){
+int[]exams=newint[3];
+doubleexamAvg,hwAvg,finalExam,courseAvg;
+ScannergradeFile=null;
+try{
+gradeFile=newScanner(newFileInputStream("grades.txt"));
+}catch(FileNotFoundExceptione){
+System.out.println(e.getMessage());
+System.exit(0);
+}
+for(inti=0;i<3;++i){
+exams[i]=gradeFile.nextInt();
+}
+examAvg=calcAverage(exams);
+hwAvg=gradeFile.nextDouble();
+finalExam=gradeFile.nextDouble();
+courseAvg=.2*hwAvg+.6*examAvg+.2*finalExam;
+System.out.printf("Yourcourseaverageis%.1f%n",courseAvg);
+}
 
-    private static double calcAverage(int[] numbers) {
-        double sum = 0;
-        for (int number: numbers) {
-            sum += number;
-        }
-        return (double) sum / numbers.length;
-    }
+privatestaticdoublecalcAverage(int[]numbers){
+doublesum=0;
+for(intnumber:numbers){
+sum+=number;
+}
+return(double)sum/numbers.length;
+}
 }

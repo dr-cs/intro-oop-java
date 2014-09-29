@@ -1,6 +1,6 @@
-public class ExitListener extends ActionListener {
+publicclassExitListenerextendsActionListener{
 
-    public void actionPerformed(ActionEvent e) {
-        System.exit(0);
-    }
+publicvoidactionPerformed(ActionEvente){
+System.exit(0);
+}
 }

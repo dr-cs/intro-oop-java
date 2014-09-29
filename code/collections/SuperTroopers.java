@@ -1,126 +1,126 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.HashSet;
+importjava.util.ArrayList;
+importjava.util.List;
+importjava.util.Collections;
+importjava.util.Comparator;
+importjava.util.Set;
+importjava.util.HashSet;
 
-public class SuperTroopers {
+publicclassSuperTroopers{
 
-    static class Trooper implements Comparable<Trooper> {
+staticclassTrooperimplementsComparable<Trooper>{
 
-        private String name;
-        private boolean mustached;
+privateStringname;
+privatebooleanmustached;
 
-        public Trooper(String name, boolean hasMustache) {
-            this.name = name;
-            this.mustached = hasMustache;
-            MustacheComparator mc = new MustacheComparator();
-        }
+publicTrooper(Stringname,booleanhasMustache){
+this.name=name;
+this.mustached=hasMustache;
+MustacheComparatormc=newMustacheComparator();
+}
 
-        public String getName() { return name; }
-        public boolean hasMustache() { return mustached; }
+publicStringgetName(){returnname;}
+publicbooleanhasMustache(){returnmustached;}
 
-        public String toString() {
-            return getName() + (hasMustache() ? " :-{" : " :-|");
-        }
+publicStringtoString(){
+returngetName()+(hasMustache()?":-{":":-|");
+}
 
-        public boolean equals(Object other) {
-            if (null == other) return false;
-            if (this == other) return true;
-            if (!(other instanceof Trooper)) return false;
-            Trooper that = (Trooper) other;
-            return this.name.equals(that.name) && this.mustached == that.mustached;
-        }
+publicbooleanequals(Objectother){
+if(null==other)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofTrooper))returnfalse;
+Trooperthat=(Trooper)other;
+returnthis.name.equals(that.name)&&this.mustached==that.mustached;
+}
 
-        public int hashCode() {
-            int result = 17;
-            result = 31 * result + name.hashCode();
-            result = 31 * result + (mustached ? 1 : 0);
-            return result;
-        }
+publicinthashCode(){
+intresult=17;
+result=31*result+name.hashCode();
+result=31*result+(mustached?1:0);
+returnresult;
+}
 
-        public int compareTo(Trooper other) {
-            return this.name.compareTo(other.name);
-        }
-    }
+publicintcompareTo(Trooperother){
+returnthis.name.compareTo(other.name);
+}
+}
 
-    static class MustacheComparator implements Comparator<Trooper> {
+staticclassMustacheComparatorimplementsComparator<Trooper>{
 
-        public int compare(Trooper a, Trooper b) {
-            if (a.hasMustache() && !b.hasMustache()) {
-                return 1;
-            } else if (b.hasMustache() && !a.hasMustache()) {
-                return -1;
-            } else {
-                return a.getName().compareTo(b.getName());
-            }
-        }
-    }
+publicintcompare(Troopera,Trooperb){
+if(a.hasMustache()&&!b.hasMustache()){
+return1;
+}elseif(b.hasMustache()&&!a.hasMustache()){
+return-1;
+}else{
+returna.getName().compareTo(b.getName());
+}
+}
+}
 
-    public static void main(String[] args) {
-        List<Trooper> troopers = new ArrayList();
-        troopers.add(new Trooper("Thorny", true));
-        troopers.add(new Trooper("Farva", true));
-        troopers.add(new Trooper("Farva", true));
-        troopers.add(new Trooper("Ursula", false));
-        troopers.add(new Trooper("Rabbit", false));
-        troopers.add(new Trooper("Mac", true));
-        troopers.add(new Trooper("Foster", true));
+publicstaticvoidmain(String[]args){
+List<Trooper>troopers=newArrayList();
+troopers.add(newTrooper("Thorny",true));
+troopers.add(newTrooper("Farva",true));
+troopers.add(newTrooper("Farva",true));
+troopers.add(newTrooper("Ursula",false));
+troopers.add(newTrooper("Rabbit",false));
+troopers.add(newTrooper("Mac",true));
+troopers.add(newTrooper("Foster",true));
 
-        System.out.println("Before sorting:\n" + troopers);
+System.out.println("Beforesorting:\n"+troopers);
 
-        // Note that sort() is destructive, that is, it modifies the
-        // collection rather than returning a sorted copy.
-        Collections.sort(troopers);
-        System.out.println("\nAfter sorting:\n" + troopers);
+//Notethatsort()isdestructive,thatis,itmodifiesthe
+//collectionratherthanreturningasortedcopy.
+Collections.sort(troopers);
+System.out.println("\nAftersorting:\n"+troopers);
 
-        Collections.sort(troopers, new MustacheComparator());
-        System.out.println("\nAfter mustache-based sorting:\n" + troopers);
+Collections.sort(troopers,newMustacheComparator());
+System.out.println("\nAftermustache-basedsorting:\n"+troopers);
 
-        Collections.sort(troopers, new Comparator<Trooper>() {
-            public int compare(Trooper a, Trooper b) {
-                if (a.hasMustache() && !b.hasMustache()) {
-                return -1;
-            } else if (b.hasMustache() && !a.hasMustache()) {
-                return 1;
-            } else {
-                return -a.getName().compareTo(b.getName());
-            }
-            }
-        });
-        System.out.println("\nAfter reverse mustache-based sorting:\n" + troopers);
-
-
-        // Collections.sort(troopers, new ReverseMustacheComparator());
-        // System.out.println("\nAfter reverse mustache-based sorting:\n"
-        //                    + troopers);
+Collections.sort(troopers,newComparator<Trooper>(){
+publicintcompare(Troopera,Trooperb){
+if(a.hasMustache()&&!b.hasMustache()){
+return-1;
+}elseif(b.hasMustache()&&!a.hasMustache()){
+return1;
+}else{
+return-a.getName().compareTo(b.getName());
+}
+}
+});
+System.out.println("\nAfterreversemustache-basedsorting:\n"+troopers);
 
 
+//Collections.sort(troopers,newReverseMustacheComparator());
+//System.out.println("\nAfterreversemustache-basedsorting:\n"
+//+troopers);
 
 
-        // Notice that you can create a new collection by passing an
-        // existing collection to the constructor.  This is a
-        // convention in the collections framework, but is not
-        // guaranteed by any language feature of Java.
-        Set<Trooper> trooperSet = new HashSet<>(troopers);
 
-        // Notice that duplicates are removed, which is good, 'cuz who
-        // needs two Farvas?
-        System.out.println("\nAs a set:\n" + trooperSet);
 
-        System.out.println("Mac's hashCode: "
-                           + new Trooper("Mac", true).hashCode());
-        System.out.println("Mac's hashCode: "
-                           + new Trooper("Mac", true).hashCode());
-        System.out.println("Mac's hashCode: "
-                           + new Trooper("Mac", true).hashCode());
+//Noticethatyoucancreateanewcollectionbypassingan
+//existingcollectiontotheconstructor.Thisisa
+//conventioninthecollectionsframework,butisnot
+//guaranteedbyanylanguagefeatureofJava.
+Set<Trooper>trooperSet=newHashSet<>(troopers);
 
-        // Mac is in the set, but we don't find him because we didn't
-        // override hashCode().
-        System.out.println("\nOops!  Didn't override hashCode():");
-        System.out.println("trooperSet.contains(new Trooper(\"Mac\", true))="
-                           + trooperSet.contains(new Trooper("Mac", true)));
-    }
+//Noticethatduplicatesareremoved,whichisgood,'cuzwho
+//needstwoFarvas?
+System.out.println("\nAsaset:\n"+trooperSet);
+
+System.out.println("Mac'shashCode:"
++newTrooper("Mac",true).hashCode());
+System.out.println("Mac'shashCode:"
++newTrooper("Mac",true).hashCode());
+System.out.println("Mac'shashCode:"
++newTrooper("Mac",true).hashCode());
+
+//Macisintheset,butwedon'tfindhimbecausewedidn't
+//overridehashCode().
+System.out.println("\nOops!Didn'toverridehashCode():");
+System.out.println("trooperSet.contains(newTrooper(\"Mac\",true))="
++trooperSet.contains(newTrooper("Mac",true)));
+}
 
 }

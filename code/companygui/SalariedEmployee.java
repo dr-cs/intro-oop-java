@@ -1,46 +1,46 @@
-import java.util.Calendar;
-import java.util.Date;
+importjava.util.Calendar;
+importjava.util.Date;
 
-public final class SalariedEmployee extends Employee {
+publicfinalclassSalariedEmployeeextendsEmployee{
 
-    private static final int MONTHS_PER_YEAR = 12;
+privatestaticfinalintMONTHS_PER_YEAR=12;
 
-    private final double annualSalary;
+privatefinaldoubleannualSalary;
 
-    public SalariedEmployee(SalariedEmployee other) {
-        super(other);
-        this.annualSalary = other.annualSalary;
-    }
+publicSalariedEmployee(SalariedEmployeeother){
+super(other);
+this.annualSalary=other.annualSalary;
+}
 
-    public SalariedEmployee(String aName) {
-        this(aName, new Date(), 60000);
-    }
+publicSalariedEmployee(StringaName){
+this(aName,newDate(),60000);
+}
 
 
-    public SalariedEmployee(String aName, Date aHireDate,
-                            double anAnnualSalary) {
-        super(aName, aHireDate);
-        disallowZeroesAndNegatives(anAnnualSalary);
-        annualSalary = anAnnualSalary;
-    }
+publicSalariedEmployee(StringaName,DateaHireDate,
+doubleanAnnualSalary){
+super(aName,aHireDate);
+disallowZeroesAndNegatives(anAnnualSalary);
+annualSalary=anAnnualSalary;
+}
 
-    public double getAnnualSalary() {
-        return annualSalary;
-    }
+publicdoublegetAnnualSalary(){
+returnannualSalary;
+}
 
-    public double monthlyPay(Calendar cal) {
-        return annualSalary / MONTHS_PER_YEAR;
-    }
+publicdoublemonthlyPay(Calendarcal){
+returnannualSalary/MONTHS_PER_YEAR;
+}
 
-    public String toString() {
-        return super.toString() + "; Annual Salary: " + annualSalary;
-    }
+publicStringtoString(){
+returnsuper.toString()+";AnnualSalary:"+annualSalary;
+}
 
-    public boolean equals(Object other) {
-        if (other == null) return false;
-        if (this == other) return true;
-        if (!(other instanceof SalariedEmployee)) return false;
-        SalariedEmployee that = (SalariedEmployee) other;
-        return super.equals(that) && (this.annualSalary == that.annualSalary);
-    }
+publicbooleanequals(Objectother){
+if(other==null)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofSalariedEmployee))returnfalse;
+SalariedEmployeethat=(SalariedEmployee)other;
+returnsuper.equals(that)&&(this.annualSalary==that.annualSalary);
+}
 }

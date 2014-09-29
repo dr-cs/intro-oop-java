@@ -1,16 +1,16 @@
-public class Card2 {
+publicclassCard2{
 
-    private String rank;
-    private String suit;
+privateStringrank;
+privateStringsuit;
 
-    public String toString() {
-        return rank + " of " + suit;
-    }
+publicStringtoString(){
+returnrank+"of"+suit;
+}
 
-    public static void main(String[] args) {
-        Card2 c = new Card2();
-        c.rank = "ace";
-        c.suit = "base";
-        System.out.println(c);
-    }
+publicstaticvoidmain(String[]args){
+Card2c=newCard2();
+c.rank="ace";
+c.suit="base";
+System.out.println(c);
+}
 }

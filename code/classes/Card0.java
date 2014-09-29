@@ -1,12 +1,12 @@
-public class Card0 {
+publicclassCard0{
 
-    String rank;
-    String suit;
+Stringrank;
+Stringsuit;
 
-    public static void main(String[] args) {
-        Card0 c = new Card0();
-        c.rank = "ace";
-        c.suit = "base";
-        System.out.println(c);
-    }
+publicstaticvoidmain(String[]args){
+Card0c=newCard0();
+c.rank="ace";
+c.suit="base";
+System.out.println(c);
+}
 }

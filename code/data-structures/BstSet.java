@@ -1,28 +1,28 @@
-public class BstSet<E extends Comparable<E>> extends BinarySearchTree<E> {
+publicclassBstSet<EextendsComparable<E>>extendsBinarySearchTree<E>{
 
-    protected Node<E> insert(E newItem, Node<E> node) {
-        if (node == null) {
-            return new Node<E>(newItem, null, null);
-        } else if (newItem.compareTo(node.item) < 0) {
-            node.left = insert(newItem, node.left);
-            return node;
-        } else if (newItem.equals(node.item)) {
-            return node;
-        } else {
-            node.right = insert(newItem, node.right);
-            return node;
-        }
-    }
+protectedNode<E>insert(EnewItem,Node<E>node){
+if(node==null){
+returnnewNode<E>(newItem,null,null);
+}elseif(newItem.compareTo(node.item)<0){
+node.left=insert(newItem,node.left);
+returnnode;
+}elseif(newItem.equals(node.item)){
+returnnode;
+}else{
+node.right=insert(newItem,node.right);
+returnnode;
+}
+}
 
-    public static void main(String[] args) {
-        BinarySearchTree<Integer> nums = new BstSet<>();
-        nums.add(3);
-        nums.add(4);
-        nums.add(1);
-        nums.add(5);
-        nums.add(2);
-        nums.add(4);
-        nums.add(1);
-        System.out.println(nums);
-    }
+publicstaticvoidmain(String[]args){
+BinarySearchTree<Integer>nums=newBstSet<>();
+nums.add(3);
+nums.add(4);
+nums.add(1);
+nums.add(5);
+nums.add(2);
+nums.add(4);
+nums.add(1);
+System.out.println(nums);
+}
 }

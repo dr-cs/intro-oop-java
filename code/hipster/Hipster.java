@@ -1,35 +1,35 @@
-import java.awt.Color;
+importjava.awt.Color;
 
-public class Hipster extends Person {
+publicclassHipsterextendsPerson{
 
-    private int beardLength;
-    private Color beanieColor;
-    
-    public Hipster(String name, int jeanBagginess,
-                   int beardLength, Color beanieColor) {
-        super(name);
-        if (jeanBagginess > 0) {
-            throw new IllegalArgumentException("Jeans must be skinny!");
-        }
-        this.beardLength = beardLength;
-        this.beanieColor = beanieColor;
-    }
+privateintbeardLength;
+privateColorbeanieColor;
 
-    public int getBeardLength() {
-        return beardLength;
-    }
+publicHipster(Stringname,intjeanBagginess,
+intbeardLength,ColorbeanieColor){
+super(name);
+if(jeanBagginess>0){
+thrownewIllegalArgumentException("Jeansmustbeskinny!");
+}
+this.beardLength=beardLength;
+this.beanieColor=beanieColor;
+}
 
-    public Color getBeanieColor() {
-        return beanieColor;
-    }
-    
-    public boolean equals(Object other) {
-        if (null == other) return false;
-        if (this == other) return true;
-        if (!(other instanceof Hipster)) return false;
-        Hipster that = (Hipster) other;
-        return super.equals(that)
-            && this.beardLength == that.beardLength
-            && this.beanieColor.equals(that.beanieColor);
-    }
+publicintgetBeardLength(){
+returnbeardLength;
+}
+
+publicColorgetBeanieColor(){
+returnbeanieColor;
+}
+
+publicbooleanequals(Objectother){
+if(null==other)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofHipster))returnfalse;
+Hipsterthat=(Hipster)other;
+returnsuper.equals(that)
+&&this.beardLength==that.beardLength
+&&this.beanieColor.equals(that.beanieColor);
+}
 }

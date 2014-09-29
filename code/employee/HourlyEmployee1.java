@@ -1,11 +1,11 @@
-import java.util.Date;
+importjava.util.Date;
 
-public class HourlyEmployee1 extends Employee1 {
+publicclassHourlyEmployee1extendsEmployee1{
 
-    private double hourlyWage;
-    private double monthlyHours;
+privatedoublehourlyWage;
+privatedoublemonthlyHours;
 
-    public HourlyEmployee1(String aName, Date aHireDate) {
-        super(aName, aHireDate);
-    }
+publicHourlyEmployee1(StringaName,DateaHireDate){
+super(aName,aHireDate);
+}
 }

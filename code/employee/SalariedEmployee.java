@@ -1,51 +1,51 @@
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
+importjava.text.DateFormat;
+importjava.util.Calendar;
+importjava.util.Date;
 
-public class SalariedEmployee extends Employee {
+publicclassSalariedEmployeeextendsEmployee{
 
-    private static final int MONTHS_PER_YEAR = 12;
+privatestaticfinalintMONTHS_PER_YEAR=12;
 
-    private final double annualSalary;
+privatefinaldoubleannualSalary;
 
-    public SalariedEmployee(String aName, Date aHireDate,
-                            double anAnnualSalary) {
-        super(aName, aHireDate);
-        disallowZeroesAndNegatives(anAnnualSalary);
-        annualSalary = anAnnualSalary;
-    }
-    
-    public String getName() {
-        return "Salaried: " + super.getName();
-    }
+publicSalariedEmployee(StringaName,DateaHireDate,
+doubleanAnnualSalary){
+super(aName,aHireDate);
+disallowZeroesAndNegatives(anAnnualSalary);
+annualSalary=anAnnualSalary;
+}
 
-    public double getAnnualSalary() {
-        return annualSalary;
-    }
+publicStringgetName(){
+return"Salaried:"+super.getName();
+}
 
-    @Override
-    public double monthlyPay() {
-        return annualSalary / MONTHS_PER_YEAR;
-    }
+publicdoublegetAnnualSalary(){
+returnannualSalary;
+}
 
-    public String toString() {
-        return super.toString() + "; Annual Salary: " + annualSalary;
-    }
+@Override
+publicdoublemonthlyPay(){
+returnannualSalary/MONTHS_PER_YEAR;
+}
 
-    public boolean equals(Object other) {
-        if (other == null) return false;
-        if (this == other) return true;
-        if (!(other instanceof SalariedEmployee)) return false;
-        SalariedEmployee that = (SalariedEmployee) other;
-        return super.equals(that) && (this.annualSalary == that.annualSalary);
-    }
+publicStringtoString(){
+returnsuper.toString()+";AnnualSalary:"+annualSalary;
+}
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(HourlyEmployee.YAY);
-        DateFormat df = DateFormat.getDateInstance();
-        SalariedEmployee eva = new SalariedEmployee("Eva Luator",
-                                                    df.parse("June 10, 2013"),
-                                                    1000000);
-        System.out.println(eva.getName());
-    }
+publicbooleanequals(Objectother){
+if(other==null)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofSalariedEmployee))returnfalse;
+SalariedEmployeethat=(SalariedEmployee)other;
+returnsuper.equals(that)&&(this.annualSalary==that.annualSalary);
+}
+
+publicstaticvoidmain(String[]args)throwsException{
+System.out.println(HourlyEmployee.YAY);
+DateFormatdf=DateFormat.getDateInstance();
+SalariedEmployeeeva=newSalariedEmployee("EvaLuator",
+df.parse("June10,2013"),
+1000000);
+System.out.println(eva.getName());
+}
 }

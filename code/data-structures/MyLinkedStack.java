@@ -1,19 +1,19 @@
-public class MyLinkedStack<T extends Person> {
-    private LinkedList<T> list;
+publicclassMyLinkedStack<TextendsPerson>{
+privateLinkedList<T>list;
 
-    public MyLinkedStack() {
-        list = new LinkedList<T>();
-    }
+publicMyLinkedStack(){
+list=newLinkedList<T>();
+}
 
-    public void push(T item) {
-        list.addFront(item);
-    }
+publicvoidpush(Titem){
+list.addFront(item);
+}
 
-    public T pop() {
-        return list.removeFront();
-    }
+publicTpop(){
+returnlist.removeFront();
+}
 
-    public static void main(String[] args) {
-        MyLinkedStack<String> stack = new MyLinkedStack<>();
-    }
+publicstaticvoidmain(String[]args){
+MyLinkedStack<String>stack=newMyLinkedStack<>();
+}
 }

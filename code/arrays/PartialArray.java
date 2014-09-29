@@ -1,18 +1,18 @@
-public class PartialIntArray {
+publicclassPartialIntArray{
 
-    private int[] elementData;
-    private int size;
+privateint[]elementData;
+privateintsize;
 
-    public PartialIntArray(int initialCapacity) {
-        if (initialCapacity < 0)
-            throw new IllegalArgumentException("Illegal Capacity: "+
-                                               initialCapacity);
-        this.elementData = new int[initialCapacity];
-    }
+publicPartialIntArray(intinitialCapacity){
+if(initialCapacity<0)
+thrownewIllegalArgumentException("IllegalCapacity:"+
+initialCapacity);
+this.elementData=newint[initialCapacity];
+}
 
-    public ArrayList() {
-        this(10);
-    }
+publicArrayList(){
+this(10);
+}
 
-    // ...
+//...
 }

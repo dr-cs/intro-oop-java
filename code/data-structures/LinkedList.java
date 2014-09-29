@@ -1,94 +1,94 @@
-public class LinkedList {
+publicclassLinkedList{
 
-    private class Node {
-        Object data;
-        Node next;
+privateclassNode{
+Objectdata;
+Nodenext;
 
-        public Node(Object data, Node next) {
-            this.data = data;
-            this.next = next;
-        }
-    }
+publicNode(Objectdata,Nodenext){
+this.data=data;
+this.next=next;
+}
+}
 
-    private Node head;
+privateNodehead;
 
-    /**
-     * Add a new item to the head of this list.
-     */
-    public void add(Object item) {
-        head = new Node(item, head);
-    }
+/**
+*Addanewitemtotheheadofthislist.
+*/
+publicvoidadd(Objectitem){
+head=newNode(item,head);
+}
 
-    /**
-     * Return the item at the head of this list and remove it from this list.
-     */
-    public Object removeHead() {
-        if (null == head) {
-            throw new RuntimeException("Can't removeHead() on empty list.");
-        }
-        Object answer = head.data;
-        head = head.next;
-        return answer;
-    }
+/**
+*Returntheitemattheheadofthislistandremoveitfromthislist.
+*/
+publicObjectremoveHead(){
+if(null==head){
+thrownewRuntimeException("Can'tremoveHead()onemptylist.");
+}
+Objectanswer=head.data;
+head=head.next;
+returnanswer;
+}
 
-    /**
-     * The number of items in this list.  See slide 9.
-     */
-    public int length() {
-        int len = 0;
-        Node node = head;
-        while (node != null) {
-            len++;
-            node = node.next;
-        }
-        return len;
-    }
+/**
+*Thenumberofitemsinthislist.Seeslide9.
+*/
+publicintlength(){
+intlen=0;
+Nodenode=head;
+while(node!=null){
+len++;
+node=node.next;
+}
+returnlen;
+}
 
-    /**
-     * @return true if this list has no elements, false otherwise.
-     */
-    public boolean isEmpty() {
-        return head == null;
-    }
+/**
+*@returntrueifthislisthasnoelements,falseotherwise.
+*/
+publicbooleanisEmpty(){
+returnhead==null;
+}
 
-    public String toString() {
-        StringBuilder sb = new StringBuilder("[");
-        for (Node node = head; node != null; node = node.next) {
-            sb.append(node.data + " ");
-        }
-        return sb.toString() + "]";
-    }
+publicStringtoString(){
+StringBuildersb=newStringBuilder("[");
+for(Nodenode=head;node!=null;node=node.next){
+sb.append(node.data+"");
+}
+returnsb.toString()+"]";
+}
 
 
-    // See slide 8
-    public void insertAfter(Object existingItem, Object newItem) {
-        Node curNode = head;
-        while (!curNode.data.equals(existingItem) &&
-               (curNode.next != null)) {
-            curNode = curNode.next;
-        }
-        Node newNode = new Node(newItem, curNode.next);
-        curNode.next = newNode;
-    }
+//Seeslide8
+publicvoidinsertAfter(ObjectexistingItem,ObjectnewItem){
+NodecurNode=head;
+while(!curNode.data.equals(existingItem)&&
+(curNode.next!=null)){
+curNode=curNode.next;
+}
+NodenewNode=newNode(newItem,curNode.next);
+curNode.next=newNode;
+}
 
-    public static void main(String[] args) {
-        LinkedList lst = new LinkedList();
-        lst.add("Thorny");
-        lst.add("Farva");
-        lst.add("Mac");
-        lst.add("Rabbit");
-        lst.add("Foster");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+publicstaticvoidmain(String[]args){
+LinkedListlst=newLinkedList();
+lst.add("Thorny");
+lst.add("Farva");
+lst.add("Mac");
+lst.add("Rabbit");
+lst.add("Foster");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
 
-        // Insert after existing item
-        lst.insertAfter("Rabbit", "Ursula");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+//Insertafterexistingitem
+lst.insertAfter("Rabbit","Ursula");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
 
-        // Insert after non-existing item - goes to tail of list
-        lst.insertAfter("Wonder Woman", "Chimpo");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
-    }
+//Insertafternon-existingitem-goestotailoflist
+lst.insertAfter("WonderWoman","Chimpo");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
+}
 }

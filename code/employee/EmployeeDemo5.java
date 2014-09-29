@@ -1,20 +1,20 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
+importjava.text.DateFormat;
+importjava.text.ParseException;
+importjava.util.Date;
 
-public class EmployeeDemo5 {
+publicclassEmployeeDemo5{
 
-    /**
-     * Demonstrates the use of Employee and sublclasses thereof.
-     *
-     * @throws java.text.ParseException if the date String supplied 
-     *         to DateFormat.parse is not properly formatted.
-     */
-    public static void main(String[] args) throws ParseException {
-        DateFormat df = DateFormat.getDateInstance();
-        HourlyEmployee5 eva = new HourlyEmployee5("Eva L. Uator",
-                                                  df.parse("February 18, 2013"),
-                                                  20.00, 160);
-        System.out.println(eva.getName() + " was hired on " +eva.getHireDate());
-    }
+/**
+*DemonstratestheuseofEmployeeandsublclassesthereof.
+*
+*@throwsjava.text.ParseExceptionifthedateStringsupplied
+*toDateFormat.parseisnotproperlyformatted.
+*/
+publicstaticvoidmain(String[]args)throwsParseException{
+DateFormatdf=DateFormat.getDateInstance();
+HourlyEmployee5eva=newHourlyEmployee5("EvaL.Uator",
+df.parse("February18,2013"),
+20.00,160);
+System.out.println(eva.getName()+"washiredon"+eva.getHireDate());
+}
 }

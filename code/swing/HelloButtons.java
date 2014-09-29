@@ -1,30 +1,30 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+importjava.awt.event.ActionListener;
+importjava.awt.event.ActionEvent;
+importjava.awt.FlowLayout;
+importjavax.swing.JButton;
+importjavax.swing.JFrame;
+importjavax.swing.JLabel;
 
-public class HelloButtons {
+publicclassHelloButtons{
 
-    public static void main(String[] args) {
-        JFrame mainFrame = new JFrame("Hello, buttons!");
-        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        mainFrame.setLayout(new FlowLayout());
+publicstaticvoidmain(String[]args){
+JFramemainFrame=newJFrame("Hello,buttons!");
+mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+mainFrame.setLayout(newFlowLayout());
 
-        JButton exitButton = new JButton("Exit");
-        exitButton.addActionListener(new ExitListener());
+JButtonexitButton=newJButton("Exit");
+exitButton.addActionListener(newExitListener());
 
-        JLabel counterLabel = new JLabel("Count: 0");
+JLabelcounterLabel=newJLabel("Count:0");
 
-        JButton counterButton = new JButton("Increment count");
-        CountListener cl = new CountListener(counterLabel);
-        counterButton.addActionListener(cl);
+JButtoncounterButton=newJButton("Incrementcount");
+CountListenercl=newCountListener(counterLabel);
+counterButton.addActionListener(cl);
 
-        mainFrame.add(exitButton);
-        mainFrame.add(counterButton);
-        mainFrame.add(counterLabel);
-        mainFrame.pack();
-        mainFrame.setVisible(true);
-    }
+mainFrame.add(exitButton);
+mainFrame.add(counterButton);
+mainFrame.add(counterLabel);
+mainFrame.pack();
+mainFrame.setVisible(true);
+}
 }

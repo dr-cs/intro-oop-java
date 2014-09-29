@@ -1,97 +1,97 @@
-import java.util.Arrays;
-import java.util.Iterator;
+importjava.util.Arrays;
+importjava.util.Iterator;
 
-public class DynamicArray<E> implements Iterable<E> {
+publicclassDynamicArray<E>implementsIterable<E>{
 
-    private class DynamicArrayIterator implements Iterator<E> {
-        private int cursor = 0;
+privateclassDynamicArrayIteratorimplementsIterator<E>{
+privateintcursor=0;
 
-        public boolean hasNext() {
-            return cursor <= lastIndex;
-        }
+publicbooleanhasNext(){
+returncursor<=lastIndex;
+}
 
-        public E next() {
-            E answer = get(cursor);
-            cursor++;
-            return answer;
-        }
+publicEnext(){
+Eanswer=get(cursor);
+cursor++;
+returnanswer;
+}
 
-        public void remove() {
-            DynamicArray.this.remove(cursor - 1);
-        }
-    }
+publicvoidremove(){
+DynamicArray.this.remove(cursor-1);
+}
+}
 
-    private Object[] elements;
-    private int lastIndex;
+privateObject[]elements;
+privateintlastIndex;
 
-    public DynamicArray() {
-        this(10);
-    }
+publicDynamicArray(){
+this(10);
+}
 
-    public DynamicArray(int capacity) {
-        this.elements = new Object[capacity];
-        lastIndex = -1;
-    }
+publicDynamicArray(intcapacity){
+this.elements=newObject[capacity];
+lastIndex=-1;
+}
 
-    public Iterator<E> iterator() {
-        return new DynamicArrayIterator();
-    }
+publicIterator<E>iterator(){
+returnnewDynamicArrayIterator();
+}
 
-    public void add(E item) {
-        if (lastIndex == elements.length - 1) {
-            // Note: this is simplistic.  In production code we'd want to
-            // guard against overflow
-            int newCapacity = elements.length * 2;
-            elements = Arrays.copyOf(elements, newCapacity);
-        }
-        elements[++lastIndex] = item;
-    }
+publicvoidadd(Eitem){
+if(lastIndex==elements.length-1){
+//Note:thisissimplistic.Inproductioncodewe'dwantto
+//guardagainstoverflow
+intnewCapacity=elements.length*2;
+elements=Arrays.copyOf(elements,newCapacity);
+}
+elements[++lastIndex]=item;
+}
 
-    public E get(int index) {
-        if ((index < 0) || (index > lastIndex)) {
-            throw new IndexOutOfBoundsException(new Integer(index).toString());
-        }
-        return (E) elements[index];
-    }
+publicEget(intindex){
+if((index<0)||(index>lastIndex)){
+thrownewIndexOutOfBoundsException(newInteger(index).toString());
+}
+return(E)elements[index];
+}
 
-    public void set(int index, E item) {
-        elements[index] = item;
-    }
+publicvoidset(intindex,Eitem){
+elements[index]=item;
+}
 
-    public int size() {
-        return lastIndex + 1;
-    }
+publicintsize(){
+returnlastIndex+1;
+}
 
-    public E remove(int index) {
-        E removedItem = (E) elements[index];
-        for (int i = index + 1; i <= lastIndex; i++) {
-            elements[i - 1] = elements[i];
-        }
-        lastIndex--;
-        return removedItem;
-    }
+publicEremove(intindex){
+EremovedItem=(E)elements[index];
+for(inti=index+1;i<=lastIndex;i++){
+elements[i-1]=elements[i];
+}
+lastIndex--;
+returnremovedItem;
+}
 
-    public static void main(String[] args) {
-        DynamicArray<String> da = new DynamicArray<>(2);
-        da.add("Stan");
-        da.add("Kenny");
-        // Automatically growing capacity
-        da.add("Cartman");
-        System.out.println("da contents:");
-        // Using indexed-based access:
-        for (int i = 0; i < da.size(); ++i) {
-            System.out.println(da.get(i));
-        }
-        System.out.println("You killed Kenny!");
-        Iterator daIter = da.iterator();
-        while (daIter.hasNext()) {
-            if (daIter.next().equals("Kenny")) {
-                daIter.remove();
-            }
-        }
-        // Using iterator:
-        for (String e: da) {
-            System.out.println(e);
-        }
-    }
+publicstaticvoidmain(String[]args){
+DynamicArray<String>da=newDynamicArray<>(2);
+da.add("Stan");
+da.add("Kenny");
+//Automaticallygrowingcapacity
+da.add("Cartman");
+System.out.println("dacontents:");
+//Usingindexed-basedaccess:
+for(inti=0;i<da.size();++i){
+System.out.println(da.get(i));
+}
+System.out.println("YoukilledKenny!");
+IteratordaIter=da.iterator();
+while(daIter.hasNext()){
+if(daIter.next().equals("Kenny")){
+daIter.remove();
+}
+}
+//Usingiterator:
+for(Stringe:da){
+System.out.println(e);
+}
+}
 }

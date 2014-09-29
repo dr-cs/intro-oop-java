@@ -1,42 +1,42 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+importjava.awt.event.ActionListener;
+importjava.awt.event.ActionEvent;
+importjava.awt.GridLayout;
+importjavax.swing.JButton;
+importjavax.swing.JFrame;
+importjavax.swing.JLabel;
 
-public class CounterGrid extends JFrame {
+publicclassCounterGridextendsJFrame{
 
 
-    private class CountListener implements ActionListener {
-        int count = 0;
+privateclassCountListenerimplementsActionListener{
+intcount=0;
 
-        public void actionPerformed(ActionEvent e) {
-            System.out.println(count++);
-        }
-    }
+publicvoidactionPerformed(ActionEvente){
+System.out.println(count++);
+}
+}
 
-    public CounterGrid() {
-        super("Counter");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new GridLayout(3,1)); // 3 rows, 1 column
+publicCounterGrid(){
+super("Counter");
+setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+setLayout(newGridLayout(3,1));//3rows,1column
 
-        JButton exitButton = new JButton("Exit");
-        exitButton.addActionListener(new ExitListener());
+JButtonexitButton=newJButton("Exit");
+exitButton.addActionListener(newExitListener());
 
-        JLabel counterLabel = new JLabel("Count: 0");
-        JButton counterButton = new JButton("Increment count");
-        counterButton.addActionListener(new CountListener());
+JLabelcounterLabel=newJLabel("Count:0");
+JButtoncounterButton=newJButton("Incrementcount");
+counterButton.addActionListener(newCountListener());
 
-        add(counterButton);
-        add(counterLabel);
-        add(exitButton);
+add(counterButton);
+add(counterLabel);
+add(exitButton);
 
-        setSize(200, 300);
-    }
+setSize(200,300);
+}
 
-    public static void main(String[] args) {
-        CounterGrid cf = new CounterGrid();
-        cf.setVisible(true);
-    }
+publicstaticvoidmain(String[]args){
+CounterGridcf=newCounterGrid();
+cf.setVisible(true);
+}
 }

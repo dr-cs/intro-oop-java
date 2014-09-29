@@ -1,27 +1,27 @@
-package edu.gatech.cs1331.companygui;
+packageedu.gatech.cs1331.companygui;
 
-import javax.swing.JFileChooser;
-import javax.swing.ListModel;
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import java.io.File;
+importjavax.swing.JFileChooser;
+importjavax.swing.ListModel;
+importjavax.swing.DefaultListModel;
+importjavax.swing.JFrame;
+importjava.io.File;
 
-public class CompanyGui {
+publicclassCompanyGui{
 
-    public static void main(String[] args) throws Exception {
-        File thisDir = new File(System.getProperty("user.dir"));
-        JFileChooser chooser = new JFileChooser(thisDir);
-        int returnVal = chooser.showOpenDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = chooser.getSelectedFile();
-            Company company = new Company(file);
-            DefaultListModel lm = new DefaultListModel();
-            for (Employee e: company.getEmployees()) {
-                lm.addElement(e);
-            }
-            CompanyFrame cf = new CompanyFrame(lm);
-            cf.pack();
-            cf.setVisible(true);
-        }
-    }
+publicstaticvoidmain(String[]args)throwsException{
+FilethisDir=newFile(System.getProperty("user.dir"));
+JFileChooserchooser=newJFileChooser(thisDir);
+intreturnVal=chooser.showOpenDialog(null);
+if(returnVal==JFileChooser.APPROVE_OPTION){
+Filefile=chooser.getSelectedFile();
+Companycompany=newCompany(file);
+DefaultListModellm=newDefaultListModel();
+for(Employeee:company.getEmployees()){
+lm.addElement(e);
+}
+CompanyFramecf=newCompanyFrame(lm);
+cf.pack();
+cf.setVisible(true);
+}
+}
 }

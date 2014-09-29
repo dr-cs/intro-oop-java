@@ -1,20 +1,20 @@
-public class CourseGrade {
+publicclassCourseGrade{
 
-    public static void main(String[] args) {
-        double homeworkAverage = 74.2;
-        double exam1 = 81;
-        double exam2 = 93;
-        double exam3 = 95;
-        double finalExam = 89;
-        double examAverage = (exam1 + exam2 + exam3) / 3;
-        double courseAverage = (.2 * homeworkAverage) + (.6 * examAverage)
-            + (.2 * finalExam);
-        System.out.println("Course Average: " + courseAverage);
-        char grade = 'F';
-        if (courseAverage >= 90) grade = 'A';
-        else if (courseAverage >= 80) grade = 'B';
-        else if (courseAverage >= 70) grade = 'C';
-        else if (courseAverage >= 60) grade = 'D';
-        System.out.println("Course Grade: " + grade);
-    }
+publicstaticvoidmain(String[]args){
+doublehomeworkAverage=74.2;
+doubleexam1=81;
+doubleexam2=93;
+doubleexam3=95;
+doublefinalExam=89;
+doubleexamAverage=(exam1+exam2+exam3)/3;
+doublecourseAverage=(.2*homeworkAverage)+(.6*examAverage)
++(.2*finalExam);
+System.out.println("CourseAverage:"+courseAverage);
+chargrade='F';
+if(courseAverage>=90)grade='A';
+elseif(courseAverage>=80)grade='B';
+elseif(courseAverage>=70)grade='C';
+elseif(courseAverage>=60)grade='D';
+System.out.println("CourseGrade:"+grade);
+}
 }

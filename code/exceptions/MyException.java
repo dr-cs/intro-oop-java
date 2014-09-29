@@ -1,6 +1,6 @@
-public class MyException extends Exception {
+publicclassMyExceptionextendsException{
 
-    public MyException(String msg) {
-        super(msg);
-    }
+publicMyException(Stringmsg){
+super(msg);
+}
 }

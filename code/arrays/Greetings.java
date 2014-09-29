@@ -1,16 +1,16 @@
-import java.util.Random;
+importjava.util.Random;
 
-public class Greetings {
+publicclassGreetings{
 
-    private static final String[] GREETINGS = {"Hi", "Hello", "W'sup"};
+privatestaticfinalString[]GREETINGS={"Hi","Hello","W'sup"};
 
-    public static void main(String[] args) {
-        Random rand = new Random();
-        int greeting = rand.nextInt(GREETINGS.length);
-        System.out.print(GREETINGS[greeting]);
-        if (args.length > 0) { // What if we didn't include this check?
-            System.out.print(", " + args[0]);
-        }
-        System.out.println("!");
-    }
+publicstaticvoidmain(String[]args){
+Randomrand=newRandom();
+intgreeting=rand.nextInt(GREETINGS.length);
+System.out.print(GREETINGS[greeting]);
+if(args.length>0){//Whatifwedidn'tincludethischeck?
+System.out.print(","+args[0]);
+}
+System.out.println("!");
+}
 }

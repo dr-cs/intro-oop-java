@@ -1,13 +1,13 @@
 
-    public List toList() {
-        return inOrderList(root, new ArrayList<E>());
-    }
+publicListtoList(){
+returninOrderList(root,newArrayList<E>());
+}
 
-    private List<E> inOrderList(Node<E> node, List<E> accum) {
-        if (node != null) {
-            inOrderList(node.left, accum);
-            accum.add(node.item);
-            inOrderList(node.right, accum);
-        }
-        return accum;
-    }
+privateList<E>inOrderList(Node<E>node,List<E>accum){
+if(node!=null){
+inOrderList(node.left,accum);
+accum.add(node.item);
+inOrderList(node.right,accum);
+}
+returnaccum;
+}

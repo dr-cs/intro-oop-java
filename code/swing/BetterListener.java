@@ -1,38 +1,38 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.BorderLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+importjava.awt.event.ActionEvent;
+importjava.awt.event.ActionListener;
+importjava.awt.BorderLayout;
+importjavax.swing.JButton;
+importjavax.swing.JFrame;
 
-public class BetterListener extends JFrame {
+publicclassBetterListenerextendsJFrame{
 
-    private class HelloListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Hello was pressed.");
-        }
-    }
+privateclassHelloListenerimplementsActionListener{
+publicvoidactionPerformed(ActionEvente){
+System.out.println("Hellowaspressed.");
+}
+}
 
-    private class GoodByeListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Good bye was pressed.");
-        }
-    }
+privateclassGoodByeListenerimplementsActionListener{
+publicvoidactionPerformed(ActionEvente){
+System.out.println("Goodbyewaspressed.");
+}
+}
 
-    public BetterListener() {
-        super("Better Listener");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        JButton helloButton = new JButton("Hello");
-        helloButton.addActionListener(new HelloListener());
-        JButton goodByeButton = new JButton("Good bye");
-        goodByeButton.addActionListener(new GoodByeListener());
-        add(helloButton, BorderLayout.NORTH);
-        add(goodByeButton, BorderLayout.SOUTH);
-    }
+publicBetterListener(){
+super("BetterListener");
+setDefaultCloseOperation(EXIT_ON_CLOSE);
+JButtonhelloButton=newJButton("Hello");
+helloButton.addActionListener(newHelloListener());
+JButtongoodByeButton=newJButton("Goodbye");
+goodByeButton.addActionListener(newGoodByeListener());
+add(helloButton,BorderLayout.NORTH);
+add(goodByeButton,BorderLayout.SOUTH);
+}
 
 
-    public static void main(String[] args) {
-        BetterListener better = new BetterListener();
-        better.pack();
-        better.setVisible(true);
-    }
+publicstaticvoidmain(String[]args){
+BetterListenerbetter=newBetterListener();
+better.pack();
+better.setVisible(true);
+}
 }

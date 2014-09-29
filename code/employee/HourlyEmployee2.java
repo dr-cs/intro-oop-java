@@ -1,55 +1,55 @@
-import java.util.Date;
+importjava.util.Date;
 
-public class HourlyEmployee2 extends Employee2 {
+publicclassHourlyEmployee2extendsEmployee2{
 
-    private double hourlyWage;
-    private double monthlyHours;
+privatedoublehourlyWage;
+privatedoublemonthlyHours;
 
-    public HourlyEmployee2(String aName, Date aHireDate,
-                          double anHourlyWage, double aMonthlyHours) {
-        super(aName, aHireDate);
-        disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);
-        hourlyWage = anHourlyWage;
-        monthlyHours = aMonthlyHours;
-    }
+publicHourlyEmployee2(StringaName,DateaHireDate,
+doubleanHourlyWage,doubleaMonthlyHours){
+super(aName,aHireDate);
+disallowZeroesAndNegatives(anHourlyWage,aMonthlyHours);
+hourlyWage=anHourlyWage;
+monthlyHours=aMonthlyHours;
+}
 
-    private void disallowZeroesAndNegatives(double ... args) {
-        boolean shouldThrowException = false;
-        String nonPositives = "";
-        for (double arg: args) {
-            if (arg <= 0.0) {
-                shouldThrowException = true;
-                nonPositives += arg + " ";
-            }
-        }
-        if (shouldThrowException) {
-            String msg = "Following arguments were <= 0: " + nonPositives;
-            throw new IllegalArgumentException(msg);
-        }
-    }
+privatevoiddisallowZeroesAndNegatives(double...args){
+booleanshouldThrowException=false;
+StringnonPositives="";
+for(doublearg:args){
+if(arg<=0.0){
+shouldThrowException=true;
+nonPositives+=arg+"";
+}
+}
+if(shouldThrowException){
+Stringmsg="Followingargumentswere<=0:"+nonPositives;
+thrownewIllegalArgumentException(msg);
+}
+}
 
-    public String getName() {
-        return "Hourly: " + super.getName();
-    }
+publicStringgetName(){
+return"Hourly:"+super.getName();
+}
 
-    public double getHourlyWage() {
-        return hourlyWage;
-    }
+publicdoublegetHourlyWage(){
+returnhourlyWage;
+}
 
-    public void setHourlyWage(double newWage) {
-        hourlyWage = newWage;
-    }
+publicvoidsetHourlyWage(doublenewWage){
+hourlyWage=newWage;
+}
 
-    public double getMonthlyHours() {
-        return monthlyHours;
-    }
+publicdoublegetMonthlyHours(){
+returnmonthlyHours;
+}
 
-    public double monthlyPay() {
-        return hourlyWage * monthlyHours;
-    }
+publicdoublemonthlyPay(){
+returnhourlyWage*monthlyHours;
+}
 
-    public String toString() {
-        return getName() + "; Hire Date: " + getHireDate() + "; Hourly Wage: "
-            + hourlyWage + "; Monthly Hours: " + monthlyHours;
-    }
+publicStringtoString(){
+returngetName()+";HireDate:"+getHireDate()+";HourlyWage:"
++hourlyWage+";MonthlyHours:"+monthlyHours;
+}
 }

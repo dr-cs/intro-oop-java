@@ -1,19 +1,19 @@
-public class GtStudent extends Person {
+publicclassGtStudentextendsPerson{
 
-    public enum Major {
-        CS, CM, CMPE, EE, IE, ME, AE, ARCH, BME, STAC, MGT, EIA
-    }
+publicenumMajor{
+CS,CM,CMPE,EE,IE,ME,AE,ARCH,BME,STAC,MGT,EIA
+}
 
-    private int year;
-    private Major major;
+privateintyear;
+privateMajormajor;
 
-    public GtStudent(String aName, int aYear, Major aMajor) {
-        name = aName;
-        year = aYear;
-        major = aMajor;
-    }
-    
-    public String toString() {
-        return name + ", " + year + "-year " + major;
-    }
+publicGtStudent(StringaName,intaYear,MajoraMajor){
+name=aName;
+year=aYear;
+major=aMajor;
+}
+
+publicStringtoString(){
+returnname+","+year+"-year"+major;
+}
 }

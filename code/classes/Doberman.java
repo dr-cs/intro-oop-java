@@ -1,34 +1,34 @@
-import java.util.ArrayList;
+importjava.util.ArrayList;
 
-public class Doberman {
-    
-    public static String STD_DOBIE_SIZE = "large";
+publicclassDoberman{
 
-    private static int dobieCount = 0;
-    
-    private String name;
+publicstaticStringSTD_DOBIE_SIZE="large";
 
-    public Doberman(String name) {
-        this.name = name;
-        dobieCount++;
-    }
+privatestaticintdobieCount=0;
 
-    public String reportDobieCount() {
-        return name + " says there are " + dobieCount + " dobies.";
-    }
+privateStringname;
 
-    public boolean equals(Doberman other) {
-        if (null == other) { return false; }
-        if (this == other) { return true; }
-        if (!(other instanceof Doberman)) { return false;}
-        return this.name.equals(((Doberman) other).name);
-    }
+publicDoberman(Stringname){
+this.name=name;
+dobieCount++;
+}
 
-    public static void main(String[] args) {
-        ArrayList daringDobermans = new ArrayList();
-        daringDobermans.add(new Doberman("Chloe"));
-        System.out.println(daringDobermans.contains(new Doberman("Chloe")));
-        Doberman d = null;
-        System.out.println(d.toString());
-    }
+publicStringreportDobieCount(){
+returnname+"saysthereare"+dobieCount+"dobies.";
+}
+
+publicbooleanequals(Dobermanother){
+if(null==other){returnfalse;}
+if(this==other){returntrue;}
+if(!(otherinstanceofDoberman)){returnfalse;}
+returnthis.name.equals(((Doberman)other).name);
+}
+
+publicstaticvoidmain(String[]args){
+ArrayListdaringDobermans=newArrayList();
+daringDobermans.add(newDoberman("Chloe"));
+System.out.println(daringDobermans.contains(newDoberman("Chloe")));
+Dobermand=null;
+System.out.println(d.toString());
+}
 }

@@ -1,30 +1,30 @@
-import java.io.File;
+importjava.io.File;
 
-public class BadCompany {
+publicclassBadCompany{
 
-    private HourlyEmployee[] hourlyEmployees;
-    private int numHourlyEmployees;
-    private SalariedEmployee[] salariedEmployees;
-    private int numSalariedEmployees;
+privateHourlyEmployee[]hourlyEmployees;
+privateintnumHourlyEmployees;
+privateSalariedEmployee[]salariedEmployees;
+privateintnumSalariedEmployees;
 
-    public BadCompany(String employeeDataFile) {
-        hourlyEmployees = new HourlyEmployee[10];
-        salariedEmployees = new SalariedEmployee[10];
-        loadEmployeesFromFile(new File(employeeDataFile));
-    }
+publicBadCompany(StringemployeeDataFile){
+hourlyEmployees=newHourlyEmployee[10];
+salariedEmployees=newSalariedEmployee[10];
+loadEmployeesFromFile(newFile(employeeDataFile));
+}
 
-    public double monthlyPayroll() {
-        double payroll = 0.0;
-        for (int i = 0; i < numHourlyEmployees; ++i) {
-            payroll += hourlyEmployees[i].monthlyPay();
-        }
-        for (int i = 0; i < numSalariedEmployees; ++i) {
-            payroll += salariedEmployees[i].monthlyPay();
-        }
-        return payroll;
-    }
-    
-    private void loadEmployeesFromFile(File empData) {
+publicdoublemonthlyPayroll(){
+doublepayroll=0.0;
+for(inti=0;i<numHourlyEmployees;++i){
+payroll+=hourlyEmployees[i].monthlyPay();
+}
+for(inti=0;i<numSalariedEmployees;++i){
+payroll+=salariedEmployees[i].monthlyPay();
+}
+returnpayroll;
+}
 
-    }
+privatevoidloadEmployeesFromFile(FileempData){
+
+}
 }

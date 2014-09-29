@@ -1,26 +1,26 @@
-import java.util.Random;
+importjava.util.Random;
 
-public class Greeter {
+publicclassGreeter{
 
-    private static final String[] GREETINGS = {"Hi", "Hello", "W'sup"};
+privatestaticfinalString[]GREETINGS={"Hi","Hello","W'sup"};
 
-    private String greetee;
+privateStringgreetee;
 
-    public Greeter(String name) {
-        greetee = name;
-    }
+publicGreeter(Stringname){
+greetee=name;
+}
 
-    public String greet() {
-        Random rand = new Random();
-        int index = rand.nextInt(GREETINGS.length);
-        String greeting = GREETINGS[index];
-        greeting += ", " + greetee +"!";
-        return greeting;
-    }
+publicStringgreet(){
+Randomrand=newRandom();
+intindex=rand.nextInt(GREETINGS.length);
+Stringgreeting=GREETINGS[index];
+greeting+=","+greetee+"!";
+returngreeting;
+}
 
-    public static void main(String[] args) {
-        Greeter greeter = new Greeter("bob");
-        String greeting = greeter.greet();
-        System.out.println(greeting);
-    }
+publicstaticvoidmain(String[]args){
+Greetergreeter=newGreeter("bob");
+Stringgreeting=greeter.greet();
+System.out.println(greeting);
+}
 }

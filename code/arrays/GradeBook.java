@@ -1,26 +1,26 @@
-public class GradeBook {
+publicclassGradeBook{
 
-    private int[] scores;
-    private int lastScore;
+privateint[]scores;
+privateintlastScore;
 
-    public GradeBook() {
-        this(10);
-    }
-    
-    public GradeBook(int capacity) {
-        scores = new int[capacity];
-        lastScore = 0;
-    }
+publicGradeBook(){
+this(10);
+}
 
-    public void add(int score) {
-        scores[lastScore++] = score;
-    }
+publicGradeBook(intcapacity){
+scores=newint[capacity];
+lastScore=0;
+}
 
-    public void modifyScore(int index, int newScore) {
-        scores[index] = newScore;
-    }
+publicvoidadd(intscore){
+scores[lastScore++]=score;
+}
 
-    public int[] getScores() {
-        return scores;
-    }
+publicvoidmodifyScore(intindex,intnewScore){
+scores[index]=newScore;
+}
+
+publicint[]getScores(){
+returnscores;
+}
 }

@@ -1,8 +1,8 @@
-public interface Stack<E> {
+publicinterfaceStack<E>{
 
-    public void push(E item);
+publicvoidpush(Eitem);
 
-    public E pop() throws java.util.EmptyStackException;
+publicEpop()throwsjava.util.EmptyStackException;
 
-    public boolean isEmpty();
+publicbooleanisEmpty();
 }

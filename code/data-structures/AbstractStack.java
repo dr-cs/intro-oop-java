@@ -1,11 +1,11 @@
-public abstract class AbstractStack<E> implements Stack<E> {
+publicabstractclassAbstractStack<E>implementsStack<E>{
 
-    public final E pop() {
-        if (isEmpty()) {
-            throw new java.util.EmptyStackException();
-        }
-        return removeNext();
-    }
+publicfinalEpop(){
+if(isEmpty()){
+thrownewjava.util.EmptyStackException();
+}
+returnremoveNext();
+}
 
-    protected abstract E removeNext();
+protectedabstractEremoveNext();
 }

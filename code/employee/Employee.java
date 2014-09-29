@@ -1,37 +1,37 @@
-import java.util.Calendar;
-import java.util.Date;
+importjava.util.Calendar;
+importjava.util.Date;
 
-public abstract class Employee {
+publicabstractclassEmployee{
 
-    private String name;
-    private Date hireDate;
+privateStringname;
+privateDatehireDate;
 
-    public Employee(String aName, Date aHireDate) {
-        ValidationUtils.disallowNullArguments(aName, aHireDate);
-        name = aName;
-        hireDate = aHireDate;
-    }
+publicEmployee(StringaName,DateaHireDate){
+ValidationUtils.disallowNullArguments(aName,aHireDate);
+name=aName;
+hireDate=aHireDate;
+}
 
-    public abstract double monthlyPay();
+publicabstractdoublemonthlyPay();
 
-    public String getName() {
-        return name;
-    }
+publicStringgetName(){
+returnname;
+}
 
-    public Date getHireDate() {
-        return hireDate;
-    }
+publicDategetHireDate(){
+returnhireDate;
+}
 
-    @Override
-    public String toString() {
-        return name + "; " + hireDate;
-    }
+@Override
+publicStringtoString(){
+returnname+";"+hireDate;
+}
 
-    public boolean equals(Object other) {
-        if (other == null) return false;
-        if (this == other) return true;
-        if (!(other instanceof Employee)) return false;
-        Employee that = (Employee) other;
-        return name.equals(that.name) && hireDate.equals(that.hireDate);
-    }
+publicbooleanequals(Objectother){
+if(other==null)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofEmployee))returnfalse;
+Employeethat=(Employee)other;
+returnname.equals(that.name)&&hireDate.equals(that.hireDate);
+}
 }

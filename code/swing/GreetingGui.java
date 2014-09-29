@@ -1,42 +1,42 @@
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+importjavax.swing.JFrame;
+importjavax.swing.JLabel;
+importjavax.swing.JButton;
+importjava.awt.BorderLayout;
+importjava.awt.event.ActionListener;
+importjava.awt.event.ActionEvent;
 
-public class GreetingGui extends JFrame {
+publicclassGreetingGuiextendsJFrame{
 
-    private JLabel greetingLabel;
+privateJLabelgreetingLabel;
 
-    private class GreetButtonListener implements ActionListener {
-        private JLabel greetingLabel;
+privateclassGreetButtonListenerimplementsActionListener{
+privateJLabelgreetingLabel;
 
-        public GreetButtonListener(JLabel greetingLabel) {
-            this.greetingLabel = greetingLabel;
-        }
+publicGreetButtonListener(JLabelgreetingLabel){
+this.greetingLabel=greetingLabel;
+}
 
-        public void actionPerformed(ActionEvent e) {
-            Greeter greeter = new Greeter("bob");
-            String greeting = greeter.greet();
-            greetingLabel.setText(greeting);
-        }
-    }
+publicvoidactionPerformed(ActionEvente){
+Greetergreeter=newGreeter("bob");
+Stringgreeting=greeter.greet();
+greetingLabel.setText(greeting);
+}
+}
 
-    public GreetingGui() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        greetingLabel = new JLabel("Greeting will go here.");
-        JButton button = new JButton("Greet!");
-        button.addActionListener(new GreetButtonListener(greetingLabel));
+publicGreetingGui(){
+setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+greetingLabel=newJLabel("Greetingwillgohere.");
+JButtonbutton=newJButton("Greet!");
+button.addActionListener(newGreetButtonListener(greetingLabel));
 
-        add(greetingLabel, BorderLayout.CENTER);
-        add(button, BorderLayout.SOUTH);
-        pack();
-    }
+add(greetingLabel,BorderLayout.CENTER);
+add(button,BorderLayout.SOUTH);
+pack();
+}
 
-    
-    public static void main(String[] args) {
-        GreetingGui gg = new GreetingGui();
-        gg.setVisible(true);
-    }
+
+publicstaticvoidmain(String[]args){
+GreetingGuigg=newGreetingGui();
+gg.setVisible(true);
+}
 }

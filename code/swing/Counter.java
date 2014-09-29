@@ -1,29 +1,29 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+importjava.awt.event.ActionListener;
+importjava.awt.event.ActionEvent;
+importjava.awt.BorderLayout;
+importjavax.swing.JButton;
+importjavax.swing.JFrame;
+importjavax.swing.JLabel;
 
-public class Counter {
+publicclassCounter{
 
-    public static void main(String[] args) {
-        JFrame mainFrame = new JFrame("Counter");
-        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        mainFrame.setLayout(new BorderLayout());
+publicstaticvoidmain(String[]args){
+JFramemainFrame=newJFrame("Counter");
+mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+mainFrame.setLayout(newBorderLayout());
 
-        JButton exitButton = new JButton("Exit");
-        exitButton.addActionListener(new ExitListener());
+JButtonexitButton=newJButton("Exit");
+exitButton.addActionListener(newExitListener());
 
-        JLabel counterLabel = new JLabel("Count: 0");
-        JButton counterButton = new JButton("Increment count");
-        counterButton.addActionListener(new CountListener(counterLabel));
+JLabelcounterLabel=newJLabel("Count:0");
+JButtoncounterButton=newJButton("Incrementcount");
+counterButton.addActionListener(newCountListener(counterLabel));
 
-        mainFrame.add(counterButton, BorderLayout.NORTH);
-        mainFrame.add(counterLabel, BorderLayout.CENTER);
-        mainFrame.add(exitButton, BorderLayout.SOUTH);
+mainFrame.add(counterButton,BorderLayout.NORTH);
+mainFrame.add(counterLabel,BorderLayout.CENTER);
+mainFrame.add(exitButton,BorderLayout.SOUTH);
 
-        mainFrame.setSize(200, 300);
-        mainFrame.setVisible(true);
-    }
+mainFrame.setSize(200,300);
+mainFrame.setVisible(true);
+}
 }

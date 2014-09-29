@@ -1,39 +1,39 @@
-import java.util.ArrayList;
+importjava.util.ArrayList;
 
-public class ArrayListGenericsDemo {
+publicclassArrayListGenericsDemo{
 
 
-    /**
-     * lkjasdgklhja alksdhg dfgakh ahfgklhadf;lkgh hjkdfgh hjkdfhgk
-     * kldfgh lkdf klf lkdfhgklh dfk;gh hdfkjhgkldh ;kjdfhgkjdfh
-     * jkdafh gk;ahkjdhafg kjdakjdfh dfkjgd kjhgf kjdfh kjdfh
-     * jkhjkdhkhgf
-     */
-    public static void main(String[] args) {
-        // ljdlkfgaj skldjfkl asdkldsfj lkahsdklf askdh kadsh dhs sdjk
-        // sdjkgh ghjkdshg kjdhgkjh fgk hkjh ajkd
-        ArrayList<String> strings = new ArrayList<String>();
-        strings.add("Helluva");
-        strings.add("Engineer!");
-        Integer BULL_DOG = Integer.MIN_VALUE;
-        // Since strings is a typed collection, Java type checks
-        // insertions and retrievals
-        strings.add(BULL_DOG); // Won't compile
-        System.out.println(strings);
+/**
+*lkjasdgklhjaalksdhgdfgakhahfgklhadf;lkghhjkdfghhjkdfhgk
+*kldfghlkdfklflkdfhgklhdfk;ghhdfkjhgkldh;kjdfhgkjdfh
+*jkdafhgk;ahkjdhafgkjdakjdfhdfkjgdkjhgfkjdfhkjdfh
+*jkhjkdhkhgf
+*/
+publicstaticvoidmain(String[]args){
+//ljdlkfgajskldjfklasdkldsfjlkahsdklfaskdhkadshdhssdjk
+//sdjkghghjkdshgkjdhgkjhfgkhkjhajkd
+ArrayList<String>strings=newArrayList<String>();
+strings.add("Helluva");
+strings.add("Engineer!");
+IntegerBULL_DOG=Integer.MIN_VALUE;
+//Sincestringsisatypedcollection,Javatypechecks
+//insertionsandretrievals
+strings.add(BULL_DOG);//Won'tcompile
+System.out.println(strings);
 
-        // Notice that we don't need to repeat the type parameter in the 
-        // creation expression, becuase Java infers the type from
-        // the declaration
-        ArrayList<Integer> ints = new ArrayList<>();
-        ints.add(new Integer(42));
-        ints.add(new Integer(66));
-        // As before, Java will auto-box a primitive int in an Integer
-        ints.add(99);
-        System.out.println(ints);
-        
-        // And since we have a typed collection, Java will also autobox
-        // when we retrieve elements form the collection
-        int num = ints.get(0);
-    }
+//Noticethatwedon'tneedtorepeatthetypeparameterinthe
+//creationexpression,becuaseJavainfersthetypefrom
+//thedeclaration
+ArrayList<Integer>ints=newArrayList<>();
+ints.add(newInteger(42));
+ints.add(newInteger(66));
+//Asbefore,Javawillauto-boxaprimitiveintinanInteger
+ints.add(99);
+System.out.println(ints);
+
+//Andsincewehaveatypedcollection,Javawillalsoautobox
+//whenweretrieveelementsformthecollection
+intnum=ints.get(0);
+}
 
 }

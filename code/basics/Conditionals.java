@@ -1,47 +1,47 @@
-import java.util.Scanner;
+importjava.util.Scanner;
 
-public class Conditionals {
-    
-    public static void main(String[] args) {
-        System.out.print("Enter an integer: ");
-        Scanner keyboard = new Scanner(System.in);
-        int num = keyboard.nextInt();
+publicclassConditionals{
 
-        if ((num % 2) == 0)
-            System.out.printf("%d is even.%n", num);
-        else
-            System.out.printf("%d is odd.%n", num);
+publicstaticvoidmain(String[]args){
+System.out.print("Enteraninteger:");
+Scannerkeyboard=newScanner(System.in);
+intnum=keyboard.nextInt();
 
-        // Boolean expressions
-        boolean numIsEven = (num % 2) == 0;
+if((num%2)==0)
+System.out.printf("%diseven.%n",num);
+else
+System.out.printf("%disodd.%n",num);
 
-        // Notice the use of {} even for single statements - 
-        // - good idea always to use {}
-        if (numIsEven) {
-            System.out.println("I like even numbers.");
-        } else {
-            System.out.println("I'm ambivalent about odd numbers.");
-        }
+//Booleanexpressions
+booleannumIsEven=(num%2)==0;
 
-        // The if-else statements above can be combined using blocks
-        if (numIsEven) {  
-            System.out.printf("%d is even.%n", num);
-            System.out.println("I like even numbers.");
-        } else {
-            System.out.printf("%d is odd.%n", num);
-            System.out.println("I'm ambivalent about odd numbers.");
-        }
+//Noticetheuseof{}evenforsinglestatements-
+//-goodideaalwaystouse{}
+if(numIsEven){
+System.out.println("Ilikeevennumbers.");
+}else{
+System.out.println("I'mambivalentaboutoddnumbers.");
+}
 
-        // Beware that assignment is actually an expression.
-        // An assignment has the value of the assignment.
-        // This is why chained assignments work.
-        System.out.println("\n************* CAUTION! *************");
-        if (numIsEven = true) {
-            System.out.println("This statement will always execute.");
-        } else {
-            System.out.println("This statement will never execute.");
-        }
+//Theif-elsestatementsabovecanbecombinedusingblocks
+if(numIsEven){
+System.out.printf("%diseven.%n",num);
+System.out.println("Ilikeevennumbers.");
+}else{
+System.out.printf("%disodd.%n",num);
+System.out.println("I'mambivalentaboutoddnumbers.");
+}
 
-        System.out.println();
-    }
+//Bewarethatassignmentisactuallyanexpression.
+//Anassignmenthasthevalueoftheassignment.
+//Thisiswhychainedassignmentswork.
+System.out.println("\n*************CAUTION!*************");
+if(numIsEven=true){
+System.out.println("Thisstatementwillalwaysexecute.");
+}else{
+System.out.println("Thisstatementwillneverexecute.");
+}
+
+System.out.println();
+}
 }

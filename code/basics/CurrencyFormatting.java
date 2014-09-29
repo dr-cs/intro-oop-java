@@ -1,14 +1,14 @@
-import java.text.NumberFormat;
-import java.util.Locale;
+importjava.text.NumberFormat;
+importjava.util.Locale;
 
-public class CurrencyFormatting {
-    
-    public static void main(String[] args) {
-        NumberFormat us = NumberFormat.getCurrencyInstance();
-        System.out.println(us.format(3.14));
+publicclassCurrencyFormatting{
 
-        NumberFormat de =
-            NumberFormat.getCurrencyInstance(Locale.GERMANY);
-        System.out.println(de.format(3.14));                
-    }
+publicstaticvoidmain(String[]args){
+NumberFormatus=NumberFormat.getCurrencyInstance();
+System.out.println(us.format(3.14));
+
+NumberFormatde=
+NumberFormat.getCurrencyInstance(Locale.GERMANY);
+System.out.println(de.format(3.14));
+}
 }

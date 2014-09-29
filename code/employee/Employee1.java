@@ -1,40 +1,40 @@
-import java.util.Date;
+importjava.util.Date;
 
-public class Employee1 {
+publicclassEmployee1{
 
-    private String name;
-    private Date hireDate;
+privateStringname;
+privateDatehireDate;
 
-    public Employee1(String aName, Date aHireDate) {
-        disallowNullArguments(aName, aHireDate);
-        name = aName;
-        hireDate = aHireDate;
-    }
+publicEmployee1(StringaName,DateaHireDate){
+disallowNullArguments(aName,aHireDate);
+name=aName;
+hireDate=aHireDate;
+}
 
-    public String getName() {
-        return name;
-    }
+publicStringgetName(){
+returnname;
+}
 
-    public Date getHireDate() {
-        return hireDate;
-    }
+publicDategetHireDate(){
+returnhireDate;
+}
 
-    public String toString() {
-        return name + "; " + hireDate;
-    }
+publicStringtoString(){
+returnname+";"+hireDate;
+}
 
-    private void disallowNullArguments(Object ... args) {
-        boolean shouldThrowException = false;
-        String nullArgs = "";
-        for (Object arg: args) {
-            if (arg == null) {
-                shouldThrowException = true;
-                nullArgs += arg + " ";
-            }
-        }
-        if (shouldThrowException) {
-            String msg = "null arguments not allowed. ";
-            throw new IllegalArgumentException(msg);
-        }
-    }
+privatevoiddisallowNullArguments(Object...args){
+booleanshouldThrowException=false;
+StringnullArgs="";
+for(Objectarg:args){
+if(arg==null){
+shouldThrowException=true;
+nullArgs+=arg+"";
+}
+}
+if(shouldThrowException){
+Stringmsg="nullargumentsnotallowed.";
+thrownewIllegalArgumentException(msg);
+}
+}
 }

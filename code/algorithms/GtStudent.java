@@ -1,17 +1,17 @@
-public class GtStudent {
+publicclassGtStudent{
 
-    private String name;
-    private Major major;
+privateStringname;
+privateMajormajor;
 
-    public GtStudent(String aName, Major aMajor) {
-        name = aName;
-        major = aMajor;
-    }
-    public String getName() { return name; }
+publicGtStudent(StringaName,MajoraMajor){
+name=aName;
+major=aMajor;
+}
+publicStringgetName(){returnname;}
 
-    public Major getMajor() { return major; }
+publicMajorgetMajor(){returnmajor;}
 
-    public String toString() {
-        return name + " (" + major + ")";
-    }
+publicStringtoString(){
+returnname+"("+major+")";
+}
 }

@@ -1,56 +1,56 @@
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
+importjava.text.DateFormat;
+importjava.util.Calendar;
+importjava.util.Date;
 
-public class SalariedEmployee6 extends Employee6 {
+publicclassSalariedEmployee6extendsEmployee6{
 
-    private static final int MONTHS_PER_YEAR = 12;
+privatestaticfinalintMONTHS_PER_YEAR=12;
 
-    private final double annualSalary;
+privatefinaldoubleannualSalary;
 
-    public SalariedEmployee6(String aName, Date aHireDate,
-                            double anAnnualSalary) {
-        super(aName, aHireDate);
-        disallowZeroesAndNegatives(anAnnualSalary);
-        annualSalary = anAnnualSalary;
-    }
+publicSalariedEmployee6(StringaName,DateaHireDate,
+doubleanAnnualSalary){
+super(aName,aHireDate);
+disallowZeroesAndNegatives(anAnnualSalary);
+annualSalary=anAnnualSalary;
+}
 
-    @Override
-    public String getName() {
-        return "Salaried: " + super.getName();
-    }
+@Override
+publicStringgetName(){
+return"Salaried:"+super.getName();
+}
 
-    public double getAnnualSalary() {
-        return annualSalary;
-    }
+publicdoublegetAnnualSalary(){
+returnannualSalary;
+}
 
-    @Override
-    public double monthlyPay() {
-        return annualSalary / MONTHS_PER_YEAR;
-    }
+@Override
+publicdoublemonthlyPay(){
+returnannualSalary/MONTHS_PER_YEAR;
+}
 
-    @Override
-    public double monthlyPay(Month month) {
-        return monthlyPay();
-    }
+@Override
+publicdoublemonthlyPay(Monthmonth){
+returnmonthlyPay();
+}
 
-    public String toString() {
-        return super.toString() + "; Annual Salary: " + annualSalary;
-    }
+publicStringtoString(){
+returnsuper.toString()+";AnnualSalary:"+annualSalary;
+}
 
-    public boolean equals(Object other) {
-        if (other == null) return false;
-        if (this == other) return true;
-        if (!(other instanceof SalariedEmployee3)) return false;
-        SalariedEmployee6 that = (SalariedEmployee6) other;
-        return super.equals(that) && (this.annualSalary == that.annualSalary);
-    }
+publicbooleanequals(Objectother){
+if(other==null)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofSalariedEmployee3))returnfalse;
+SalariedEmployee6that=(SalariedEmployee6)other;
+returnsuper.equals(that)&&(this.annualSalary==that.annualSalary);
+}
 
-    public static void main(String[] args) throws Exception {
-        DateFormat df = DateFormat.getDateInstance();
-        SalariedEmployee6 eva = new SalariedEmployee6("Eva Luator",
-                                                      df.parse("June 10, 2013"),
-                                                      1000000);
-        System.out.println(eva.getName());
-    }
+publicstaticvoidmain(String[]args)throwsException{
+DateFormatdf=DateFormat.getDateInstance();
+SalariedEmployee6eva=newSalariedEmployee6("EvaLuator",
+df.parse("June10,2013"),
+1000000);
+System.out.println(eva.getName());
+}
 }

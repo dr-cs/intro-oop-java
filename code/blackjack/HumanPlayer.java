@@ -1,22 +1,22 @@
-import java.util.Scanner;
+importjava.util.Scanner;
 
-public class HumanPlayer extends BlackjackPlayer {
+publicclassHumanPlayerextendsBlackjackPlayer{
 
-    Scanner keyboard;
+Scannerkeyboard;
 
-    public HumanPlayer(String name) {
-        super(name);
-        keyboard = new Scanner(System.in);
-    }
+publicHumanPlayer(Stringname){
+super(name);
+keyboard=newScanner(System.in);
+}
 
-    public Move getMove(BlackjackHand ... opponentHands) {
-        System.out.print("What's your move, " + getName() 
-                         + "? (H for hit, S for stand, then ENTER) ");
-        String input = keyboard.nextLine();
-        if (input.equals("h") || input.equals("H")) {
-            return Move.HIT;
-        } else {
-            return Move.STAND;
-        }
-    }
+publicMovegetMove(BlackjackHand...opponentHands){
+System.out.print("What'syourmove,"+getName()
++"?(Hforhit,Sforstand,thenENTER)");
+Stringinput=keyboard.nextLine();
+if(input.equals("h")||input.equals("H")){
+returnMove.HIT;
+}else{
+returnMove.STAND;
+}
+}
 }

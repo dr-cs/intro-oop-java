@@ -1,45 +1,45 @@
-import java.util.ArrayList;
+importjava.util.ArrayList;
 
-public class LinkedQueue<E> {
-    
-    private class Node<E> {
-        E data;
-        Node<E> next;
+publicclassLinkedQueue<E>{
 
-        Node(E data, Node<E> next) {
-            this.data = data;
-            this.next = next;
-        }
-    }
+privateclassNode<E>{
+Edata;
+Node<E>next;
 
-    private Node<E> head;
-    private Node<E> last;
+Node(Edata,Node<E>next){
+this.data=data;
+this.next=next;
+}
+}
 
-    public void enqueue(E item) {
-        Node<E> newNode = new Node<E>(item, null);
-        if (null == head) head = newNode;
-        if (null != last) last.next = newNode;
-        last = newNode;
-    }
-    
-    public E dequeue() {
-        E answer = head.data;
-        head = head.next;
-        return answer;
-    }
-    
-    public boolean isEmpty() {
-        return (head == null);
-    }
+privateNode<E>head;
+privateNode<E>last;
+
+publicvoidenqueue(Eitem){
+Node<E>newNode=newNode<E>(item,null);
+if(null==head)head=newNode;
+if(null!=last)last.next=newNode;
+last=newNode;
+}
+
+publicEdequeue(){
+Eanswer=head.data;
+head=head.next;
+returnanswer;
+}
+
+publicbooleanisEmpty(){
+return(head==null);
+}
 
 
-    public static void main(String[] args) {
-        LinkedQueue<Integer> ints = new LinkedQueue<>();
-        ints.enqueue(1);
-        ints.enqueue(2);
-        ints.enqueue(3);
-        System.out.println(ints.dequeue());
-        System.out.println(ints.dequeue());
-        System.out.println(ints.dequeue());
-    }
+publicstaticvoidmain(String[]args){
+LinkedQueue<Integer>ints=newLinkedQueue<>();
+ints.enqueue(1);
+ints.enqueue(2);
+ints.enqueue(3);
+System.out.println(ints.dequeue());
+System.out.println(ints.dequeue());
+System.out.println(ints.dequeue());
+}
 }

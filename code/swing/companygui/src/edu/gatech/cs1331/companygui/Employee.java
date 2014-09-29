@@ -1,78 +1,78 @@
-package edu.gatech.cs1331.companygui;
+packageedu.gatech.cs1331.companygui;
 
-import java.util.Calendar;
-import java.util.Date;
+importjava.util.Calendar;
+importjava.util.Date;
 
-public abstract class Employee {
+publicabstractclassEmployee{
 
-    private String name;
-    private Date hireDate;
+privateStringname;
+privateDatehireDate;
 
-    public Employee(Employee other) {
-        this.name = other.name;
-        this.hireDate = other.hireDate;
-    }
+publicEmployee(Employeeother){
+this.name=other.name;
+this.hireDate=other.hireDate;
+}
 
-    public Employee(String aName, Date aHireDate) {
-        disallowNullArguments(aName, aHireDate);
-        name = aName;
-        hireDate = aHireDate;
-    }
+publicEmployee(StringaName,DateaHireDate){
+disallowNullArguments(aName,aHireDate);
+name=aName;
+hireDate=aHireDate;
+}
 
-    public double monthlyPay() {
-        Calendar rightNow = Calendar.getInstance();
-        return monthlyPay(rightNow);
-    }
+publicdoublemonthlyPay(){
+CalendarrightNow=Calendar.getInstance();
+returnmonthlyPay(rightNow);
+}
 
-    public abstract double monthlyPay(Calendar calendar);
+publicabstractdoublemonthlyPay(Calendarcalendar);
 
-    public String getName() {
-        return name;
-    }
+publicStringgetName(){
+returnname;
+}
 
-    public Date getHireDate() {
-        return hireDate;
-    }
+publicDategetHireDate(){
+returnhireDate;
+}
 
-    public String toString() {
-        return name + "; " + hireDate;
-    }
+publicStringtoString(){
+returnname+";"+hireDate;
+}
 
-    public boolean equals(Object other) {
-        if (other == null) return false;
-        if (this == other) return true;
-        if (!(other instanceof Employee)) return false;
-        Employee that = (Employee) other;
-        return name.equals(that.name) && hireDate.equals(that.hireDate);
-    }
+publicbooleanequals(Objectother){
+if(other==null)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofEmployee))returnfalse;
+Employeethat=(Employee)other;
+returnname.equals(that.name)&&hireDate.equals(that.hireDate);
+}
 
-    private void disallowNullArguments(Object ... args) {
-        boolean shouldThrowException = false;
-        String nullArgs = "";
-        for (Object arg: args) {
-            if (arg == null) {
-                shouldThrowException = true;
-                nullArgs += arg + " ";
-            }
-        }
-        if (shouldThrowException) {
-            String msg = "null arguments not allowed. ";
-            throw new IllegalArgumentException(msg);
-        }
-    }
+privatevoiddisallowNullArguments(Object...args){
+booleanshouldThrowException=false;
+StringnullArgs="";
+for(Objectarg:args){
+if(arg==null){
+shouldThrowException=true;
+nullArgs+=arg+"";
+}
+}
+if(shouldThrowException){
+Stringmsg="nullargumentsnotallowed.";
+thrownewIllegalArgumentException(msg);
+}
+}
 
-    protected void disallowZeroesAndNegatives(double ... args) {
-        boolean shouldThrowException = false;
-        String nonPositives = "";
-        for (double arg: args) {
-            if (arg <= 0.0) {
-                shouldThrowException = true;
-                nonPositives += arg + " ";
-            }
-        }
-        if (shouldThrowException) {
-            String msg = "Following arguments were <= 0: " + nonPositives;
-            throw new IllegalArgumentException(msg);
-        }
-    }
+protectedvoiddisallowZeroesAndNegatives(double...args){
+booleanshouldThrowException=false;
+StringnonPositives="";
+for(doublearg:args){
+if(arg<=0.0){
+shouldThrowException=true;
+nonPositives+=arg+"";
+}
+}
+if(shouldThrowException){
+Stringmsg="Followingargumentswere<=0:"+nonPositives;
+thrownewIllegalArgumentException(msg);
+}
+}
 }

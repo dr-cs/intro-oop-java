@@ -1,19 +1,19 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
+importjava.awt.event.ActionListener;
+importjava.awt.event.ActionEvent;
+importjavax.swing.JLabel;
 
-public class CountListener implements ActionListener {
+publicclassCountListenerimplementsActionListener{
 
-    private JLabel countLabel;
-    private int count;
+privateJLabelcountLabel;
+privateintcount;
 
-    public CountListener(JLabel countLabel) {
-        this.countLabel = countLabel;
-        count = 0;
-    }
+publicCountListener(JLabelcountLabel){
+this.countLabel=countLabel;
+count=0;
+}
 
-    public void actionPerformed(ActionEvent e) {
-        count++;
-        countLabel.setText("Count: " + count);
-    }
+publicvoidactionPerformed(ActionEvente){
+count++;
+countLabel.setText("Count:"+count);
+}
 }

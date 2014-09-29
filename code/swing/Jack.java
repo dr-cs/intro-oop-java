@@ -1,70 +1,70 @@
-import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+importjava.awt.BorderLayout;
+importjava.awt.Graphics;
+importjava.awt.event.ActionEvent;
+importjava.awt.event.ActionListener;
+importjava.awt.event.WindowAdapter;
+importjava.awt.event.WindowEvent;
+importjavax.swing.Box;
+importjavax.swing.BoxLayout;
+importjavax.swing.ImageIcon;
+importjavax.swing.JButton;
+importjavax.swing.JFrame;
+importjavax.swing.JLabel;
+importjavax.swing.JOptionPane;
 
-public class Jack extends JFrame {
+publicclassJackextendsJFrame{
 
-    private JLabel imageLabel;
+privateJLabelimageLabel;
 
-    private class JackWindowListener extends WindowAdapter {
+privateclassJackWindowListenerextendsWindowAdapter{
 
-        public void windowClosing(WindowEvent e) {
-            int choice = JOptionPane.showConfirmDialog(
-                Jack.this,
-                "Do you really want to exit?",
-                "Exit for reals?",
-                JOptionPane.OK_CANCEL_OPTION
-            );
-            if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
-            }
-        }
-    }
+publicvoidwindowClosing(WindowEvente){
+intchoice=JOptionPane.showConfirmDialog(
+Jack.this,
+"Doyoureallywanttoexit?",
+"Exitforreals?",
+JOptionPane.OK_CANCEL_OPTION
+);
+if(choice==JOptionPane.YES_OPTION){
+System.exit(0);
+}
+}
+}
 
-    public Jack() {
-        // Need to set DO_NOTHING_ON_CLOSE so we can handle window closing
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+publicJack(){
+//NeedtosetDO_NOTHING_ON_CLOSEsowecanhandlewindowclosing
+setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
-        // Confirm exit before exiting program
-        addWindowListener(new JackWindowListener());
-        imageLabel = new JLabel();
+//Confirmexitbeforeexitingprogram
+addWindowListener(newJackWindowListener());
+imageLabel=newJLabel();
 
-        add(imageLabel, BorderLayout.CENTER);
-        add(createButtonBox(), BorderLayout.SOUTH);
-        pack();
-    }
+add(imageLabel,BorderLayout.CENTER);
+add(createButtonBox(),BorderLayout.SOUTH);
+pack();
+}
 
-    private Box createButtonBox(){
-        JButton jackButton = new JButton("Show Jack of Hearts");
-        ImageIcon buttonIcon = new ImageIcon("New16.gif");
-        jackButton.setIcon(buttonIcon);
+privateBoxcreateButtonBox(){
+JButtonjackButton=newJButton("ShowJackofHearts");
+ImageIconbuttonIcon=newImageIcon("New16.gif");
+jackButton.setIcon(buttonIcon);
 
-        ActionListener jackListener = new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    ImageIcon jackIcon = new ImageIcon("JACK-HEARTS.png");
-                    imageLabel.setIcon(jackIcon);
-                    pack();
-                }
-            };
-        jackButton.addActionListener(jackListener);
+ActionListenerjackListener=newActionListener(){
+publicvoidactionPerformed(ActionEvente){
+ImageIconjackIcon=newImageIcon("JACK-HEARTS.png");
+imageLabel.setIcon(jackIcon);
+pack();
+}
+};
+jackButton.addActionListener(jackListener);
 
-        Box buttonBox = new Box(BoxLayout.X_AXIS);
-        buttonBox.add(jackButton);
-        return buttonBox;
-    }
+BoxbuttonBox=newBox(BoxLayout.X_AXIS);
+buttonBox.add(jackButton);
+returnbuttonBox;
+}
 
-    public static void main(String[] args) {
-        Jack j = new Jack();
-        j.setVisible(true);
-    }
+publicstaticvoidmain(String[]args){
+Jackj=newJack();
+j.setVisible(true);
+}
 }

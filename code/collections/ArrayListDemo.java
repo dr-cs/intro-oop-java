@@ -1,66 +1,66 @@
-import java.util.ArrayList;
+importjava.util.ArrayList;
 
-public class ArrayListDemo {
+publicclassArrayListDemo{
 
-    static abstract class Person {
-        public String name;
-        public Person(String name) {
-            this.name = name;
-        }
-    }
+staticabstractclassPerson{
+publicStringname;
+publicPerson(Stringname){
+this.name=name;
+}
+}
 
-    static class LostPerson extends Person {
-        public LostPerson(String name) { super(name); }
-    }
+staticclassLostPersonextendsPerson{
+publicLostPerson(Stringname){super(name);}
+}
 
-    static class FoundPerson extends Person {
-        public FoundPerson(String name) { super(name); }
+staticclassFoundPersonextendsPerson{
+publicFoundPerson(Stringname){super(name);}
 
-        public boolean equals(Object other) {
-            if (this == other) return true;
-            if (!(other instanceof Person)) return false;
-            return ((Person) other).name.equals(this.name);
-        }
-    }
+publicbooleanequals(Objectother){
+if(this==other)returntrue;
+if(!(otherinstanceofPerson))returnfalse;
+return((Person)other).name.equals(this.name);
+}
+}
 
-    public static void main(String[] args) {
-        ArrayList<Person> peeps = new ArrayList<>();
-        // Notice that we can put subclasses of Person in peeps
-        Person wilma = new FoundPerson("Wilma");
-        peeps.add(wilma);
-        peeps.add(new FoundPerson("Fred"));
-        peeps.add(new LostPerson("Barney"));
+publicstaticvoidmain(String[]args){
+ArrayList<Person>peeps=newArrayList<>();
+//NoticethatwecanputsubclassesofPersoninpeeps
+Personwilma=newFoundPerson("Wilma");
+peeps.add(wilma);
+peeps.add(newFoundPerson("Fred"));
+peeps.add(newLostPerson("Barney"));
 
-        // 1:
-        // Will print true becuase the default implementation of equals
-        // uses == for object identity, and we're using the same reference
-        // that's stored in peeps
-        System.out.println("1: "+peeps.contains(wilma));
+//1:
+//Willprinttruebecuasethedefaultimplementationofequals
+//uses==forobjectidentity,andwe'reusingthesamereference
+//that'sstoredinpeeps
+System.out.println("1:"+peeps.contains(wilma));
 
-        // The rest of the examples each use new objects, so can't rely
-        // on object identity
+//Therestoftheexampleseachusenewobjects,socan'trely
+//onobjectidentity
 
-        // 2:
-        // Will print true because we're querying with a FoundPerson,
-        // which has a properly implemented equals()
-        System.out.println("2: "+peeps.contains(new FoundPerson("Fred")));
+//2:
+//Willprinttruebecausewe'requeryingwithaFoundPerson,
+//whichhasaproperlyimplementedequals()
+System.out.println("2:"+peeps.contains(newFoundPerson("Fred")));
 
-        // 3:
-        // Will print false because we're querying with a LostPerson,
-        // which does not hashave a properly implemented equals()
-        System.out.println("3: "+peeps.contains(new LostPerson("Fred")));
+//3:
+//Willprintfalsebecausewe'requeryingwithaLostPerson,
+//whichdoesnothashaveaproperlyimplementedequals()
+System.out.println("3:"+peeps.contains(newLostPerson("Fred")));
 
-        // 4:
-        // Will print true because we're querying with a FoundPerson,
-        // which has a properly implemented equals().
-        // Notice it doesn't matter that the object in the list is of 
-        // type LostPerson.  The query object's equals() method is used.
-        System.out.println("4: "+peeps.contains(new FoundPerson("Barney")));
+//4:
+//Willprinttruebecausewe'requeryingwithaFoundPerson,
+//whichhasaproperlyimplementedequals().
+//Noticeitdoesn'tmatterthattheobjectinthelistisof
+//typeLostPerson.Thequeryobject'sequals()methodisused.
+System.out.println("4:"+peeps.contains(newFoundPerson("Barney")));
 
-        // 5:
-        // Will print false because we're querying with a LostPerson,
-        // which does not hashave a properly implemented equals()
-        System.out.println("5: "+peeps.contains(new LostPerson("Barney")));
-    }
+//5:
+//Willprintfalsebecausewe'requeryingwithaLostPerson,
+//whichdoesnothashaveaproperlyimplementedequals()
+System.out.println("5:"+peeps.contains(newLostPerson("Barney")));
+}
 
 }

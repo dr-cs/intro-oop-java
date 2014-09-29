@@ -1,17 +1,17 @@
-public class VarArgs {
+publicclassVarArgs{
 
-    public static int max(int ... numbers) {
-        int max = numbers[0];
-        for (int i = 1; i < numbers.length; ++i) {
-            if (numbers[i] > max) max = numbers[i];
-        }
-        return max;
-    }
+publicstaticintmax(int...numbers){
+intmax=numbers[0];
+for(inti=1;i<numbers.length;++i){
+if(numbers[i]>max)max=numbers[i];
+}
+returnmax;
+}
 
-    public static void main(String ... args) {
-        int topScore = max(92, 87, 56, 97, 89, 98);
-        int [] nums = { 24, 45, 67, 789};
-        int topNum = max(nums);
-        System.out.printf("Tops score is %d%n", topScore);
-    }
+publicstaticvoidmain(String...args){
+inttopScore=max(92,87,56,97,89,98);
+int[]nums={24,45,67,789};
+inttopNum=max(nums);
+System.out.printf("Topsscoreis%d%n",topScore);
+}
 }

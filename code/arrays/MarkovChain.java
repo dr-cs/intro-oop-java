@@ -1,85 +1,85 @@
 
 
-public class MarkovChain {
+publicclassMarkovChain{
 
-    private HashMap<String, int[][]> sourceModels;
+privateHashMap<String,int[][]>sourceModels;
 
-    public MarkovChain(HashMap<String, FileInputStream> copora) {
-        sourceModels = new HashMap<String, int[][]>();
-        for (String source: corpora.keySet()) {
-            sourceModels.put(source, new int[27][27]);
-        }
-        train(copora.keySet());
-    }
+publicMarkovChain(HashMap<String,FileInputStream>copora){
+sourceModels=newHashMap<String,int[][]>();
+for(Stringsource:corpora.keySet()){
+sourceModels.put(source,newint[27][27]);
+}
+train(copora.keySet());
+}
 
 
-    private void train(Collection<String> trainingFiles) {
-        for (String source: trainingFiles) {
-            FileInputStream fis = 
-                new FileInputStream(new File(source + ".corpus");
-            System.out.println("Training " + source + " model.");
-            Scanner reader = new Scanner(fis);
-            reader.useDelimiter("[.?!]");
-            String sentence = reader.next();
-            while (sentence != null) {
-                learn(source, sentence);
-                sentence = reader.next();
-            }
-        }
-    }
+privatevoidtrain(Collection<String>trainingFiles){
+for(Stringsource:trainingFiles){
+FileInputStreamfis=
+newFileInputStream(newFile(source+".corpus");
+System.out.println("Training"+source+"model.");
+Scannerreader=newScanner(fis);
+reader.useDelimiter("[.?!]");
+Stringsentence=reader.next();
+while(sentence!=null){
+learn(source,sentence);
+sentence=reader.next();
+}
+}
+}
 
-    private void learn(String source, sentence) {
-        int[][] freqs = sourceModels(source);
-        int[] charIndexes = string2CharIndexes(sentence);
-        for (int i = 0; i < chars.length - 1; ++i) {
-            int row = charIndexes[i];
-            int col = charIndexes[i+1];
-            // Increment the count of char[i+1] following char[i] 
-            freqs[row][col] = freqs[row][col] + 1;
-        }
-    }
+privatevoidlearn(Stringsource,sentence){
+int[][]freqs=sourceModels(source);
+int[]charIndexes=string2CharIndexes(sentence);
+for(inti=0;i<chars.length-1;++i){
+introw=charIndexes[i];
+intcol=charIndexes[i+1];
+//Incrementthecountofchar[i+1]followingchar[i]
+freqs[row][col]=freqs[row][col]+1;
+}
+}
 
-    private int[] string2CharIndexes(String s) {
-        char[] chars = s.toUpperCase().toCharArray();
-        int[] indexes = new int[chars.length];
-        for (int i = 0; i < chars.length; ++i) {
-            indexes[i] = Character.getNumericValue(chars[i]) 
-                - Character.getNumericValue(chars[A]);
-        }
-        return indexes;
-    } 
+privateint[]string2CharIndexes(Strings){
+char[]chars=s.toUpperCase().toCharArray();
+int[]indexes=newint[chars.length];
+for(inti=0;i<chars.length;++i){
+indexes[i]=Character.getNumericValue(chars[i])
+-Character.getNumericValue(chars[A]);
+}
+returnindexes;
+}
 
-/*  Scala original. As I port these to Java, I delete them from here so 
-    this is sort of a t-do list
+/*Scalaoriginal.AsIportthesetoJava,Ideletethemfromhereso
+thisissortofat-dolist
 
-  def predict(line: String) = {
-    val chars = stringToCharIndexes(line)
-    var ret = List[(String, Double)]()
-    for (source <- corpora.keys) {
-      var product = 1.0
-      for (i <- Range(0, chars.size - 1)) {
-        val row = chars(i)
-        val col = chars(i+1)
-        product = product * probChars(source, row, col)
-      }
-      ret = (source, product)::ret
-    }
-    normalize(ret)
-  }
+defpredict(line:String)={
+valchars=stringToCharIndexes(line)
+varret=List[(String,Double)]()
+for(source<-corpora.keys){
+varproduct=1.0
+for(i<-Range(0,chars.size-1)){
+valrow=chars(i)
+valcol=chars(i+1)
+product=product*probChars(source,row,col)
+}
+ret=(source,product)::ret
+}
+normalize(ret)
+}
 
-  def probChars(source: String, char1: Int, char2: Int) = {
-    val  freqs = sourceModels(source)
-    val rowSum = math.max(freqs(char1).sum, 0.01)
-    val ret = math.max(freqs(char1)(char2) / rowSum, 0.01)
-    ret
-  }
+defprobChars(source:String,char1:Int,char2:Int)={
+valfreqs=sourceModels(source)
+valrowSum=math.max(freqs(char1).sum,0.01)
+valret=math.max(freqs(char1)(char2)/rowSum,0.01)
+ret
+}
 
-  def normalize(probs: List[(String, Double)]) = {
-    val sum = probs.map(_._2).sum
-    val normalized = probs.map({x: (String, Double) => (x._1, x._2 / sum)})
-    normalized.sortWith({(x: (String, Double), y: (String, Double))
-      => x._2 > y._2})
-  }
+defnormalize(probs:List[(String,Double)])={
+valsum=probs.map(_._2).sum
+valnormalized=probs.map({x:(String,Double)=>(x._1,x._2/sum)})
+normalized.sortWith({(x:(String,Double),y:(String,Double))
+=>x._2>y._2})
+}
 
 */
 }

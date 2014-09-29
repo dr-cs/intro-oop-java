@@ -1,18 +1,18 @@
-import java.util.Random;
+importjava.util.Random;
 
-public class RandomPlayer extends BlackjackPlayer {
+publicclassRandomPlayerextendsBlackjackPlayer{
 
-    public RandomPlayer(String name) {
-        super(name);
-    }
+publicRandomPlayer(Stringname){
+super(name);
+}
 
-    public Move getMove(BlackjackHand ... opponentHands) {
-        if (hand.value() >= 21) return Move.STAND;
-        Random rand = new Random();
-        if (rand.nextInt(10) < 3) {
-            return Move.HIT;
-        } else {
-            return Move.STAND;
-        }
-    }
+publicMovegetMove(BlackjackHand...opponentHands){
+if(hand.value()>=21)returnMove.STAND;
+Randomrand=newRandom();
+if(rand.nextInt(10)<3){
+returnMove.HIT;
+}else{
+returnMove.STAND;
+}
+}
 }

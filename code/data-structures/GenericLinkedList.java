@@ -1,156 +1,156 @@
-public class GenericLinkedList<E> {
+publicclassGenericLinkedList<E>{
 
-    private class Node<E> {
-        E data;
-        Node<E> next;
+privateclassNode<E>{
+Edata;
+Node<E>next;
 
-        public Node(E data, Node next) {
-            this.data = data;
-            this.next = next;
-        }
-    }
+publicNode(Edata,Nodenext){
+this.data=data;
+this.next=next;
+}
+}
 
-    private Node<E> head;
+privateNode<E>head;
 
-    public GenericLinkedList() {
-        head = null;
-    }
+publicGenericLinkedList(){
+head=null;
+}
 
-    /**
-     * Add a new item to the front of this list.
-     */
-    public void addFront(E item) {
-        head = new Node<E>(item, head);
-    }
+/**
+*Addanewitemtothefrontofthislist.
+*/
+publicvoidaddFront(Eitem){
+head=newNode<E>(item,head);
+}
 
-    /**
-     * Return the item at the front of this list and remove it from the list.
-     */
-    public E removeFront() {
-        if (null == head) {
-            throw new RuntimeException("Can't removeFront() on empty list.");
-        }
-        E answer = head.data;
-        head = head.next;
-        return answer;
-    }
+/**
+*Returntheitematthefrontofthislistandremoveitfromthelist.
+*/
+publicEremoveFront(){
+if(null==head){
+thrownewRuntimeException("Can'tremoveFront()onemptylist.");
+}
+Eanswer=head.data;
+head=head.next;
+returnanswer;
+}
 
-    /**
-     * The number of items in this list.
-     */
-    public int length() {
-        int len = 0;
-        Node node = head;
-        while (node != null) {
-            len++;
-            node = node.next;
-        }
-        return len;
-    }
+/**
+*Thenumberofitemsinthislist.
+*/
+publicintlength(){
+intlen=0;
+Nodenode=head;
+while(node!=null){
+len++;
+node=node.next;
+}
+returnlen;
+}
 
-    /**
-     * @return true if this list has no elements, false otherwise.
-     */
-    public boolean isEmpty() {
-        return head == null;
-    }
+/**
+*@returntrueifthislisthasnoelements,falseotherwise.
+*/
+publicbooleanisEmpty(){
+returnhead==null;
+}
 
-    public String toString() {
-        StringBuffer sb = new StringBuffer("[");
-        for (Node node = head; node != null; node = node.next) {
-            sb.append(node.data + " ");
-        }
-        return sb.toString() + "]";
-    }
+publicStringtoString(){
+StringBuffersb=newStringBuffer("[");
+for(Nodenode=head;node!=null;node=node.next){
+sb.append(node.data+"");
+}
+returnsb.toString()+"]";
+}
 
-    public int length2() {
-        int len = 0;
-        for (Node<E> node = head; node != null; node = node.next, len++);
-        return len;
-    }
+publicintlength2(){
+intlen=0;
+for(Node<E>node=head;node!=null;node=node.next,len++);
+returnlen;
+}
 
-    public void insertAfter(E existingItem, E newItem) {
-        Node<E> curNode = head;
-        while (!curNode.data.equals(existingItem) &&
-               (curNode.next != null)) {
-            curNode = curNode.next;
-        }
-        Node<E> newNode = new Node(newItem, curNode.next);
-        curNode.next = newNode;
-    }
+publicvoidinsertAfter(EexistingItem,EnewItem){
+Node<E>curNode=head;
+while(!curNode.data.equals(existingItem)&&
+(curNode.next!=null)){
+curNode=curNode.next;
+}
+Node<E>newNode=newNode(newItem,curNode.next);
+curNode.next=newNode;
+}
 
-    public E get(int index) {
-        // Guard condition: empty list
-        if (null == head) { return null; }
-        Node<E> curNode = head;
-        while (index > 0) {
-            if (curNode.next == null) {
-                return null;
-            }
-            curNode = curNode.next;
-            index--;
-        }
-        return curNode.data;
-    }
+publicEget(intindex){
+//Guardcondition:emptylist
+if(null==head){returnnull;}
+Node<E>curNode=head;
+while(index>0){
+if(curNode.next==null){
+returnnull;
+}
+curNode=curNode.next;
+index--;
+}
+returncurNode.data;
+}
 
-    public boolean remove(E existingItem) {
-        // Guard condition: empty list
-        if (null == head) { return false; }
-        boolean wasModified = false;
-        Node<E> curNode = head;
-        Node<E> previous = null;
-        while (!existingItem.equals(curNode.data) &&
-               (curNode.next != null)) {
-            previous = curNode;
-            curNode = curNode.next;
-        }
-        if (previous == null) {
-            // removing head node
-            head = curNode.next;
-            wasModified = true;
-        } else if (curNode.data.equals(existingItem)) {
-            previous.next = curNode.next;
-            wasModified = true;
-        }
-        return wasModified;
-    }
+publicbooleanremove(EexistingItem){
+//Guardcondition:emptylist
+if(null==head){returnfalse;}
+booleanwasModified=false;
+Node<E>curNode=head;
+Node<E>previous=null;
+while(!existingItem.equals(curNode.data)&&
+(curNode.next!=null)){
+previous=curNode;
+curNode=curNode.next;
+}
+if(previous==null){
+//removingheadnode
+head=curNode.next;
+wasModified=true;
+}elseif(curNode.data.equals(existingItem)){
+previous.next=curNode.next;
+wasModified=true;
+}
+returnwasModified;
+}
 
-    public static void main(String[] args) {
-        GenericLinkedList<String> lst = new GenericLinkedList<>();
-        lst.addFront("Thorny");
-        lst.addFront("Farva");
-        lst.addFront("Mac");
-        lst.addFront("Rabbit");
-        lst.addFront("Foster");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+publicstaticvoidmain(String[]args){
+GenericLinkedList<String>lst=newGenericLinkedList<>();
+lst.addFront("Thorny");
+lst.addFront("Farva");
+lst.addFront("Mac");
+lst.addFront("Rabbit");
+lst.addFront("Foster");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
 
-        lst.insertAfter("Rabbit", "Ursula");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
-        lst.insertAfter("Spread it on!", "Chimpo");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+lst.insertAfter("Rabbit","Ursula");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
+lst.insertAfter("Spreaditon!","Chimpo");
+System.out.println(lst);
+System.out.println("Howmany?"+lst.length());
 
 
-        System.out.println("get(1): " + lst.get(1));
-        System.out.println("get(8) (index out of bounds): " + lst.get(8));
+System.out.println("get(1):"+lst.get(1));
+System.out.println("get(8)(indexoutofbounds):"+lst.get(8));
 
-        lst.remove("Foster");
-        System.out.println("Removing Foster: " + lst);
+lst.remove("Foster");
+System.out.println("RemovingFoster:"+lst);
 
-        lst.remove("Mac");
-        System.out.println("Removing Mac: " + lst);
+lst.remove("Mac");
+System.out.println("RemovingMac:"+lst);
 
-        lst.remove("Chimpo");
-        System.out.println("Removing Chimpo: " + lst);
+lst.remove("Chimpo");
+System.out.println("RemovingChimpo:"+lst);
 
-        lst.remove("Foo");
-        System.out.println("Removing Foo: " + lst);
+lst.remove("Foo");
+System.out.println("RemovingFoo:"+lst);
 
-        GenericLinkedList<String> nutherList = new GenericLinkedList<>();
-        nutherList.remove("Foo");
-        System.out.println("Removing Foo from empty list: " + nutherList);
+GenericLinkedList<String>nutherList=newGenericLinkedList<>();
+nutherList.remove("Foo");
+System.out.println("RemovingFoofromemptylist:"+nutherList);
 
-    }
+}
 }

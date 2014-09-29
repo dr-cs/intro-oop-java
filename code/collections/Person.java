@@ -1,39 +1,39 @@
-public class Person implements Comparable<Person> {
+publicclassPersonimplementsComparable<Person>{
 
-    private String name;
+privateStringname;
 
-    public Person(String name) {
-        setName(name);
-    }
+publicPerson(Stringname){
+setName(name);
+}
 
-    public void setName(String name) {
-        if (name == null || name.equals("")) {
-            throw new IllegalArgumentException("name can't be null or empty");
-        }
-        this.name = name;
-    }
+publicvoidsetName(Stringname){
+if(name==null||name.equals("")){
+thrownewIllegalArgumentException("namecan'tbenullorempty");
+}
+this.name=name;
+}
 
-    public String getName() {
-        return name;
-    }
+publicStringgetName(){
+returnname;
+}
 
-    public String toString() {
-        return name;
-    }
+publicStringtoString(){
+returnname;
+}
 
-    public int compareTo(Person other) {
-        return name.compareTo(other.name);
-    }
+publicintcompareTo(Personother){
+returnname.compareTo(other.name);
+}
 
-    public boolean equals(Object other) {
-        if (null == other) return false;
-        if (this == other) return true;
-        if (!(other instanceof Person)) return false;
-        Person that = (Person) other;
-        return this.name.equals(that.name);
-    }
+publicbooleanequals(Objectother){
+if(null==other)returnfalse;
+if(this==other)returntrue;
+if(!(otherinstanceofPerson))returnfalse;
+Personthat=(Person)other;
+returnthis.name.equals(that.name);
+}
 
-    public int hashCode() {
-        return name.charAt(0) - 'A';
-    }
+publicinthashCode(){
+returnname.charAt(0)-'A';
+}
 }

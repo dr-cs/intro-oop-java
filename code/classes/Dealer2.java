@@ -1,9 +1,9 @@
-public class Dealer2 {
+publicclassDealer2{
 
-    public static void main(String[] args) {
-        Card2 c = new Card2();
-        c.rank = "ace";
-        c.suit = "base";
-        System.out.println(c);
-    }
+publicstaticvoidmain(String[]args){
+Card2c=newCard2();
+c.rank="ace";
+c.suit="base";
+System.out.println(c);
+}
 }

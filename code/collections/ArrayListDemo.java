@@ -32,7 +32,7 @@ public class ArrayListDemo {
         peeps.add(new LostPerson("Barney"));
 
         // 1:
-        // Will print true becuase the default implementation of equals
+        // Will print true because the default implementation of equals
         // uses == for object identity, and we're using the same reference
         // that's stored in peeps
         System.out.println("1: "+peeps.contains(wilma));

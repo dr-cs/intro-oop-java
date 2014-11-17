@@ -22,7 +22,7 @@ public class ArrayListGenericsDemo {
         System.out.println(strings);
 
         // Notice that we don't need to repeat the type parameter in the 
-        // creation expression, becuase Java infers the type from
+        // creation expression, because Java infers the type from
         // the declaration
         ArrayList<Integer> ints = new ArrayList<>();
         ints.add(new Integer(42));

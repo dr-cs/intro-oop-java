@@ -1,19 +1,10 @@
 \documentclass{beamer}
 
-\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
 \newcommand{\lesson}{Exceptions}
-\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
-
-\author[Chris Simpkins] 
-{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
-\institute[Georgia Tech] % (optional, but mostly needed)
-
-\date[CS 1331]{}
-
 \include{beamer-common}
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
-% the following command: 
+% the following command:
 
 % \beamerdefaultoverlayspecification{<+->}
 
@@ -60,11 +51,11 @@ An exception is
 \item an object that you create when an exception occurs.
 \end{itemize}
 \vspace{.1in}
-An exception is said to be 
+An exception is said to be
 \begin{itemize}
 \item {\it thrown} from the point where it occurred and
 \item {\it caught} at the point to which control is transferred (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-11.html}{JLS \S 11}).
-\end{itemize} 
+\end{itemize}
 The basic syntax is:
 \begin{lstlisting}[language=Java]
 try {
@@ -138,7 +129,7 @@ A statement or expression is dynamically enclosed by a catch clause if it appear
 More simply, a statement is dynamically enclosed by a catch clause if it is
 \begin{itemize}
 \item contained within the corresponding try block of the catch clasuse, or
-\item  within a method (or constructor) that is called within the corresponding try block of the catch clause. 
+\item  within a method (or constructor) that is called within the corresponding try block of the catch clause.
 \end{itemize}
 
 \end{frame}
@@ -282,7 +273,7 @@ public class Wee {
     }
 
     public static void main(String[] args) {
-        try {        
+        try {
             foo();
         } catch (Throwable t) {
             System.out.println(t.getMessage());
@@ -340,93 +331,93 @@ This means that you should order your catch clauses from most specific (most der
 \end{frame}
 %------------------------------------------------------------------------
 
-%------------------------------------------------------------------------
-\begin{frame}[fragile]{Common Mistakes in Multiple Catch Clauses}
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Common Mistakes in Multiple Catch Clauses}
+%
+%
+% What's wrong with this code?
+% \begin{lstlisting}[language=Java]
+% try {
+%   initFromFile(new File(employeeDataFile));
+% } catch (Exception e) {
+%   System.out.println("Something bad happened: " + e.getMessage());
+% } catch (IOException e) {
+%   System.out.println(e.getMessage());
+%   e.printStackTrace(System.out);
+%   System.exit(0);
+% } catch (FileNotFoundException e) {
+%   System.out.println("Can't run without an employee data file.");
+%   System.out.println(e.getMessage());
+%   System.exit(0);
+% } catch (ParseException e) {
+%   String msg = "Malformed data caused exception: " + e.getMessage();
+%   System.out.println(msg);
+%   System.out.println("Full stack trace:");
+%   e.printStackTrace(System.out);
+%   System.exit(0);
+% }
+% \end{lstlisting}
+%
+%
+% \end{frame}
+% %------------------------------------------------------------------------
+%
 
-
-What's wrong with this code?
-\begin{lstlisting}[language=Java]
-try {
-  initFromFile(new File(employeeDataFile));
-} catch (Exception e) {
-  System.out.println("Something bad happened: " + e.getMessage());
-} catch (IOException e) {
-  System.out.println(e.getMessage());
-  e.printStackTrace(System.out);
-  System.exit(0);
-} catch (FileNotFoundException e) {
-  System.out.println("Can't run without an employee data file.");
-  System.out.println(e.getMessage());
-  System.exit(0);
-} catch (ParseException e) {
-  String msg = "Malformed data caused exception: " + e.getMessage();
-  System.out.println(msg);
-  System.out.println("Full stack trace:");
-  e.printStackTrace(System.out);
-  System.exit(0);
-}
-\end{lstlisting}
-
-
-\end{frame}
-%------------------------------------------------------------------------
-
-
-%------------------------------------------------------------------------
-\begin{frame}[fragile]{Principles of Exception Handling}
-
-
-\begin{itemize}
-\item Don't try to handle coding errors.
-\item Prefer exceptions from the standard library to creating your own.
-\item Name exceptions after the problem (not the thrower).
-\item Wrap exceptions when crossing an abstraction boundary.
-\item Store useful information in exception objects.
-\item Handle exceptions close to their origins, but ...
-\begin{itemize}
-  \item Assign exception-handling responsibility to objects that can handle the exceptions.
-  \item Don't ``eat'' exceptions (at the very least, log the exception).
-  \item If you can't handle an exception sensibly, propagate it (``when in doubt, throw it out'').
-\end{itemize}
-\end{itemize}
-
-See \url{http://wirfs-brock.com/PDFs/towards_xcptn_hndling.pdf} for more details.  We'll just touch on a few of these here.
-
-\end{frame}
-%------------------------------------------------------------------------
-
-%------------------------------------------------------------------------
-\begin{frame}[fragile]{Applying Exception Handling Principles}
-
-
-What's wrong with this constructor?
-\begin{lstlisting}[language=Java]
-public class Company {
-    private ArrayList<Employee> employees;
-
-    public Company(String employeeDataFile) {
-        try {
-            employees = initFromFile(new File(employeeDataFile));
-        } catch (FileNotFoundException e) {
-            System.out.println("Employee data file not found.");
-        } catch (ParseException e) {
-            System.out.println("Malformed data file: "+e.getMessage();
-        } catch (Exception e) {
-            System.out.println("Exception occurred: "+e.getMessage());
-        }
-    }
-    //...
-}
-\end{lstlisting}
-
-\end{frame}
-%------------------------------------------------------------------------
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Principles of Exception Handling}
+%
+%
+% \begin{itemize}
+% \item Don't try to handle coding errors.
+% \item Prefer exceptions from the standard library to creating your own.
+% \item Name exceptions after the problem (not the thrower).
+% \item Wrap exceptions when crossing an abstraction boundary.
+% \item Store useful information in exception objects.
+% \item Handle exceptions close to their origins, but ...
+% \begin{itemize}
+%   \item Assign exception-handling responsibility to objects that can handle the exceptions.
+%   \item Don't ``eat'' exceptions (at the very least, log the exception).
+%   \item If you can't handle an exception sensibly, propagate it (``when in doubt, throw it out'').
+% \end{itemize}
+% \end{itemize}
+%
+% See \url{http://wirfs-brock.com/PDFs/towards_xcptn_hndling.pdf} for more details.  We'll just touch on a few of these here.
+%
+% \end{frame}
+% %------------------------------------------------------------------------
+%
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Applying Exception Handling Principles}
+%
+%
+% What's wrong with this constructor?
+% \begin{lstlisting}[language=Java]
+% public class Company {
+%     private ArrayList<Employee> employees;
+%
+%     public Company(String employeeDataFile) {
+%         try {
+%             employees = initFromFile(new File(employeeDataFile));
+%         } catch (FileNotFoundException e) {
+%             System.out.println("Employee data file not found.");
+%         } catch (ParseException e) {
+%             System.out.println("Malformed data file: "+e.getMessage();
+%         } catch (Exception e) {
+%             System.out.println("Exception occurred: "+e.getMessage());
+%         }
+%     }
+%     //...
+% }
+% \end{lstlisting}
+%
+% \end{frame}
+% %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Writing and Using Your Own Exceptions}
 
 
-Define your own exception classes by subclassing {\tt Exception} (for checked exceptions) or {\tt RuntimeException} (for unchecked exceptions). 
+Define your own exception classes by subclassing {\tt Exception} (for checked exceptions) or {\tt RuntimeException} (for unchecked exceptions).
 
 \begin{lstlisting}[language=Java]
 public class MyException extends Exception {

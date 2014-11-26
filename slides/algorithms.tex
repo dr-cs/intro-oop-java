@@ -310,16 +310,19 @@ O(\lg n)
 
 \begin{tabular}{lll}
 Step                                   & Cost  & Times \\\hline
-\verb@for j = 2 to A.length@           & $c_1$ & $n$ \\
-\verb@    key = A[j]@                  & $c_2$ & $n - 1$  \\
-% // Insert A[j] into sorted A[i .. j - 1]. & & \\
-\verb@    i = j - 1@                   & $c_4$ & $n - 1$  \\
-\verb@    while i > 0 and A[i] > key@  & $c_5$ & $\sum_{j=2}^n j$  \\
-\verb@        A[i + 1] = A[i]@         & $c_6$ & $\sum_{j=2}^n (j - 1)$  \\
-\verb@        i = i - 1@               & $c_7$ & $\sum_{j=2}^n (j - 1)$  \\
-\verb@   A[i + 1] = key@               & $c_8$ & $n - 1$  \\
+\verb@1: for j = 2 to A.length         @  & $c_1$ & $n$ \\
+\verb@2:     key = A[j]@                  & $c_2$ & $n - 1$  \\
 \end{tabular}
-
+\verb@ 3:     @// Insert A[j] into sorted A[i .. j - 1].\\
+\begin{tabular}{lll}
+\verb@4:     i = j - 1@                   & $c_4$ & $n - 1$  \\
+\verb@5:     while i > 0 and A[i] > key@  & $c_5$ & $\sum_{j=2}^n j$  \\
+\verb@6:         A[i + 1] = A[i]@         & $c_6$ & $\sum_{j=2}^n (j - 1)$  \\
+\verb@7:         i = i - 1@               & $c_7$ & $\sum_{j=2}^n (j - 1)$  \\
+\verb@8:    A[i + 1] = key@               & $c_8$ & $n - 1$  \\
+\end{tabular}
+\\
+\vspace{.1in}
 Noting the sum of the arithmetic series $\sum_1^n x = \frac{n(n-1)}{2} = \frac{1}{2}n(n+1)$, adding the running times, simplifying, discarding constant terms and factors, and lower-order terms we get:
 \[
 O(n^2)

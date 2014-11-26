@@ -1,14 +1,6 @@
 \documentclass{beamer}
 
-\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
 \newcommand{\lesson}{Object-Oriented Programming, Part 1 of 3}
-\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
-
-\author[Chris Simpkins] 
-{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
-\institute[Georgia Tech] % (optional, but mostly needed)
-
-\date[CS 1331]{}
 
 \include{beamer-common}
 
@@ -32,7 +24,7 @@ Today we'll learn how to combine all the elements of object-oriented programming
 \item Dynamic method binding
 \end{itemize}
 
-That last part, dynamic method binding, provides for {\it polymorphism}, which we'll begin to learn today.
+That last part, dynamic method binding, provides for {\it polymorphism}, which we'll learn today.
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -155,7 +147,7 @@ public class Company { // no example code - hypothetical
 
 With our employee lists, calculating payroll is accomplished with two loops:
 \begin{lstlisting}[language=Java]
-public class Company {
+public class Company { // hypothetical
 
     public double monthlyPayroll() {
         double payroll = 0.0;
@@ -283,11 +275,11 @@ This makes sense for our {\tt Employee4} class.  We don't ever want to instantia
 \vspace{-.05in}
 \begin{lstlisting}[language=Java]
 public class Company4 {
-    private Employee[] employees;
+    private Employee4[] employees;
     public double monthlyPayroll() {
         double payroll = 0.0;
-        for (int i = 0; i < employees.length; ++i) {
-            payroll += employees[i].monthlyPay();
+        for (Employee4 employee: employees) {
+            payroll += employees.monthlyPay();
         }
         return payroll;
     }
@@ -367,7 +359,7 @@ private void disallowZeroesAndNegatives(double ... args) {
 \begin{frame}[fragile]{{\tt protected} Members}
 
 
-{\tt private} members of a superclass are effectively not inherited by subclasses.  To make a member accessible to subclasses, use {\tt protected}:
+{\tt private} members of a superclass are effectively invisible to subclasses.  To make a member accessible to subclasses, use {\tt protected}:
 \begin{lstlisting}[language=Java]
 public abstract class Employee5 {
     protected void disallowZeroesAndNegatives(double ... args) {
@@ -381,8 +373,9 @@ public abstract class Employee5 {
 \item are accessible to subclasses and other classes in the same package, and
 \item can be overriden in subclasses.
 \end{itemize}
-{\tt protected} members provide encapsulation within a class hierarchy, {\tt private} provides encapsulation within a single class.
-
+{\tt protected} members provide encapsulation within a class hierarchy and package, {\tt private} provides encapsulation within a single class.\\
+\vspace{.05in}
+Later we'll see a better way to re-use.
 \end{frame}
 %------------------------------------------------------------------------
 

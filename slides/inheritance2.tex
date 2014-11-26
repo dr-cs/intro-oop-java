@@ -4,7 +4,7 @@
 \newcommand{\lesson}{Inheritance, Part 2 of 2}
 \newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
 
-\author[Chris Simpkins] 
+\author[Chris Simpkins]
 {Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
 \institute[Georgia Tech] % (optional, but mostly needed)
 
@@ -87,7 +87,7 @@ What if we wanted to have default default values for hourly wages and monthly ho
 \begin{lstlisting}[language=Java]
 public final class HourlyEmployee3 extends Employee3 {
     /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
+     * Constructs an HourlyEmployee with hourly wage of 20 and
      * monthly hours of 160.
      */
     public HourlyEmployee3(String aName, Date aHireDate) {
@@ -192,7 +192,7 @@ public class Square extends Rectangle {
 \end{lstlisting}
 \vspace{-.1in}
 \begin{itemize}
-\item We know from math class that a square ``is a'' rectangle. 
+\item We know from math class that a square ``is a'' rectangle.
 \item The overridden {\tt setWidth} and {\tt setHeight} methods in {\tt Square} enforce the class invariant of {\tt Square}, namely, that {\tt width == height}.
 \end{itemize}
 
@@ -267,11 +267,121 @@ public class Square implements 2dShape {
 }
 \end{lstlisting}
 
-Notice the use of an \link{http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html}{interface} to define a type.  
+Notice the use of an \link{http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html}{interface} to define a type.
 
 \end{frame}
 %------------------------------------------------------------------------
 
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Interfaces}
+
+
+An interface represents an object-oriented type: a set of public methods (declarations, not definitions) that any object of the type supports.  Recall the {\tt 2dShape} interface:
+
+\begin{lstlisting}[language=Java]
+public interface 2dShape {
+    double area();
+}
+\end{lstlisting}
+
+You can't instantiate interfaces.  So you must define a class that implements the interface in order to use it.  Implementing an interface is similar to extending a class, but uses the {\tt implements} keyword:
+
+\begin{lstlisting}[language=Java]
+public class Square implements 2dShape {
+    public void setSide(double w) { ... }
+    public double area() {
+        return side * side;
+    }
+}
+\end{lstlisting}
+
+Now a {\tt Square} {\it is-a} {\tt 2dShape}.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Interfaces Define a Type}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public interface 2dShape {
+    double area();
+}
+\end{lstlisting}
+\vspace{-.05in}
+This means that any object of type {\tt 2dShape} supports the {\tt area} method, so we can write code like this:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public double calcTotalArea(2dShape ... shapes) {
+    double area = 0.0;
+    for (2dShape shape: shapes) {
+        area += shape.area();
+    }
+    return area;
+}
+\end{lstlisting}
+\vspace{-.05in}
+
+Two kinds of inheritance: {\it implementation} and {\it interface} inheritance.
+
+\begin{itemize}
+\item extending a class means inheriting both the interface and the implementation of the superclass
+\item implementing an interface means inheriting only the interface, that is, the public methods
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Default Methods in Interfaces}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Conflict Resolution for Default Methods}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item Superclasses win.
+\item Interfaces clash.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Static Methods in Interfaces}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
 
 
 

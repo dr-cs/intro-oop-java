@@ -1,22 +1,13 @@
 \documentclass{beamer}
 
-\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
 \newcommand{\lesson}{Review 2: Object-Oriented Programming}
-\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
-
-\author[Chris Simpkins] 
-{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
-\institute[Georgia Tech] % (optional, but mostly needed)
-
-\date[CS 1331]{}
 
 \include{beamer-common}
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
-% the following command: 
+% the following command:
 
 % \beamerdefaultoverlayspecification{<+->}
-
 
 \begin{document}
 
@@ -55,10 +46,10 @@ public class Mammal extends Animal {
 }
 public class Dog extends Mammal {
     public void speak() { System.out.println("Woof, woof!"); }
-    public void wagTail() { System.out.println("(wags tail)"); }        
+    public void wagTail() { System.out.println("(wags tail)"); }
 }
 public class Cat extends Mammal {
-    public void speak() { System.out.println("Meow!"); }  
+    public void speak() { System.out.println("Meow!"); }
 }
 \end{lstlisting}
 
@@ -206,78 +197,165 @@ Propagating an exception unwinds the stack of methods that led to the point wher
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Static versus Non-Static}
+\begin{frame}[fragile]{Exceptions Question}
 
-Consider \link{\code/Doberman.java}{Doberman.java}:
+\vspace{-.05in}
 \begin{lstlisting}[language=Java]
-public class Doberman {
+public class A extends Throwable { ... }
+public class B extends A { ... }
+public class C extends RuntimeException { ... }
+\end{lstlisting}
+\vspace{-.05in}
+Which of the following methods will {\bf not} compile?
+\vspace{-.05in}
+\begin{enumerate} \itemsep0pt
 
-    private static int dobieCount = 0;
-    
-    private String name;
-
-    public Doberman(String name) {
-        this.name = name;
-        dobieCount++;
+\item
+\begin{lstlisting}[language=Java]
+    A foo(B b) throws C {
+        if (true) throw new C("c");
+        return new B("b");
     }
-    public String reportDobieCount() {
-        return name + " says there are " + dobieCount + " dobies.";
-    }
-}
 \end{lstlisting}
 
+\item
+\begin{lstlisting}[language=Java]
+    A bar(B b) throws C {
+        if (true) throw new RuntimeException("c");
+        return new B("c");
+    }
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=Java]
+    A baz(B b) throws B {
+        if (true) throw new A("a");
+        return new B("c");
+    }
+\end{lstlisting}
+
+
+\end{enumerate}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Exceptions Question - Answer}
+
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class A extends Throwable { ... }
+public class B extends A { ... }
+public class C extends RuntimeException { ... }
+\end{lstlisting}
+\vspace{-.05in}
+Which of the following methods will {\bf not} compile?
+\vspace{-.05in}
+\begin{enumerate} \itemsep0pt
+\item
+\begin{lstlisting}[language=Java]
+    A foo(B b) throws C {
+        if (true) throw new C("c");
+        return new B("b");
+    }
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=Java]
+    A bar(B b) throws C {
+        if (true) throw new RuntimeException("c");
+        return new B("c");
+    }
+\end{lstlisting}
+
+\item This won't compile because {\tt A} is not a subclass of {\tt B}.
+\begin{lstlisting}[language=Java]
+    A baz(B b) throws B {
+        if (true) throw new A("a");
+        return new B("c");
+    }
+\end{lstlisting}
+
+
+\end{enumerate}
+
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Override Equivalence}
+
+Two methods are \href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.2}{override-equivalent} if:
 \begin{itemize}
-\item {\tt dobieCount} is shared between all instances of the {\tt Doberman} class.
-\item Each instance of {\tt Doberman} has its own distinct copy of {\tt name}.
+\item they have the same name,
+\item they have the same parameter lists, and
+\item their return values are \link{http://docs.oracle.com/javase/tutorial/java/javaOO/returnvalue.html}{covariant}
 \end{itemize}
 
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Override Equivalence Question}
+
+Given the following classes:
+
+\begin{lstlisting}[language=Java]
+public class A { ... }
+public class B extends A { ... }
+public class C extends A { ... }
+\end{lstlisting}
+
+and the method signature:
+
+\begin{lstlisting}[language=Java]
+public A foo(B b);
+\end{lstlisting}
+
+Which of the following method signatures is override eqivalent?
+
+\begin{enumerate}
+\item {\tt public B foo(A bar)}
+\item {\tt public C foo(B bar)}
+\item {\tt public C foo(B bar)}
+\item {\tt public B foo(C bar)}
+\end{enumerate}
+
 
 \end{frame}
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Reference Counting with a Static Variable}
+\begin{frame}[fragile]{Override Equivalence Question - Answer}
 
-Given \link{\code/DaringDobermans.java}{DaringDobermans.java}:
+Given the following classes:
+
 \begin{lstlisting}[language=Java]
-public class DaringDobermans {
-    public static void main(String[] args) {
-        Doberman fido = new Doberman("Fido");
-        Doberman prince = new Doberman("Prince");
-        Doberman chloe = new Doberman("Chloe");
-        System.out.println(fido.reportDobieCount());
-        System.out.println(prince.reportDobieCount());
-        System.out.println(chloe.reportDobieCount());
-    }
-}
-\end{lstlisting}
-and our definition of {\tt Doberman}, what will {\tt java DaringDobermans} print?
-\begin{lstlisting}[language=Java]
-$ java DaringDobermans
-Fido says there are 3 dobies.
-Prince says there are 3 dobies.
-Chloe says there are 3 dobies.
+public class A { ... }
+public class B extends A { ... }
+public class C extends A { ... }
 \end{lstlisting}
 
-\end{frame}
-%------------------------------------------------------------------------
+and the method signature:
 
-%------------------------------------------------------------------------
-\begin{frame}[fragile]{Not Reference Counting with a Non-Static Variable}
-
-Now remove {\tt static} from the definition of {\tt dobieCount}:
 \begin{lstlisting}[language=Java]
-    private int dobieCount = 0;
-\end{lstlisting}
-Now when we run {\tt DaringDobermans} we get
-\begin{lstlisting}[language=Java]
-$ java DaringDobermans
-Fido says there are 1 dobies.
-Prince says there are 1 dobies.
-Chloe says there are 1 dobies.
+public A foo(B b);
 \end{lstlisting}
 
-The difference is that now each {\tt Doberman} instance has its own copy of {\tt dobieCount}, not a class-wide, or {\tt static} {\tt dobieCount}
+Which of the following method signatures is override eqivalent?
+
+\begin{enumerate}
+\item {\tt public B foo(A bar)}
+\item {\tt {\bf public C foo(B bar)}}
+\item {\tt public C foo(B bar)}
+\item {\tt public B foo(C bar)}
+\end{enumerate}
 
 
 \end{frame}

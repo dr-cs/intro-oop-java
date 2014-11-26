@@ -1,14 +1,10 @@
 \documentclass{beamer}
 
-\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+
 \newcommand{\lesson}{Object-Oriented Programming, Part 2 of 3}
-\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+\newcommand{\shorttitle}{OOP2}
 
-\author[Chris Simpkins] 
-{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
-\institute[Georgia Tech] % (optional, but mostly needed)
 
-\date[CS 1331]{}
 \include{beamer-common}
 
 % \beamerdefaultoverlayspecification{<+->}
@@ -20,19 +16,17 @@
   \titlepage
 \end{frame}
 
-
-
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Fitting Classes Into the Java Hierarchy}
 
 
-{\tt java.lang.Object} defines several methods that are designed to be overriden in subclasses \href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-4.html#jls-4.3.2}{JLS \S 4.3.2}: 
+{\tt java.lang.Object} defines several methods that are designed to be overriden in subclasses (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-4.html#jls-4.3.2}{JLS \S 4.3.2}:)
 \begin{itemize}
 \item The method {\tt equals(Object)} defines a notion of object equality, which is based on value, not reference, comparison.
-\item The method {\tt hashCode} is very useful, together with the method {\tt equals(Object)}, in hashtables such as {\tt java.util.Hashmap}.
+\item The method {\tt hashCode} is very used together with  {\tt equals(Object)} in hashtables such as {\tt java.util.Hashmap}.
 \item The method {\tt toString} returns a {\tt String} representation of the object.
-\item The method {\tt clone} is used to make a duplicate of an object
-\item The method {\tt finalize} is run just before an object is destroyed.
+\item The method {\tt clone} is used to make a duplicate of an object (don't touch).
+\item The method {\tt finalize} is run just before an object is destroyed (don't touch).
 \end{itemize}
 
 A class hierarchy is also sometimes called a {\it framework}.
@@ -52,7 +46,7 @@ When should a class override {\tt equals(Object)}?
 \item When logical equality differs from object identity, as is the case for {\it value} classes like {\tt Date}
 \item When classes don't implement instance control.
   \begin{itemize}
-  \item Instance control means that a class ensures that there is only one instance of a class.  
+  \item Instance control means that a class ensures that there is only one instance of a class.
   \end{itemize}
 \item When a suitable {\tt equals(Object)} method is not provided by a superclass.
 \end{itemize}
@@ -112,9 +106,9 @@ Assume we have a {\tt Person} class with a single {\tt name} field.
 Applying the recipe:
 \begin{lstlisting}[language=Java]
         public boolean equals(Object other) {
-1:          if (null == other) return false;
-2:          if (this == other) return true;
-3:          if (!(other instanceof Person)) return false;
+1:          if (null == other) { return false; }
+2:          if (this == other) { return true; }
+3:          if (!(other instanceof Person)) { return false; }
 4:          Person that = (Person) other;
 5:          return this.name.equals(that.name);
         }
@@ -184,7 +178,7 @@ int num = (Integer) ints.get(0); // auto-unboxing on assignment to int
 \end{lstlisting}
 We'll see a better way to handle this with generics.
 
-See \link{\code/ArrayListPrimitivesDemo.java}{ArrayListPrimitivesDemo.java} for more.
+See \link{\code/collections/ArrayListPrimitivesDemo.java}{ArrayListPrimitivesDemo.java} for more.
 \end{frame}
 %------------------------------------------------------------------------
 
@@ -211,7 +205,7 @@ See \link{\code/ArrayListPrimitivesDemo.java}{ArrayListPrimitivesDemo.java} for 
 In this simple class hierarchy, {\tt FoundPerson} has a properly implemented {\tt equals(Object)} method and {\tt LostPerson} does not.
 \vspace{-.05in}
 \begin{lstlisting}[language=Java]
-    static abstract class Person {
+    abstract static class Person {
         public String name;
         public Person(String name) {
             this.name = name;
@@ -224,43 +218,136 @@ In this simple class hierarchy, {\tt FoundPerson} has a properly implemented {\t
         public FoundPerson(String name) { super(name); }
 
         public boolean equals(Object other) {
-            if (this == other) return true;
-            if (!(other instanceof Person)) return false;
+            if (this == other) { return true; }
+            if (!(other instanceof Person)) { return false; }
             return ((Person) other).name.equals(this.name);
         }
     }
 \end{lstlisting}
 \vspace{-.05in}
-Let's examine the code in \link{\code/ArrayListEqualsDemo.java}{ArrayListEqualsDemo.java}.
+Let's examine the code in \link{\code/collections/ArrayListEqualsDemo.java}{ArrayListEqualsDemo.java}.
 
 \end{frame}
 %------------------------------------------------------------------------
 
-
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Overriding versus Overloading}
+\begin{frame}[fragile]{Override-Equivalence}
 
-\vspace{-.05in}
-Take another look at {\tt Employee}'s {\tt equals} method:
-\vspace{-.1in}
-\begin{lstlisting}[language=Java]
-public boolean equals(Object other) {
-    if (other == null) return false;
-    if (this == other) return true;
-    if (!(other instanceof Employee)) return false;
-    Employee that = (Employee) other;
-    return name.equals(that.name) && hireDate.equals(that.hireDate);
-}
-\end{lstlisting}
-\vspace{-.1in}
+Two methods are \href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.2}{override-equivalent} if:
 \begin{itemize}
-\item The signature of {\tt equals} in {\tt java.lang.Object} is {\tt public boolean equals(Object other)} - the argument is of type {\tt Object}.
-\item What if the {\tt equals} in {\tt Employee} took an {\tt Employee} argument instead of an {\tt Object} argument?
+\item they have the same name,
+\item they have the same parameter lists, and
+\item their return values are \link{http://docs.oracle.com/javase/tutorial/java/javaOO/returnvalue.html}{covariant}
 \end{itemize}
 
-We'll talk more about this next lecture and extend our {\tt Employee} class hierarchy to overriding (subclass polymorphism) and overloading (ad-hoc polymorphism).\footnote{There's actually much more to properly overriding {\tt equals}, like overriding {\tt hashCode}.  We'll revisit {\tt equals} and {\tt hashCode} when we learn about collections.}
+These rules lead to a few pitfalls:
+
+\begin{itemize}
+\item You can't define override-equivalent methods in the same class.
+\item In subclasses it's easy to accidentally overload a superclass method when you meant to override.
+\end{itemize}
+
+Let's look at a few examples to help us understand these rules.
+
 \end{frame}
 %------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Covariant Returns}
+\vspace{-.05in}
+{\tt covariantReturn} is covariant in {\tt Person} and {\tt LostPerson}:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+abstract static class Person {
+    public String name;
+    public Person(String name) { this.name = name; }
+    public Object covariantReturn() { return new Object(); }
+}
+static class LostPerson extends Person {
+    public LostPerson(String name) { super(name); }
+    @Override public LostPerson covariantReturn() { return this; }
+}
+\end{lstlisting}
+... because {\tt LostPerson} is a subtype of {\tt Object}.\\
+But {\tt SubLostPerson} won't compile:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+static class SubLostPerson extends LostPerson {
+    public SubLostPerson(String name) { super(name); }
+    @Override public Person covariantReturn() { return this; }
+}
+\end{lstlisting}
+... becuase its {\tt covariantReturn}'s return type is {\it contravariant}, that is, {\tt Person} is a supertype of {\tt LostPerson}.
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Non-Covariant Return}
+
+{\tt NoncompilingPerson} won't compile because {\tt int} is not a subtype of {\tt boolean} and because return-type covariance only applies to reference types, not primitives.
+\begin{lstlisting}[language=Java]
+    static class NonCompilingPerson extends Person {
+        public NonCompilingPerson(String name) { super(name); }
+
+        /**
+         * This method won't compile because int is not a subtype of boolean.
+         */
+        public int equals(Object other) {
+            if (null == other) return 0;
+            if (this == other) return 1;
+            if (!(other instanceof Person)) return 0;
+            return ((Person) other).name.equals(this.name) ? 1 : 0;
+        }
+    }
+
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Accidental Overloading}
+
+It's easy to make this mistake:
+\begin{lstlisting}[language=Java]
+    static class OverloadedPerson extends Person {
+        public OverloadedPerson(String name) { super(name); }
+
+        public boolean equals(OverloadedPerson other) {
+            if (null == other) { return false; }
+            if (this == other) { return true; }
+            if (!(other instanceof OverloadedPerson)) { return false; }
+            return ((OverloadedPerson) other).name.equals(this.name);
+        }
+    }
+\end{lstlisting}
+
+\begin{itemize}
+\item Signature of {\tt equals} in {\tt Object} is {\tt public boolean equals(Object other)} - parameter type is {\tt Object}.
+\item In {\tt OverloadedPerson} we've accidentally {\it overloaded} {\tt equals} instead of {\it overriding} {\tt equals} by making the parameter type {\tt OverloadedPerson}.
+\end{itemize}
+
+Using the {\tt @Override} annotation helps you avoid this mistake.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+\begin{itemize}
+\item {\tt java.lang.Object} is the root superclass of every Java class.
+\item "Classic" Java collections are general because they hold elements of type {\tt Object}
+\item Java collections and many programming idioms rely on the methods defined in {\tt Object}, some of which must be overridden in subclasses in order for instances of these subclasses to function properly as elements of collections.
+\item Overriding {\tt equals} is straightforward if you follow the recipe.
+\item There's more to overriding {\tt equals} -- in particular, overriding {\tt hashcode} -- but now we know the basic concepts.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
 
 
 %% %------------------------------------------------------------------------
@@ -274,7 +361,7 @@ We'll talk more about this next lecture and extend our {\tt Employee} class hier
 %%     public SummerIntern(String name, Date hireDate) {
 %%         this(name, hireDate, 20.00, 160.0);
 %%     }
-%%     public SummerIntern(String name, Date hireDate, 
+%%     public SummerIntern(String name, Date hireDate,
 %%                         double hourlyWage, double monthlyHours) {
 %%         super(name, hireDate, hourlyWage, monthlyHours);
 %%     }
@@ -352,7 +439,7 @@ We'll talk more about this next lecture and extend our {\tt Employee} class hier
 %% \item Italicized names are abstract (e.g., {\it Employee} is an abstract class, {\it + getMonthlyPay(month: Calendar)} is an abstract method).
 %% \item We've only shown public methods (denoted by the '+' symbols in front of their names).
 %% \item Each class has all the public methods in its superclasses, and possibly additional methods.
-%% \item {\tt SummerIntern} only {\it specializes} {\tt HourlyEmployee}, that is, it modifies some behavior of its superclass but does not add any additional behavior. 
+%% \item {\tt SummerIntern} only {\it specializes} {\tt HourlyEmployee}, that is, it modifies some behavior of its superclass but does not add any additional behavior.
 %% \end{itemize}
 
 

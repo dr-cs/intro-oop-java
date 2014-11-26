@@ -1,10 +1,10 @@
 \documentclass{beamer}
 
 \newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
-\newcommand{\lesson}{Review 1: Java Basics through Arrays}
+\newcommand{\lesson}{Review 1: Java Programs, Variables, Values, Control Structures, Arrays, Classes}
 \newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
 
-\author[Chris Simpkins] 
+\author[Chris Simpkins]
 {Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
 \institute[Georgia Tech] % (optional, but mostly needed)
 
@@ -32,10 +32,10 @@
 import java.util.Random;
 
 public class Hello {
-    
+
     private static final String[] GREETINGS =
         {"Hello, world!", "Hi there!", "W'sup!"};
-    
+
     private String greeting;
 
     private Hello() {
@@ -48,7 +48,7 @@ public class Hello {
         int greetingsIndex = anIndex % GREETINGS.length;
         greeting = GREETINGS[greetingsIndex];
     }
-    
+
     public String getGreeting() {
         return greeting;
     }
@@ -168,6 +168,7 @@ public Hello() {
 \item {\tt h} is a {\it reference} to a {\tt Hello} object
 \end{itemize}
 
+What does {\tt Random rand = new Random(10);} do?
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -185,7 +186,7 @@ public Hello(int anIndex) {
 
 \begin{itemize}
 \item To call this constructor, provide an argument in the call to {\tt new}, as in {\tt Hello h = new Hello(1);}
-\item Prividing the argument in the {\tt new} call selects a particular constructor, in this case the constructor that takes one {\tt int} parameter
+\item Providing the argument in the {\tt new} call selects a particular constructor, in this case the constructor that takes one {\tt int} parameter
 \end{itemize}
 
 
@@ -277,12 +278,161 @@ $ java Hello
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
+\begin{frame}[fragile]{Maintaining Class Invariants}
+\vspace{-.05in}
+This {\tt Card} class won't allow a client to set an invalid rank:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Card {
+    private final String[] VALID_RANKS =
+        {"2", "3", "4", "5", "6", "7", "8", "9",
+         "10", "jack", "queen", "king", "ace"};
+    private String rank;
+
+    public void setRank(String rank) {
+        if (!isValidRank(rank)) {
+            throw new IllegalArgumentException("Invalid rank.");
+        }
+        this.rank = rank;
+    }
+    private boolean isValidRank(String someRank) {
+        return Arrays.asList(VALID_RANKS).contains(someRank);
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+\begin{itemize}
+\item Types restrict the values you may set for a variable to a particular domain.
+\item With encapsulation you can further restrict the domain of allowable values for a variable.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Static versus Non-Static}
+
+Consider \link{\code/classes/Doberman.java}{Doberman.java}:
+\begin{lstlisting}[language=Java]
+public class Doberman {
+
+    private static int dobieCount = 0;
+
+    private String name;
+
+    public Doberman(String name) {
+        this.name = name;
+        dobieCount++;
+    }
+    public String reportDobieCount() {
+        return name + " says there are " + dobieCount + " dobies.";
+    }
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt dobieCount} is shared between all instances of the {\tt Doberman} class.
+\item Each instance of {\tt Doberman} has its own distinct copy of {\tt name}.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Reference Counting with a Static Variable}
+
+Given \link{\code/classes/DaringDobermans.java}{DaringDobermans.java}:
+\begin{lstlisting}[language=Java]
+public class DaringDobermans {
+    public static void main(String[] args) {
+        Doberman fido = new Doberman("Fido");
+        Doberman prince = new Doberman("Prince");
+        Doberman chloe = new Doberman("Chloe");
+        System.out.println(fido.reportDobieCount());
+        System.out.println(prince.reportDobieCount());
+        System.out.println(chloe.reportDobieCount());
+    }
+}
+\end{lstlisting}
+and our definition of {\tt Doberman}, what will {\tt java DaringDobermans} print?
+\begin{lstlisting}[language=Java]
+$ java DaringDobermans
+Fido says there are 3 dobies.
+Prince says there are 3 dobies.
+Chloe says there are 3 dobies.
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Not Reference Counting with a Non-Static Variable}
+
+Now remove {\tt static} from the definition of {\tt dobieCount}:
+\begin{lstlisting}[language=Java]
+    private int dobieCount = 0;
+\end{lstlisting}
+Now when we run {\tt DaringDobermans} we get
+\begin{lstlisting}[language=Java]
+$ java DaringDobermans
+Fido says there are 1 dobies.
+Prince says there are 1 dobies.
+Chloe says there are 1 dobies.
+\end{lstlisting}
+
+The difference is that now each {\tt Doberman} instance has its own copy of {\tt dobieCount}, not a class-wide, or {\tt static} {\tt dobieCount}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Static Variables}
+
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Doberman {
+    private static int dobieCount = 0;
+    private String name;
+
+    public Doberman(String name) {
+        this.name = name;
+        dobieCount++;
+    }
+    public String reportDobieCount() {
+        return name+" says there are "+dobieCount+" dobies.";
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+What does this code print?
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+        Doberman fido = new Doberman("Fido");
+        System.out.println(fido.reportDobieCount());
+
+        Doberman prince = new Doberman("Prince");
+        System.out.println(prince.reportDobieCount());
+
+        Doberman chloe = new Doberman("Chloe");
+        System.out.println(chloe.reportDobieCount());
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------
 \begin{frame}[fragile]{Review Questions: Variables and Values}
 
 \begin{itemize}
 \item Is {\tt int n = 2.2;} legal?
 \item What's the value of the expression {\tt 17 \% 4}?
-\item What's the value of {\tt n} after {\tt int n = (int) 2.2;}? 
+\item What's the value of {\tt n} after {\tt int n = (int) 2.2;}?
 \item After the line above and {\tt n++;}, what's the value of {\tt n}?
 \item After the line above and {\tt n += 2;}, what's the value of {\tt n}?
 \item After the line above and {\tt String s = "Answer: " + n;}, what's the value of {\tt s}?
@@ -294,8 +444,8 @@ boolean b = false;
 \end{lstlisting}
 \vspace{-.1in}
 \begin{itemize}
-\item What's the value of {\tt x} after {\tt boolean x = a || b;}? 
-\item What's the value of {\tt y} after {\tt boolean y = a \&\& b;}? 
+\item What's the value of {\tt x} after {\tt boolean x = a || b;}?
+\item What's the value of {\tt y} after {\tt boolean y = a \&\& b;}?
 \end{itemize}
 
 
@@ -307,7 +457,7 @@ boolean b = false;
 
 
 Will this code compile?
-\vspace{-.1in}
+
 \begin{lstlisting}[language=Java]
 String condition = "true";
 if (condition) {
@@ -336,12 +486,12 @@ if (a && b ) {
 
 
 What will this code print?
-\vspace{-.1in}
+\vspace{-.05in}
 \begin{lstlisting}[language=Java]
 public class ShortCircuit {
 
     private static int counter = 0;
-    
+
     private static boolean incrementCounter() {
         counter++;
         return true;
@@ -401,19 +551,19 @@ What will this code print?
 \begin{lstlisting}[language=Java]
 public class Foo {
     private String bar;
-    public Foo(Sting bar) {
+    public Foo(String bar) {
         this.bar = bar;
     }
     public boolean equals(Object other) {
-        return this.bar.equals(other.bar);
+        return this.bar.equals(((Foo) other).bar);
     }
     public static void main(String[] args) {
         Foo foo1 = new Foo("bar");
         Foo foo2 = new Foo("bar");
-        Foo foo3 = f1;
-        System.out.println("foo1.equals(f002): " + foo1.equals(foo2));
-        System.out.println("foo1 == foo2: " + foo1 == foo2);
-        System.out.println("foo1 == foo3: " + foo1 == foo3);
+        Foo foo3 = foo1;
+        System.out.println("foo1.equals(foo2): " + foo1.equals(foo2));
+        System.out.println("foo1 == foo2: " + (foo1 == foo2));
+        System.out.println("foo1 == foo3: " + (foo1 == foo3));
     }
 }
 \end{lstlisting}

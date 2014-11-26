@@ -30,7 +30,7 @@ public class Fac {
      * A tail recursive factorial function using a recursive helper method
      * to create the iterations.
      */
-    private static int facTail(int n) {
+    public static int facTail(int n) {
         return facIter(n, 1);
     }
 

@@ -1,5 +1,5 @@
 public class Person implements Comparable<Person> {
-    
+
     private String name;
 
     public Person(String name) {
@@ -9,7 +9,7 @@ public class Person implements Comparable<Person> {
         this.name = name;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
@@ -22,9 +22,9 @@ public class Person implements Comparable<Person> {
     }
 
     public boolean equals(Object other) {
-        if (null == other) return false;
-        if (this == other) return true;
-        if (!(other instanceof Person)) return false;
+        if (null == other) { return false; }
+        if (this == other) { return true; }
+        if (!(other instanceof Person)) { return false; }
         Person that = (Person) other;
         return this.name.equals(that.name);
     }

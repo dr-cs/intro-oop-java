@@ -1,11 +1,11 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class HourlyEmployee2 extends Employee2 {
 
     private double hourlyWage;
     private double monthlyHours;
 
-    public HourlyEmployee2(String aName, Date aHireDate,
+    public HourlyEmployee2(String aName, LocalDate aHireDate,
                           double anHourlyWage, double aMonthlyHours) {
         super(aName, aHireDate);
         disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);
@@ -28,7 +28,9 @@ public class HourlyEmployee2 extends Employee2 {
         }
     }
 
+    @Override
     public String getName() {
+        // What if we left off super in super.getName()?
         return "Hourly: " + super.getName();
     }
 
@@ -48,6 +50,7 @@ public class HourlyEmployee2 extends Employee2 {
         return hourlyWage * monthlyHours;
     }
 
+    @Override
     public String toString() {
         return getName() + "; Hire Date: " + getHireDate() + "; Hourly Wage: "
             + hourlyWage + "; Monthly Hours: " + monthlyHours;

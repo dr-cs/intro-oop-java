@@ -78,7 +78,7 @@ public class DoublyLinkedList<E> {
     }
 
     public String toString() {
-        StringBuffer sb = new StringBuffer("[");
+        StringBuilder sb = new StringBuilder("[");
         for (Node node = first; node != null; node = node.next) {
             sb.append(node.data + " ");
 
@@ -87,7 +87,7 @@ public class DoublyLinkedList<E> {
     }
 
     public String toReverseString() {
-        StringBuffer sb = new StringBuffer("[");
+        StringBuilder sb = new StringBuilder("[");
         for (Node node = last; node != null; node = node.previous) {
             sb.append(node.data + " ");
         }

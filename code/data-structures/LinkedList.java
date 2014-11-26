@@ -44,6 +44,18 @@ public class LinkedList {
         return len;
     }
 
+    public int len() {
+        return lenIter(head, 0);
+    }
+
+    public int lenIter(Node node, int accum) {
+        if (null == node) {
+            return accum;
+        } else {
+            return lenIter(node.next, accum + 1);
+        }
+    }
+
     /**
      * @return true if this list has no elements, false otherwise.
      */
@@ -72,23 +84,30 @@ public class LinkedList {
     }
 
     public static void main(String[] args) {
-        LinkedList lst = new LinkedList();
-        lst.add("Thorny");
-        lst.add("Farva");
-        lst.add("Mac");
-        lst.add("Rabbit");
-        lst.add("Foster");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+        LinkedList list = new LinkedList();
+        System.out.println(list);
+        System.out.println("list.length(): " + list.length());
+        System.out.println("list.len() " + list.len());
+
+        list.add("Thorny");
+        list.add("Farva");
+        list.add("Mac");
+        list.add("Rabbit");
+        list.add("Foster");
+        System.out.println(list);
+        System.out.println("list.length(): " + list.length());
+        System.out.println("list.len() " + list.len());
 
         // Insert after existing item
-        lst.insertAfter("Rabbit", "Ursula");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+        list.insertAfter("Rabbit", "Ursula");
+        System.out.println(list);
+        System.out.println("list.length(): " + list.length());
+        System.out.println("list.len() " + list.len());
 
         // Insert after non-existing item - goes to tail of list
-        lst.insertAfter("Wonder Woman", "Chimpo");
-        System.out.println(lst);
-        System.out.println("How many? " + lst.length());
+        list.insertAfter("Wonder Woman", "Chimpo");
+        System.out.println(list);
+        System.out.println("list.length(): " + list.length());
+        System.out.println("list.len() " + list.len());
     }
 }

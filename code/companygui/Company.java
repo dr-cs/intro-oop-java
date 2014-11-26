@@ -13,27 +13,29 @@ public class Company {
 
     private ArrayList<Employee> employees;
 
-    public Company(String employeeDataFile) {
+    public Company(String employeeDataFile) throws Exception {
         this(new File(employeeDataFile));
     }
 
-    public Company(File dataFile) {
+    public Company(File dataFile) throws FileNotFoundException,
+                                         IOException,
+                                         ParseException {
         employees = new ArrayList<Employee>(10);
-        try {
+        // try {
             initFromFile(dataFile);
-        } catch (FileNotFoundException e) {
-            System.out.println("Can't run without an employee data file.");
-            System.out.println(e.getMessage());
-            System.exit(0);
-        } catch (ParseException e) {
-            String msg = "Malformed data caused exception: " + e.getMessage();
-            System.out.println(msg);
-            System.out.println("Full stack trace:");
-            e.printStackTrace(System.out);
-            System.exit(0);
-        } catch (Exception e) {
-            System.out.println("Something bad happened: " + e.getMessage());
-        }
+        // } catch (FileNotFoundException e) {
+        //     System.out.println("Can't run without an employee data file.");
+        //     System.out.println(e.getMessage());
+        //     System.exit(0);
+        // } catch (ParseException e) {
+        //     String msg = "Malformed data caused exception: " + e.getMessage();
+        //     System.out.println(msg);
+        //     System.out.println("Full stack trace:");
+        //     e.printStackTrace(System.out);
+        //     System.exit(0);
+        // } catch (Exception e) {
+        //     System.out.println("Something bad happened: " + e.getMessage());
+        // }
 
     }
 
@@ -61,7 +63,7 @@ public class Company {
         }
         return ret;
     }
-    
+
     private void initFromFile(File empData) throws FileNotFoundException,
                                                    IOException,
                                                    ParseException {
@@ -83,7 +85,7 @@ public class Company {
         }
     }
 
-    private SalariedEmployee makeSalariedEmployee(String[] fields) 
+    private SalariedEmployee makeSalariedEmployee(String[] fields)
             throws ParseException {
         String name = fields[1].trim();
         Date hireDate = DateFormat.getDateInstance().parse(fields[2].trim());
@@ -109,7 +111,7 @@ public class Company {
         return new SummerIntern(name, hireDate, hourlyWage, monthlyHours);
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws Exception {
         Company c = new Company("employees.data");
         System.out.println(c);
         Calendar may =  Calendar.getInstance();

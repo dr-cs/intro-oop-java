@@ -1,6 +1,5 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class HourlyEmployee extends Employee {
 
@@ -10,17 +9,17 @@ public class HourlyEmployee extends Employee {
     private double monthlyHours;
 
     /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
+     * Constructs an HourlyEmployee with hourly wage of 20 and
      * monthly hours of 160.
      */
-    public HourlyEmployee(String aName, Date aHireDate) {
+    public HourlyEmployee(String aName, LocalDate aHireDate) {
         this(aName, aHireDate, 20.00, 160.0);
     }
 
-    public HourlyEmployee(String aName, Date aHireDate,
+    public HourlyEmployee(String aName, LocalDate aHireDate,
                           double anHourlyWage, double aMonthlyHours) {
         super(aName, aHireDate);
-        ValidationUtils..disallowZeroesAndNegatives(anHourlyWage,
+        ValidationUtils.disallowZeroesAndNegatives(anHourlyWage,
                                                     aMonthlyHours);
         hourlyWage = anHourlyWage;
         monthlyHours = aMonthlyHours;
@@ -54,9 +53,8 @@ public class HourlyEmployee extends Employee {
 
     public static void main(String[] args) throws Exception {
         System.out.println(YAY);
-        DateFormat df = DateFormat.getDateInstance();
         HourlyEmployee eva = new HourlyEmployee("Eva Luator",
-                                                df.parse("June 10, 2013"));
+                                                LocalDate.of(2013, 6, 10));
 
         System.out.println("eva's name: " + eva.getName());
 

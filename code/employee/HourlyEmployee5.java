@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class HourlyEmployee5 extends Employee5 {
 
@@ -6,14 +6,14 @@ public class HourlyEmployee5 extends Employee5 {
     private double monthlyHours;
 
     /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
+     * Constructs an HourlyEmployee with hourly wage of 20 and
      * monthly hours of 160.
      */
-    public HourlyEmployee5(String aName, Date aHireDate) {
+    public HourlyEmployee5(String aName, LocalDate aHireDate) {
         this(aName, aHireDate, 20.00, 160.0);
     }
 
-    public HourlyEmployee5(String aName, Date aHireDate,
+    public HourlyEmployee5(String aName, LocalDate aHireDate,
                           double anHourlyWage, double aMonthlyHours) {
         super(aName, aHireDate);
         disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);

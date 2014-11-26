@@ -1,12 +1,13 @@
 import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
 
 public abstract class Employee {
 
     private String name;
-    private Date hireDate;
+    private LocalDate hireDate;
 
-    public Employee(String aName, Date aHireDate) {
+    public Employee(String aName, LocalDate aHireDate) {
         ValidationUtils.disallowNullArguments(aName, aHireDate);
         name = aName;
         hireDate = aHireDate;
@@ -18,7 +19,7 @@ public abstract class Employee {
         return name;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
@@ -27,6 +28,7 @@ public abstract class Employee {
         return name + "; " + hireDate;
     }
 
+    @Override
     public boolean equals(Object other) {
         if (other == null) return false;
         if (this == other) return true;

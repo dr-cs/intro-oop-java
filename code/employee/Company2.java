@@ -6,25 +6,25 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Company2 {
 
-    private ArrayList<Employee> employees;
-    private Employee[] emps;
+    private ArrayList<Employee2> employees;
+    private Employee2[] emps;
 
     public Company2(String employeeDataFile) throws FileNotFoundException {
-        employees = new ArrayList<Employee>(10);
-        emps = new Employee[10];
+        employees = new ArrayList<Employee2>(10);
+        emps = new Employee2[10];
         loadEmployeesFromFile(new File(employeeDataFile));
     }
 
     public double monthlyPayroll() {
         double payroll = 0.0;
         int i = 0;
-        for (Employee employee: employees) {
-            payroll += employee.monthlyPay();
-            System.out.println(emps[i].monthlyPay());
+        for (Employee2 employee: employees) {
+            // payroll += employee.monthlyPay();
+            // System.out.println(emps[i].monthlyPay());
             i++;
         }
         return payroll;
@@ -32,13 +32,13 @@ public class Company2 {
 
     public String toString() {
         String ret = "";
-        for (Employee employee: employees) {
+        for (Employee2 employee: employees) {
             ret += employee + "\n";
         }
         return ret;
     }
-    
-    private void loadEmployeesFromFile(File empData) 
+
+    private void loadEmployeesFromFile(File empData)
             throws FileNotFoundException {
         BufferedReader reader = new BufferedReader(new FileReader(empData));
         int lineNumber = 1;
@@ -55,7 +55,7 @@ public class Company2 {
                         emps[lineNumber-1] = makeHourlyEmployee(fields);
                     }
                 } catch (ParseException e) {
-                    String msg = "Malformed data at line " + lineNumber 
+                    String msg = "Malformed data at line " + lineNumber
                         + ", caused by " + e.getMessage();
                     System.out.println(msg);
                     System.out.println("Full stack trace:");
@@ -66,7 +66,7 @@ public class Company2 {
                 lineNumber++;
             }
         } catch (IOException e) {
-            String msg = "Unable to read line " + lineNumber 
+            String msg = "Unable to read line " + lineNumber
                 + ", caused by " + e.getMessage();
             System.out.println(msg);
             System.out.println("Full stack trace:");
@@ -75,21 +75,21 @@ public class Company2 {
         }
     }
 
-    private SalariedEmployee makeSalariedEmployee(String[] fields) 
+    private SalariedEmployee2 makeSalariedEmployee(String[] fields)
             throws ParseException {
         String name = fields[1].trim();
-        Date hireDate = DateFormat.getDateInstance().parse(fields[2].trim());
+        LocalDate hireDate =  LocalDate.parse(fields[2].trim());
         double annualSalary = Double.parseDouble(fields[3].trim());
-        return new SalariedEmployee(name, hireDate, annualSalary);
+        return new SalariedEmployee2(name, hireDate, annualSalary);
     }
 
-    private HourlyEmployee makeHourlyEmployee(String[] fields)
+    private HourlyEmployee2 makeHourlyEmployee(String[] fields)
             throws ParseException {
         String name = fields[1].trim();
-        Date hireDate = DateFormat.getDateInstance().parse(fields[2].trim());
+        LocalDate hireDate =  LocalDate.parse(fields[2].trim());
         double hourlyWage = Double.parseDouble(fields[3].trim());
         double monthlyHours = Double.parseDouble(fields[4].trim());
-        return new HourlyEmployee(name, hireDate, hourlyWage, monthlyHours);
+        return new HourlyEmployee2(name, hireDate, hourlyWage, monthlyHours);
     }
 
     public static void main(String[] args) throws FileNotFoundException {

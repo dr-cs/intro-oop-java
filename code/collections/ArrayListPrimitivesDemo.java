@@ -11,7 +11,7 @@ public class ArrayListPrimitivesDemo {
         ints.add(99);
         System.out.println(ints);
 
-        // However, autoboxing doesn't happen when retrieving 
+        // However, autoboxing doesn't happen when retrieving
         // from an untyped collection
         // int num = ints.get(0); // won't compile
 

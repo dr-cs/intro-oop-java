@@ -3,10 +3,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Company {
 
@@ -36,7 +35,7 @@ public class Company {
             System.exit(0);
         }
     }
-    
+
     public void Company(String empDataFile) throws Exception {
         employees = initFromFile2(new File(empDataFile));
         if (null == employees) {
@@ -62,9 +61,9 @@ public class Company {
         }
         return ret;
     }
-    
-    
-    private ArrayList<Employee> initFromFile(File empData) 
+
+
+    private ArrayList<Employee> initFromFile(File empData)
         throws FileNotFoundException, IOException, ParseException {
         ArrayList<Employee> emps = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(empData));
@@ -77,12 +76,12 @@ public class Company {
                 emps.add(makeHourlyEmployee(fields));
             }
             line = reader.readLine();
-        } 
+        }
         return emps;
     }
 
 
-    private ArrayList<Employee> initFromFile2(File empData) 
+    private ArrayList<Employee> initFromFile2(File empData)
             throws FileNotFoundException {
         ArrayList<Employee> emps = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(empData));
@@ -98,7 +97,7 @@ public class Company {
                         emps.add(makeHourlyEmployee(fields));
                     }
                 } catch (ParseException e) {
-                    String msg = "Malformed data at line " + lineNumber 
+                    String msg = "Malformed data at line " + lineNumber
                         + ", caused by " + e.getMessage();
                     System.out.println(msg);
                     System.out.println("Full stack trace:");
@@ -109,20 +108,20 @@ public class Company {
                 lineNumber++;
             }
         } catch (IOException e) {
-            String msg = "Unable to read line " + lineNumber 
+            String msg = "Unable to read line " + lineNumber
                 + ", caused by " + e.getMessage();
             System.out.println(msg);
             System.out.println("Full stack trace:");
             e.printStackTrace(System.out);
-            
+
         }
         return emps;
     }
 
-    private SalariedEmployee makeSalariedEmployee(String[] fields) 
+    private SalariedEmployee makeSalariedEmployee(String[] fields)
             throws ParseException {
         String name = fields[1].trim();
-        Date hireDate = DateFormat.getDateInstance().parse(fields[2].trim());
+        LocalDate hireDate = LocalDate.parse(fields[2].trim());
         double annualSalary = Double.parseDouble(fields[3].trim());
         return new SalariedEmployee(name, hireDate, annualSalary);
     }
@@ -130,7 +129,7 @@ public class Company {
     private HourlyEmployee makeHourlyEmployee(String[] fields)
             throws ParseException {
         String name = fields[1].trim();
-        Date hireDate = DateFormat.getDateInstance().parse(fields[2].trim());
+        LocalDate hireDate = LocalDate.parse(fields[2].trim());
         double hourlyWage = Double.parseDouble(fields[3].trim());
         double monthlyHours = Double.parseDouble(fields[4].trim());
         return new HourlyEmployee(name, hireDate, hourlyWage, monthlyHours);

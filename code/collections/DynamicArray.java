@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class DynamicArray<E> implements Iterable<E> {
 
@@ -11,8 +12,8 @@ public class DynamicArray<E> implements Iterable<E> {
         }
 
         public E next() {
-            E answer = get(cursor);
-            cursor++;
+            if (!hasNext()) { throw new NoSuchElementException(); }
+            E answer = get(cursor++);
             return answer;
         }
 
@@ -20,6 +21,25 @@ public class DynamicArray<E> implements Iterable<E> {
             DynamicArray.this.remove(cursor - 1);
         }
     }
+
+    private class ReverseDynamicArrayIterator implements Iterator<E> {
+        private int cursor = size() - 1;
+
+        public boolean hasNext() {
+            return cursor >= 0;
+        }
+
+        public E next() {
+            if (!hasNext()) { throw new NoSuchElementException(); }
+            E answer = get(cursor--);
+            return answer;
+        }
+
+        public void remove() {
+            DynamicArray.this.remove(cursor - 1);
+        }
+    }
+
 
     private Object[] elements;
     private int lastIndex;
@@ -35,6 +55,10 @@ public class DynamicArray<E> implements Iterable<E> {
 
     public Iterator<E> iterator() {
         return new DynamicArrayIterator();
+    }
+
+    public Iterator<E> reverseIterator() {
+        return new ReverseDynamicArrayIterator();
     }
 
     public void add(E item) {
@@ -76,6 +100,8 @@ public class DynamicArray<E> implements Iterable<E> {
         da.add("Stan");
         da.add("Kenny");
         // Automatically growing capacity
+        da.add("Kyle");
+        da.add("Butters");
         da.add("Cartman");
         System.out.println("da contents:");
         // Using indexed-based access:
@@ -89,9 +115,19 @@ public class DynamicArray<E> implements Iterable<E> {
                 daIter.remove();
             }
         }
+
         // Using iterator:
         for (String e: da) {
             System.out.println(e);
         }
+
+
+        System.out.println("Using reverseIterator:");
+        Iterator revIter = da.reverseIterator();
+        while (revIter.hasNext()) {
+            System.out.println(revIter.next());
+        }
+
+
     }
 }

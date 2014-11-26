@@ -1,6 +1,5 @@
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class SalariedEmployee5 extends Employee5 {
 
@@ -8,9 +7,10 @@ public class SalariedEmployee5 extends Employee5 {
 
     private final double annualSalary;
 
-    public SalariedEmployee5(String aName, Date aHireDate,
+    public SalariedEmployee5(String aName, LocalDate aHireDate,
                             double anAnnualSalary) {
-        super(aName, aHireDate);
+        super(aName, aHireDate
+);
         disallowZeroesAndNegatives(anAnnualSalary);
         annualSalary = anAnnualSalary;
     }
@@ -42,9 +42,8 @@ public class SalariedEmployee5 extends Employee5 {
     }
 
     public static void main(String[] args) throws Exception {
-        DateFormat df = DateFormat.getDateInstance();
         SalariedEmployee5 eva = new SalariedEmployee5("Eva Luator",
-                                                      df.parse("June 10, 2013"),
+                                                      LocalDate.of(2013, 6, 10),
                                                       1000000);
         System.out.println(eva.getName());
     }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ArrayListDemo {
 
@@ -31,6 +32,12 @@ public class ArrayListDemo {
         peeps.add(new FoundPerson("Fred"));
         peeps.add(new LostPerson("Barney"));
 
+        Iterator<Person> piter = peeps.iterator();
+        while (piter.hasNext()) {
+            System.out.println(piter.next());
+        }
+        piter.next();
+
         // 1:
         // Will print true becuase the default implementation of equals
         // uses == for object identity, and we're using the same reference
@@ -53,7 +60,7 @@ public class ArrayListDemo {
         // 4:
         // Will print true because we're querying with a FoundPerson,
         // which has a properly implemented equals().
-        // Notice it doesn't matter that the object in the list is of 
+        // Notice it doesn't matter that the object in the list is of
         // type LostPerson.  The query object's equals() method is used.
         System.out.println("4: "+peeps.contains(new FoundPerson("Barney")));
 

@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Vector;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -15,9 +18,10 @@ public class ArrayListBasics {
     }
 
     public static void main(String[] args) {
-        ArrayList<Person> peeps = new ArrayList<>(10);
+        List<Person> peeps = new ArrayList<Person>();
         peeps.add(new Person("Aaron"));
         peeps.add(new Person("Evan"));
+        //peeps.add(new Object());
 
         for (Person p: peeps) {
             System.out.println(p.getName());
@@ -48,8 +52,8 @@ public class ArrayListBasics {
 
         // System.out.println("\nOK, maybe:");
         // tasks.add("Red Bull");
-        
-        // // Using iterator and for (notice we're incrementing the 
+
+        // // Using iterator and for (notice we're incrementing the
         // // iterator in the body, not the for-loop header).
         // for (Iterator iter = tasks.iterator(); iter.hasNext(); ) {
         //     Object task = iter.next();

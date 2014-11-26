@@ -1,12 +1,12 @@
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
 
 public abstract class Employee6 {
 
     private String name;
-    private Date hireDate;
+    private LocalDate hireDate;
 
-    public Employee6(String aName, Date aHireDate) {
+    public Employee6(String aName, LocalDate aHireDate) {
         disallowNullArguments(aName, aHireDate);
         name = aName;
         hireDate = aHireDate;
@@ -33,7 +33,7 @@ public abstract class Employee6 {
         return name;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 

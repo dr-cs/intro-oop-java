@@ -1,12 +1,12 @@
 import java.time.LocalDate;
 
-public class SalariedEmployee3 extends Employee3 {
+public class SalariedEmployee2 extends Employee2 {
 
     private static final int MONTHS_PER_YEAR = 12;
 
     private final double annualSalary;
 
-    public SalariedEmployee3(String aName, LocalDate aHireDate,
+    public SalariedEmployee2(String aName, LocalDate aHireDate,
                             double anAnnualSalary) {
         super(aName, aHireDate);
         disallowZeroesAndNegatives(anAnnualSalary);
@@ -47,13 +47,13 @@ public class SalariedEmployee3 extends Employee3 {
     public boolean equals(Object other) {
         if (other == null) return false;
         if (this == other) return true;
-        if (!(other instanceof SalariedEmployee3)) return false;
-        SalariedEmployee3 that = (SalariedEmployee3) other;
+        if (!(other instanceof SalariedEmployee2)) return false;
+        SalariedEmployee2 that = (SalariedEmployee2) other;
         return super.equals(that) && (this.annualSalary == that.annualSalary);
     }
 
     public static void main(String[] args) throws Exception {
-        SalariedEmployee3 eva = new SalariedEmployee3("Eva Luator",
+        SalariedEmployee2 eva = new SalariedEmployee2("Eva Luator",
                                                       LocalDate.of(2013, 6, 10),
                                                       1000000);
         System.out.println(eva.getName());

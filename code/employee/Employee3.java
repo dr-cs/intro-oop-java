@@ -1,27 +1,27 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Employee3 {
 
     private String name;
-    private Date hireDate;
+    private LocalDate hireLocalDate;
 
-    public Employee3(String aName, Date aHireDate) {
-        disallowNullArguments(aName, aHireDate);
+    public Employee3(String aName, LocalDate aHireLocalDate) {
+        disallowNullArguments(aName, aHireLocalDate);
         name = aName;
-        hireDate = aHireDate;
+        hireLocalDate = aHireLocalDate;
     }
 
     public String getName() {
         return name;
     }
 
-    public Date getHireDate() {
-        return hireDate;
+    public LocalDate getHireDate() {
+        return hireLocalDate;
     }
 
     @Override
     public String toString() {
-        return name + "; " + hireDate;
+        return name + "; " + hireLocalDate;
     }
 
     private void disallowNullArguments(Object ... args) {

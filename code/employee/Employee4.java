@@ -1,15 +1,15 @@
 import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class Employee4 {
 
     private String name;
-    private Date hireDate;
+    private LocalDate hireDate;
 
-    public Employee4(String aName, Date aHireDate) {
-        disallowNullArguments(aName, aHireDate);
+    public Employee4(String aName, LocalDate aHireLocalDate) {
+        disallowNullArguments(aName, aHireLocalDate);
         name = aName;
-        hireDate = aHireDate;
+        hireDate = aHireLocalDate;
     }
 
     private void disallowNullArguments(Object ... args) {
@@ -31,7 +31,7 @@ public abstract class Employee4 {
         return name;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
